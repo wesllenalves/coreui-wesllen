@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->smallIncrements('idUsuario');
+            $table->increments('idUsuario');
             $table->string('name', 100);
             $table->string('cpf', 16);
             $table->string('email', 191)->unique();
@@ -25,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->engine = 'InnoDB';
         });
     }
 
