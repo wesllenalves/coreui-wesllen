@@ -36,12 +36,13 @@
               <div class="input-group mb-3">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
                 <input type="text" name="name" class="form-control" placeholder="Username">
-              </div>              
-  
+              </div>
+
               <div class="input-group mb-3">
                 <span class="input-group-addon">@</span>
                 <input type="text" name="email" class="form-control" placeholder="Email">
-              </div>
+              </div>  
+              
 
               <div class="input-group mb-3">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>

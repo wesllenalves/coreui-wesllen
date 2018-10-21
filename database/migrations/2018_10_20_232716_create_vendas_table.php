@@ -18,7 +18,7 @@ class CreateVendasTable extends Migration
 
             $table->integer('FkUsers')->unsigned();            
             $table->foreign('FkUsers')
-                ->references('idUsuario')->on('users')
+                ->references('id')->on('users')
                 ->onDelete('cascade');
 
             $table->integer('FkProdutos')->unsigned();            
