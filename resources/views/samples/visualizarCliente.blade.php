@@ -31,15 +31,20 @@
                 <td>{{$user->perfil}}</td>
                 <td>
                     <label class="switch switch-text-editar switch-info">
-                        <input type="checkbox" class="switch-input" checked="">
+                        <input type="checkbox" class="switch-input" checked="" onclick="clicar('menu_cliente');">
                         <span class="switch-label" data-on="Editar" data-off="Off"></span>
                         <span class="switch-handle"></span>
                     </label>
-                </td>
+                </td>                
               </tr>
               @endforeach
+              
             </tbody>
           </table>
+          <div id="menu_cliente" style="display:none;">
+                   <input type="text" name="teste" value="text">
+                   <input type="text" name="teste" value="text">
+                </div>
           <nav>
             <ul class="pagination">
               <li class="page-item"><a class="page-link" href="#">Prev</a></li>
