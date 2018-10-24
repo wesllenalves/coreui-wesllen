@@ -29,7 +29,13 @@
                 <td>{{$user->cpf}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->perfil}}</td>
-                <td>{{$user->name}}</td>
+                <td>
+                    <label class="switch switch-text-editar switch-info">
+                        <input type="checkbox" class="switch-input" checked="">
+                        <span class="switch-label" data-on="Editar" data-off="Off"></span>
+                        <span class="switch-handle"></span>
+                    </label>
+                </td>
               </tr>
               @endforeach
             </tbody>

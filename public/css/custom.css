@@ -1,0 +1,89 @@
+.switch.switch-text-editar {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 69px;
+    height: 24px;
+    background-color: transparent;
+    cursor: pointer; }
+.switch.switch-text-editar .switch-input:checked ~ .switch-handle {
+    left: 40px; }
+
+    .switch.switch-text-editar .switch-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0; }
+      .switch.switch-text-editar .switch-label {
+        position: relative;
+        display: block;
+        height: inherit;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background-color: #fff;
+        border: 1px solid #c2cfd6;
+        border-radius: 2px;
+        transition: opacity background .15s ease-out; }
+      .switch.switch-text-editar .switch-label::before,
+      .switch.switch-text-editar .switch-label::after {
+        position: absolute;
+        top: 50%;
+        width: 50%;
+        margin-top: -.5em;
+        line-height: 1;
+        text-align: center;
+        transition: inherit; }
+      .switch.switch-text-editar .switch-label::before {
+        right: 1px;
+        color: #c2cfd6;
+        content: attr(data-off); }
+      .switch.switch-text-editar .switch-label::after {
+        left: 1px;
+        color: #fff;
+        content: attr(data-on);
+        opacity: 0; }
+      .switch.switch-text-editar .switch-input:checked ~ .switch-label::before {
+        opacity: 0; }
+      .switch.switch-text-editar .switch-input:checked ~ .switch-label::after {
+        opacity: 1; }
+      .switch.switch-text-editar .switch-handle {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border: 1px solid #c2cfd6;
+        border-radius: 1px;
+        transition: left .15s ease-out; }      
+      .switch.switch-text-editar.switch-lg {
+        width: 56px;
+        height: 28px; }
+        .switch.switch-text-editar.switch-lg .switch-label {
+          font-size: 12px; }
+        .switch.switch-text-editar.switch-lg .switch-handle {
+          width: 24px;
+          height: 24px; }
+        .switch.switch-text-editar.switch-lg .switch-input:checked ~ .switch-handle {
+          left: 30px; }
+      .switch.switch-text-editar.switch-sm {
+        width: 40px;
+        height: 20px; }
+        .switch.switch-text-editar.switch-sm .switch-label {
+          font-size: 8px; }
+        .switch.switch-text-editar.switch-sm .switch-handle {
+          width: 16px;
+          height: 16px; }
+        .switch.switch-text-editar.switch-sm .switch-input:checked ~ .switch-handle {
+          left: 22px; }
+      .switch.switch-text-editar.switch-xs {
+        width: 32px;
+        height: 16px; }
+        .switch.switch-text-editar.switch-xs .switch-label {
+          font-size: 7px; }
+        .switch.switch-text-editar.switch-xs .switch-handle {
+          width: 12px;
+          height: 12px; }
+        .switch.switch-text-editar.switch-xs .switch-input:checked ~ .switch-handle {
+          left: 18px; }
