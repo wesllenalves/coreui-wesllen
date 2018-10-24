@@ -45,7 +45,7 @@
   @include('core.navbar')
   
   <div class="app-body">
-    @include('core.sidebar')
+    @include('core.painel-menu-esquerdo')
     <!-- Main content -->
     <main class="main">
 
