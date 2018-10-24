@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function() {
 	Route::view('/', 'panel.blank');
 	// Section CoreUI elements
 	Route::view('dashboard','dashboard');
+	Route::get('/sample/cliente', 'ControllerCliente@index');
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');
 	Route::view('/sample/social','samples.social');
