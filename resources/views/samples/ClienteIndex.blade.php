@@ -32,8 +32,8 @@
                 <td style="width:25%;">
 
                     <a href="/sample/cliente/visualizar/{{$user->id}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
-                    <a href="#"><button type="button" class="btn-sm btn-primary">Editar</button></a>
-                    <a href="#"><button type="button" class="btn-sm btn-danger">Remover</button></a>
+                    <a href="/sample/cliente/clienteEditar/{{$user->id}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
+                    <a href="/sample/cliente/deletar/{{$user->id}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
               </tr>

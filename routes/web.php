@@ -24,10 +24,11 @@ Route::middleware('auth')->group(function() {
 	Route::post('/sample/cliente/editar/{id}', 'ControllerCliente@editar');
 	Route::get('/sample/cliente/adicionar', 'ControllerCliente@adicionar');
 	Route::post('/sample/cliente/adicionarCliente', 'ControllerCliente@adicionarCliente');
+	Route::get('/sample/cliente/deletar/{id}', 'ControllerCliente@deletar');
 
 
 
-	
+
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');
 	Route::view('/sample/social','samples.social');

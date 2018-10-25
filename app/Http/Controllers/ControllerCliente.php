@@ -60,13 +60,26 @@ class ControllerCliente extends Controller
     public function adicionarCliente(Request $request){
        $dataFrom = $request->except('_token');
     
-       $insert = $this->user->create($dataFrom);
+       $insert = User::create($dataFrom);
        
        if($insert)
        {
              return redirect('/sample/cliente');
        }else{
              return redirect('/sample/cliente/adicionar');
+       }
+    }
+
+    public function deletar($id){
+
+        $user = $this->user->find($id);
+       $delete =  $user->delete();
+       
+       if($delete)
+       {
+             return redirect('/sample/cliente');
+       }else{
+             return redirect('/sample/cliente');
        }
     }
 }

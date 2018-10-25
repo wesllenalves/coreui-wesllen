@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('endereco', 255)->nullable();
             $table->string('cidade', 100)->nullable();
             $table->string('complemento', 45)->default()->nullable();
-            $table->string('perfil', 45)->nullable();
-            $table->string('password');
+            $table->string('perfil', 45)->default('Cliente');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
