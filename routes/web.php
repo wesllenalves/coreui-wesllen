@@ -20,6 +20,14 @@ Route::middleware('auth')->group(function() {
 	Route::view('dashboard','dashboard');
 	Route::get('/sample/cliente', 'ControllerCliente@index');
 	Route::get('/sample/cliente/visualizar/{id}', 'ControllerCliente@cliente');
+	Route::get('/sample/cliente/clienteEditar/{id}', 'ControllerCliente@clienteEditar');
+	Route::post('/sample/cliente/editar/{id}', 'ControllerCliente@editar');
+	Route::get('/sample/cliente/adicionar', 'ControllerCliente@adicionar');
+	Route::post('/sample/cliente/adicionarCliente', 'ControllerCliente@adicionarCliente');
+
+
+
+	
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');
 	Route::view('/sample/social','samples.social');

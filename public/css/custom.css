@@ -87,3 +87,16 @@
           height: 12px; }
         .switch.switch-text-editar.switch-xs .switch-input:checked ~ .switch-handle {
           left: 18px; }
+
+.btn-visualizar{
+  display: block;
+  width: 250px;
+  margin-left: auto;
+  float:right;
+  
+}
+
+.btn-visualizar button{
+ margin-left: 10%;
+  
+}

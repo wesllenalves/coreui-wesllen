@@ -15,10 +15,7 @@
             <a class="nav-link" href="/sample/cliente"><i class="icon-user"></i>Visualizar Cliente</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/sample/social"><i class="icon-user-follow"></i>Adicionar Cliente</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/sample/cards"><i class="icon-puzzle"></i>Editar Cliente</a>
+            <a class="nav-link" href="/sample/cliente/adicionar"><i class="icon-user-follow"></i>Adicionar Cliente</a>
           </li>          
         </ul>
       </li>
