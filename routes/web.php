@@ -15,9 +15,11 @@ Auth::routes();
 /* CoreUI templates */
 
 Route::middleware('auth')->group(function() {
-	Route::view('/', 'panel.blank');
+	Route::view('/', 'dashboard');
+	//Route::view('/', 'panel.blank');
 	// Section CoreUI elements
 	Route::view('dashboard','dashboard');
+	/* --Clientes-- */
 	Route::get('/sample/cliente', 'ControllerCliente@index');
 	Route::get('/sample/cliente/visualizar/{id}', 'ControllerCliente@cliente');
 	Route::get('/sample/cliente/clienteEditar/{id}', 'ControllerCliente@clienteEditar');
@@ -25,8 +27,10 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/cliente/adicionar', 'ControllerCliente@adicionar');
 	Route::post('/sample/cliente/adicionarCliente', 'ControllerCliente@adicionarCliente');
 	Route::get('/sample/cliente/deletar/{id}', 'ControllerCliente@deletar');
-
-
+	/* --Produtos-- */
+	Route::get('/sample/produto', 'ControllerProduto@index');
+	Route::get('/sample/produto/adicionar', 'ControllerProduto@adicionar');
+	Route::get('/sample/produto/adicionarProduto', 'ControllerProduto@adicionarProduto');
 
 
 	Route::view('/sample/dashboard','samples.dashboard');
