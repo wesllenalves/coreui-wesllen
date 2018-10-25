@@ -29,18 +29,18 @@
               
               <tr>
                 <td>{{$produto->nome}}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$produto->medidas}}</td>
+                <td>{{$produto->descricao}}</td>
+                <td>{{$produto->valorMedio}}</td>
+                <td>{{$produto->gastoMedio}}</td>
+                <td>{{$produto->lucroMedio}}</td>
+                <td>{{$produto->tempoFabricacao}}</td>
+                <td>{{$produto->categoria}}</td>
                 <td style="width:25%;">
 
-                    <a href="/sample/cliente/visualizar/"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
-                    <a href="/sample/cliente/clienteEditar/"><button type="button" class="btn-sm btn-primary">Editar</button></a>
-                    <a href="/sample/cliente/deletar/"><button type="button" class="btn-sm btn-danger">Remover</button></a>
+                    <a href="/sample/produto/visualizar/{{$produto->idProduto}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
+                    <a href="/sample/produto/produtoEditar/{{$produto->idProduto}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
+                    <a href="/sample/produto/deletar/{{$produto->idProduto}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
               </tr>

@@ -30,8 +30,11 @@ Route::middleware('auth')->group(function() {
 	/* --Produtos-- */
 	Route::get('/sample/produto', 'ControllerProduto@index');
 	Route::get('/sample/produto/adicionar', 'ControllerProduto@adicionar');
-	Route::get('/sample/produto/adicionarProduto', 'ControllerProduto@adicionarProduto');
-
+	Route::post('/sample/produto/adicionarProduto', 'ControllerProduto@adicionarProduto');
+	Route::get('/sample/produto/produtoEditar/{idProduto}', 'ControllerProduto@produtoEditar');
+	Route::get('/sample/produto/visualizar/{idProduto}', 'ControllerProduto@produto');
+	Route::post('/sample/produto/editar/{idProduto}', 'ControllerProduto@editar');
+	Route::get('/sample/produto/deletar/{idProduto}', 'ControllerProduto@deletar');
 
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');

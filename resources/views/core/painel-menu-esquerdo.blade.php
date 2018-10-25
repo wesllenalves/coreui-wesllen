@@ -27,10 +27,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/sample/produto/adicionar"><i class="icon-cloud-upload"></i>Adicionar Produto</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="icon-note"></i>Editar Produto</a>
-          </li>
+          </li>          
         </ul>
       </li>
       <li class="nav-item">
