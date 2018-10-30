@@ -59,7 +59,24 @@ class ControllerCliente extends Controller
 
     public function adicionarCliente(Request $request){
        $dataFrom = $request->except('_token');
-    
+       $messages = [
+           'name.required' => 'O campo nome é de preenchimento obrigatorio.',
+           'name.min' => 'O campo nome é de preenchimento de pelo menos 3 caracteres.',
+           'name.max' => 'O campo nome é de preenchimento de no maximo 100 caracteres.',
+           'cpf.required' => 'O campo cpf é de preenchimento obrigatorio.',
+           'cpf.numeric' => 'O campo cpf deve ser preenchido somente com numeros.',
+           'cpf.min' => 'O campo cpf deve ter no minimo 11 numeros.',
+           'cpf.max' => 'O campo cpf deve ter no maximo 11 numeros.',
+           'telefone.required' => 'O campo telefone é de preenchimento obrigatorio.',
+           'telefone.numeric' => 'O campo telefone é de preenchimento somente com  numeros.',
+           'telefone.min' => 'O campo telefone deve possuir no minimo 11 numeros.',
+           'telefone.max' => 'O campo telefone deve possuir no maximo 11 numeros.',
+           'email.required' => 'O campo email é de preenchimento obrigatorio.',
+           'endereco.required' => 'O campo endereco é de preenchimento obrigatorio.',
+           'complemento.required' => 'O campo complemento é de preenchimento obrigatorio.',
+       ];
+       $this->validate($request, $this->user->rules, $messages);
+
        $insert = User::create($dataFrom);
        
        if($insert)
