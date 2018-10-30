@@ -20,7 +20,7 @@ class User extends Authenticatable
         'name', 'cpf', 'telefone', 'email', 'endereco', 'cidade', 'complemento', 'password',
     ];
 
-
+    /** regras de dados passado pelo formularios que serao aceitos */
     public $rules = [
         'name' => 'required|min:3|max:100',
         'cpf' => 'required|numeric|min:11|max:11',
