@@ -37,7 +37,7 @@
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i>Relatorio de Vendas</a>
         <ul class="nav-dropdown-items">
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="icon-basket"></i>Vendas</a>
+            <a class="nav-link" href="/sample/vendas"><i class="icon-basket"></i>Vendas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="icon-chart"></i>Financeiro</a>

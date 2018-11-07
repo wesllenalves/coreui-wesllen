@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function() {
 	/*Relatorio*/
 	Route::get('/sample/relatorio', 'ControllerFinanceiro@index');
 	Route::post('/sample/relatorio/pesquisar', 'ControllerFinanceiro@relatorio');
+	/*Vendas*/
+	Route::get('/sample/vendas', 'ControllerVendas@index');
 
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');

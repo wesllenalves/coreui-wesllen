@@ -13,27 +13,45 @@
           <table class="table table-responsive-sm table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>E-mail</th>
-                <th>Perfil</th>
-                <th>Detalhes</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Data de Entrega</th>
+                <th>Unidades</th>
+                <th>Valor Total</th>
+                <th>Desconto</th>
+                <th>Gasto</th>
+                <th>taxa de Entrega</th>
+                <th>Taxa Adicional</th>
+                <th>Status de Venda</th>
+                <th>Entrada</th>
+                <th>Descricao</th>
+                <th>Medidas</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($users as $user)
+              @foreach ($vendas as $venda)
                   
               
               <tr>
-                <td>{{$user->name}}</td>
-                <td>{{$user->cpf}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->perfil}}</td>
+                <td>{{$venda->usuario->name}}</td>
+                <td>{{$venda->produto->nome}}</td>                
+                <td>{{$venda->dataEntrega}}</td>
+                <td>{{$venda->qtd}}</td>
+                <td>{{$venda->valorTotal}}</td>
+                <td>{{$venda->desconto}}</td>
+                <td>{{$venda->gasto}}</td>
+                <td>{{$venda->taxaEntrega}}</td>
+                <td>{{$venda->taxaAdd}}</td>
+                <td>{{$venda->statusVenda}}</td>
+                <td>{{$venda->entrada}}</td>
+                <td>{{$venda->descricao}}</td>
+                <td>{{$venda->medidas}}</td>
                 <td style="width:25%;">
 
-                    <a href="/sample/cliente/visualizar/{{$user->id}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
-                    <a href="/sample/cliente/clienteEditar/{{$user->id}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
-                    <a href="/sample/cliente/deletar/{{$user->id}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
+                    <a href="/sample/cliente/visualizar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
+                    <a href="/sample/cliente/clienteEditar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
+                    <a href="/sample/cliente/deletar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
               </tr>

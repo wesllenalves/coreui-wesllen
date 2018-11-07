@@ -14,6 +14,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //Nome da tabela.
+    protected $table      = 'users';
+
+    //Primary Key da Tabela.
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -28,4 +32,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Relacionamento.
+    public function Venda()
+    {
+        return $this->hasMany('App\Venda');
+        //     $this->belongsTo(relação, chave estrangeira local, primary key da relação);
+        //return $this->belongsTo('App\Venda', 'FkUsers', 'id');
+    }
 }
