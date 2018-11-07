@@ -1,3 +1,9 @@
+
+#dtHorizontalExample th, td {
+  white-space: nowrap;
+}
+
+
 .switch.switch-text-editar {
     position: relative;
     display: inline-block;

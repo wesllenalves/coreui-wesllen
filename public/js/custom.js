@@ -14,3 +14,5 @@ function clicar(objeto){
         document.getElementById(objeto).style.display = "none";
     }*/
 }
+
+

@@ -10,7 +10,8 @@
           <i class="fa fa-align-justify"></i> Combined All Table
         </div>
         <div class="card-body">
-          <table class="table table-responsive-sm table-bordered table-striped table-sm">
+          <div id="dtHorizontalExample">
+          <table  class="table table-responsive table-bordered table-striped table-sm">
             <thead>
               <tr>
                 <th>Cliente</th>
@@ -59,6 +60,7 @@
               
             </tbody>
           </table>
+        </div>
           
           <nav>
             <ul class="pagination">
