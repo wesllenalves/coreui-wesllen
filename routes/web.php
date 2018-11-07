@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/produto/visualizar/{idProduto}', 'ControllerProduto@produto');
 	Route::post('/sample/produto/editar/{idProduto}', 'ControllerProduto@editar');
 	Route::get('/sample/produto/deletar/{idProduto}', 'ControllerProduto@deletar');
+	/*Relatorio*/
+	Route::get('/sample/relatorio', 'ControllerFinanceiro@index');
+	Route::post('/sample/relatorio/pesquisar', 'ControllerFinanceiro@relatorio');
 
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');
