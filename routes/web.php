@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function() {
 	Route::post('/sample/relatorio/pesquisar', 'ControllerFinanceiro@relatorio');
 	/*Vendas*/
 	Route::get('/sample/vendas', 'ControllerVendas@index');
+	Route::get('/sample/vendas/visualizar/{idVenda}', 'ControllerVendas@editarIndex');
+	Route::post('/sample/vendas/editar/{idVenda}', 'ControllerVendas@editar');
 
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');

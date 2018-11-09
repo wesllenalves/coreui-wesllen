@@ -31,5 +31,16 @@ class UsersTableSeeder extends Seeder
             'perfil'  => 'Admin',        	
         	'password' => bcrypt('123456'),
         ]);
+        
+        DB::table('produtos')->insert([
+                'nome' => 'Cadeira',
+                'medidas'  => '400Altura X 100Largura',
+                'descricao' => 'uma cadeira sem muitas descrições',
+                'valorMedio'  => '50.00',
+                'gastoMedio'  => '20.00',
+                'lucroMedio'  => '60%',
+                'tempoFabricacao'  => '2 semanas',        	
+            	'categoria' => 'Moveis',
+            ]);
     }
 }

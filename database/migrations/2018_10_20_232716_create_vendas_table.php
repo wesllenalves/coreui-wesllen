@@ -38,7 +38,7 @@ class CreateVendasTable extends Migration
             $table->string('entrada', 45);
             $table->string('descricao', 45);
             $table->string('medidas', 45);
-
+            $table->timestamps();
             
         });
     }

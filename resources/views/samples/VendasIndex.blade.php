@@ -50,8 +50,8 @@
                 <td>{{$venda->medidas}}</td>
                 <td style="width:25%;">
 
-                    <a href="/sample/cliente/visualizar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
-                    <a href="/sample/cliente/clienteEditar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
+                    
+                    <a href="/sample/vendas/visualizar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
                     <a href="/sample/cliente/deletar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
