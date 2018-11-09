@@ -22,7 +22,7 @@ class CreateLucroMensalsTable extends Migration
             $table->string('mes', 45);
             $table->year('ano', 4);
             $table->decimal('lucroTotal', 18,2);
-
+            $table->timestamps();
           /* */
         });
     }

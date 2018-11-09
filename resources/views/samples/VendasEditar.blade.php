@@ -93,7 +93,7 @@
 
                 <div class="row btn-visualizar">
                   <button type="submit" class="btn btn-primary">Salvar</button>
-                  <a href="/sample/venda"><button type="button" class="btn btn-warning">Cancelar</button></a>
+                  <a href="/sample/vendas"><button type="button" class="btn btn-warning">Cancelar</button></a>
                 </div>
                 <!--/.row-->
                 @endforeach
