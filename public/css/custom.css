@@ -1,4 +1,6 @@
-
+.botao-financeiro{
+  padding:0%;
+}
 #dtHorizontalExample th, td {
   white-space: nowrap;
 }

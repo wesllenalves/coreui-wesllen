@@ -13,11 +13,15 @@
           <table class="table table-responsive-sm table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>E-mail</th>
-                <th>Perfil</th>
-                <th>Detalhes</th>
+                <th>#</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Cliente/produto/Fornecedor</th>
+                <th>Vencimento</th>
+                <th>status</th>
+                <th>Valor</th>
+                <th>Forma de pagamento</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -25,13 +29,13 @@
                   
               
               <tr>
-                <td>{{$user->name}}</td>
-                <td>{{$user->cpf}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->perfil}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td style="width:25%;">
 
-                    <a href="/sample/cliente/visualizar/{{$user->id}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
+                    
                     <a href="/sample/cliente/clienteEditar/{{$user->id}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
                     <a href="/sample/cliente/deletar/{{$user->id}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     

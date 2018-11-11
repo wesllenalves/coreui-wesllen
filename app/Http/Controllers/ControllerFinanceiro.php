@@ -13,8 +13,7 @@ class ControllerFinanceiro extends Controller
     
     public function relatorio(Request $request)
     {
-        $relatorio = $request->all();
-        dd($relatorio);
+        
         
         return view('samples.Relatorio');
     }

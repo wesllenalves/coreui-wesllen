@@ -40,7 +40,7 @@
             <a class="nav-link" href="/sample/vendas"><i class="icon-basket"></i>Vendas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="icon-chart"></i>Financeiro</a>
+            <a class="nav-link" href="/sample/relatorio"><i class="icon-chart"></i>Financeiro</a>
           </li>
         </ul>
       </li>

@@ -52,4 +52,17 @@ class ControllerVendas extends Controller
             return redirect()->route('/sample/vendas/visualizar/'.$id)->with(['errors' => 'Falha ao Editar']);
         }
     }
+    
+     public function deletar($id)
+    {
+        $venda = $this->venda->find($id);
+        $update = $venda->delete();        
+        /** faz a verificação para decidir para qual rota direcionar */
+        if($update)
+        {
+            return redirect('/sample/vendas');
+        }else{
+            return redirect()->route('/sample/vendas')->with(['errors' => 'Falha ao Deletar']);
+        }
+    }
 }
