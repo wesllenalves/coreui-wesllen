@@ -14,8 +14,8 @@
         
         <div class="card-body">
           
-          
-          <table class="table table-responsive-sm table-bordered table-striped table-sm">
+            <div id="dtHorizontalExample">
+          <table class="table table-responsive table-bordered table-striped table-sm">
             <thead>
               <div class="botao-financeiro" style="margin-bottom:10px;">
                 
@@ -28,59 +28,62 @@
                 <div class="modal fade" id="modalReceita" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <div class="modal-header">                                
                                 <h4 class="modal-title" id="myModalLabel">Adicionar Receita</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <form id="formReceita" action="http://localhost:8080/financeiro/lancamentos/adicionarReceita" method="post">
+                                <form id="formReceita" action="{{url("/sample/relatorio/adicionarReceita")}}" method="post">
 
                                     <div class="modal-body">
 
                                         <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
-
+                                        
                                         <div class="form-group" style="margin-left: 0"> 
-                                            <label for="descricao">Descrição</label>
+                                            {{ csrf_field() }}
+                                            <input type="hidden" id="tipo" name="tipo" value="Receita" />	
+                                            <label for="descricao">Descrição*</label>
                                             <input class="form-control" id="descricao" type="text" name="descricao"  />                                    
                                         </div>	
                                         <div class="form-group" style="margin-left: 0"> 
 
-                                            <label for="cliente">Cliente*</label>
+                                            <label for="cliente">Cliente/Produto/Fornecedor*</label>
                                             <input class="form-control" id="cliente" type="text" name="cliente"  />
                                         </div>
 
                                         <div class="form-group" style="margin-left: 0">
                                             <label for="valor">Valor*</label>
-                                            <input type="hidden" id="tipo" name="tipo" value="Receita" />	
+                                            
                                             <input class="form-control money" id="valor" type="text" name="valor" />
                                         </div>
                                         <div class="form-group" style="margin-left: 0">                                
                                             <label for="vencimento">Data Vencimento*</label>
-                                            <input class="form-control" id="vencimento" type="date" name="vencimento"  />                              
+                                            <input class="form-control" id="vencimento" type="date" name="data_vencimento"  />                              
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formaPgto">Forma Pgto</label>
+                                            <select name="formaPgto" id="formaPgto" class="form-control">
+                                                <option value="Dinheiro">-</option>
+                                                <option value="Dinheiro">Dinheiro</option>
+                                                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                                <option value="Cheque">Cheque</option>
+                                                <option value="Boleto">Boleto</option>
+                                                <option value="Depósito">Depósito</option>
+                                                <option value="Débito">Débito</option>  			
+                                            </select>
                                         </div>
                                         <div class="span12" style="margin-left: 0"> 
                                             <div class="span4" style="margin-left: 0">
                                                 <label for="recebido">Recebido?</label>
                                                 &nbsp &nbsp &nbsp &nbsp
-                                                <input  id="recebido" type="checkbox" name="recebido" value="sim" />	
+                                                <input  id="recebido" type="checkbox" name="status" value="Pago" />	
                                             </div>
                                             <div id="divRecebimento" name="formulario-oculto" class="span8" style=" display: none">
                                                 <div class="form-group">
                                                     <label for="recebimento">Data Recebimento</label>
-                                                    <input class="form-control" id="recebimento" type="date" name="recebimento" />	
+                                                    <input class="form-control" id="recebimento" type="date" name="data_pagamento" />	
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="formaPgto">Forma Pgto</label>
-                                                    <select name="formaPgto" id="formaPgto" class="form-control">
-                                                        <option value="Dinheiro">-</option>
-                                                        <option value="Dinheiro">Dinheiro</option>
-                                                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                                                        <option value="Cheque">Cheque</option>
-                                                        <option value="Boleto">Boleto</option>
-                                                        <option value="Depósito">Depósito</option>
-                                                        <option value="Débito">Débito</option>  			
-                                                    </select>
-                                                </div>
+                                                
                                             </div>
                                         </div> 
                                     </div>
@@ -99,13 +102,13 @@
 
 
 
-            <!-- Modal -->
+            <!-- Modal Adicionar Despesa -->
             <div class="modal fade" id="modalDespesa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="modal-header">                            
                             <h4 class="modal-title" id="myModalLabel">Adicionar Despesa</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
                             <form id="formReceita" action="http://localhost:8080/financeiro/lancamentos/adicionarDespesa" method="post">
@@ -164,7 +167,7 @@
                                     </div>
                                 </div>
                                 <br>
-
+                                
                                 <div class="modal-footer">
                                     <br>
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
@@ -180,6 +183,7 @@
                 <th>Tipo</th>
                 <th>Cliente/produto/Fornecedor</th>
                 <th>Vencimento</th>
+                <th>Pagamento</th>
                 <th>status</th>
                 <th>Valor</th>
                 <th>Forma de pagamento</th>
@@ -188,19 +192,19 @@
             </thead>
             <tbody>
               
-                  
-              
+                  @foreach ($lancamentos as $lancamento)
+                
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <td>{{$lancamento->id}}</td>
+                <td>{{$lancamento->descricao}}</td>
+                <td>{{$lancamento->tipo}}</td>
+                <td>{{$lancamento->cliente}}</td>
+                <td>{{$lancamento->data_vencimento}}</td>
+                <td>{{$lancamento->data_pagamento}}</td>
+                <td>{{$lancamento->status}}</td>
+                <td>{{$lancamento->valor}}</td>
+                <td>{{$lancamento->formaPgto}}</td>                
                 <td style="width:25%;">
-
                     
                     <a href="/sample/cliente/clienteEditar/"><button type="button" class="btn-sm btn-primary">Editar</button></a>
                     <a href="/sample/cliente/deletar/"><button type="button" class="btn-sm btn-danger">Remover</button></a>
@@ -208,9 +212,10 @@
                 </td>                
               </tr>
              
-              
+              @endforeach
             </tbody>
           </table>
+        </div>
           
           
         </div>

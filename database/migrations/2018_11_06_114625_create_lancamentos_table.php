@@ -15,11 +15,14 @@ class CreateLancamentosTable extends Migration
     {
         Schema::create('lancamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao', 255);
+            $table->string('tipo', 255);            
+            $table->string('descricao', 255); 
+            $table->string('cliente', 255);           
             $table->decimal('valor', 18,2);
             $table->date('data_vencimento');
-            $table->date('data_pagamento');
-            $table->string('status', 50);
+            $table->string('formaPgto', 50);
+            $table->string('status', 50)->nullable($value = true)->default('Devendo');
+            $table->date('data_pagamento')->nullable($value = true);            
             $table->timestamps();
         });
     }

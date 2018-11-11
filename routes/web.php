@@ -38,10 +38,12 @@ Route::middleware('auth')->group(function() {
 	/*Relatorio*/
 	Route::get('/sample/relatorio', 'ControllerFinanceiro@index');
 	Route::post('/sample/relatorio/pesquisar', 'ControllerFinanceiro@relatorio');
+	Route::post('/sample/relatorio/adicionarReceita', 'ControllerFinanceiro@adicionarReceita');
 	/*Vendas*/
 	Route::get('/sample/vendas', 'ControllerVendas@index');
 	Route::get('/sample/vendas/visualizar/{idVenda}', 'ControllerVendas@editarIndex');
 	Route::post('/sample/vendas/editar/{idVenda}', 'ControllerVendas@editar');
+	
 
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');
