@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function() {
 	Route::post('/sample/relatorio/adicionarDespesa', 'ControllerFinanceiro@adicionarDespesa');
 	Route::post('/sample/relatorio/adicionarReceita', 'ControllerFinanceiro@adicionarReceita');
 	Route::post('/sample/relatorio/editar', 'ControllerFinanceiro@editar');
+	Route::get('/sample/relatorio/deletar/{id}', 'ControllerFinanceiro@deletar');
 	/*Vendas*/
 	Route::get('/sample/vendas', 'ControllerVendas@index');
 	Route::get('/sample/vendas/visualizar/{idVenda}', 'ControllerVendas@editarIndex');

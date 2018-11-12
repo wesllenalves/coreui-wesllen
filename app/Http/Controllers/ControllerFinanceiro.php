@@ -112,4 +112,17 @@ class ControllerFinanceiro extends Controller
             return redirect('/sample/relatorio')->with(['errors' => 'Falha ao Inserir']);
         }
     }
+
+    public function deletar($id)
+    {
+        $lancamentos = $this->lancamento->find($id);
+        
+        $deletar = $lancamentos->delete();
+
+        if($deletar){
+            return redirect('/sample/relatorio');
+        }else{
+            return redirect('/sample/relatorio')->with(['errors' => 'Falha ao Inserir']);
+        }  
+    }
 }

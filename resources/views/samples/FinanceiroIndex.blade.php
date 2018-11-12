@@ -208,7 +208,7 @@
                     <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" data-whateverid="{{$lancamento->id}}" data-whateverdescricao="{{$lancamento->descricao}}"
                     data-whatevertipo="{{$lancamento->tipo}}" data-whatevercliente="{{$lancamento->cliente}}" data-whateverdata_vencimento="{{$lancamento->data_vencimento}}" data-whateverdata_pagamento="{{$lancamento->data_pagamento}}"
                     data-whatevervalor="{{$lancamento->valor}}" data-whateverformaPgto="{{$lancamento->formaPgto}}">Editar</button>
-                    <a href="/sample/cliente/deletar/"><button type="button" class="btn-sm btn-danger">Remover</button></a>
+                    <a href="/sample/relatorio/deletar/{{$lancamento->id}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
               </tr>
@@ -245,7 +245,7 @@
           <div class="form-group" style="margin-left: 0">
                 <label for="valor">Valor*</label>
                 <input type="hidden" id="recipient-tipo" name="tipo" />	
-                <input type="text" class="form-control money" id="recipient-valor"  name="valor"  />
+                <input type="number" class="form-control money" id="recipient-valor"  name="valor"  />
             </div>
             <div class="form-group" >
                 <label for="vencimento">Data Vencimento*</label>
