@@ -143,7 +143,7 @@
                                     <div class="form-group" style="margin-left: 0">
                                         <label for="recebido">Foi Pago?</label>
                                         &nbsp &nbsp &nbsp &nbsp
-                                        <input  id="recebido" type="checkbox" name="recebido" value="sim" />	
+                                        <input  id="recebido" type="checkbox" name="status" value="Pago" />	
                                     </div>
                                     <div id="divRecebimento" name="formulario-oculto" class="span8" style=" display: none">
 

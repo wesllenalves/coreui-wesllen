@@ -16,7 +16,7 @@
 }*/
 
 
-$('[name="recebido"]').change(function () {
+$('[name="status"]').change(function () {
         $('[name="formulario-oculto"]').toggle(200);
     });
     //script para passar o id para modal de excluir
