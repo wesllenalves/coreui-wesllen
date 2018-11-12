@@ -30,3 +30,30 @@ $('[name="status"]').change(function () {
         modal.find('.modal-body input').val(recipient)
     });
 
+    /** Trigger modal */
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipientid = button.data('whateverid') // Extract info from data-* attributes
+        var recipientdescricao = button.data('whateverdescricao') // Extract info from data-* attributes
+        var recipientcliente = button.data('whatevercliente') // Extract info from data-* attributes
+        var recipientvalor = button.data('whatevervalor') // Extract info from data-* attributes
+        var recipienttipo = button.data('whatevertipo') // Extract info from data-* attributes
+        var recipientdata_vencimento = button.data('whateverdata_vencimento') // Extract info from data-* attributes
+        var recipientstatus = button.data('whateverstatus') // Extract info from data-* attributes
+        var recipientdata_pagamento = button.data('whateverdata_pagamento') // Extract info from data-* attributes
+        var recipient = button.data('whateverid') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('#recipient-id').val(recipientid)
+        modal.find('#recipient-descricao').val(recipientdescricao)
+        modal.find('#recipient-cliente').val(recipientcliente)
+        modal.find('#recipient-valor').val(recipientvalor)
+        modal.find('#recipient-data_vencimento').val(recipientdata_vencimento)
+        modal.find('#recipient-data_pagamento').val(recipientdata_pagamento)
+        modal.find('#recipient-tipo').val(recipienttipo)
+        modal.find('#recipient-status').val(recipientstatus)
+      })
+

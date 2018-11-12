@@ -37,8 +37,9 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/produto/deletar/{idProduto}', 'ControllerProduto@deletar');
 	/*Relatorio*/
 	Route::get('/sample/relatorio', 'ControllerFinanceiro@index');
-	Route::post('/sample/relatorio/pesquisar', 'ControllerFinanceiro@relatorio');
+	Route::post('/sample/relatorio/adicionarDespesa', 'ControllerFinanceiro@adicionarDespesa');
 	Route::post('/sample/relatorio/adicionarReceita', 'ControllerFinanceiro@adicionarReceita');
+	Route::post('/sample/relatorio/editar', 'ControllerFinanceiro@editar');
 	/*Vendas*/
 	Route::get('/sample/vendas', 'ControllerVendas@index');
 	Route::get('/sample/vendas/visualizar/{idVenda}', 'ControllerVendas@editarIndex');

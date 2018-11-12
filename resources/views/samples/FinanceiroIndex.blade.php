@@ -13,7 +13,7 @@
         
         
         <div class="card-body">
-          
+        @yield('financeiro')
             <div id="dtHorizontalExample">
           <table class="table table-responsive table-bordered table-striped table-sm">
             <thead>
@@ -111,12 +111,13 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <form id="formReceita" action="http://localhost:8080/financeiro/lancamentos/adicionarDespesa" method="post">
+                            <form id="formReceita" action="{{url("/sample/relatorio/adicionarDespesa")}}" method="post">
                                 <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
                                 <div class="modal-body">
 
 
                                     <div class="form-group" style="margin-left: 0"> 
+                                    {{ csrf_field() }}
                                         <label for="descricao">Descrição*</label>
                                         <input class="form-control" id="descricao" type="text" name="descricao"  />                                    
                                     </div>	
@@ -135,9 +136,20 @@
 
                                     <div class="form-group" >
                                         <label for="vencimento">Data Vencimento*</label>
-                                        <input class="form-control datepicker" id="vencimento" type="date" name="vencimento"  />
+                                        <input class="form-control datepicker" id="data_vencimento" type="date" name="data_vencimento"  />
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="formaPgto">Forma Pgto</label>
+                                        <select name="formaPgto" id="formaPgto" class="form-control">
+                                            <option value="Dinheiro">-</option>
+                                            <option value="Dinheiro">Dinheiro</option>
+                                            <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                            <option value="Cheque">Cheque</option>
+                                            <option value="Boleto">Boleto</option>
+                                            <option value="Depósito">Depósito</option>
+                                            <option value="Débito">Débito</option>  			
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="span12" style="margin-left: 0"> 
                                     <div class="form-group" style="margin-left: 0">
@@ -147,23 +159,10 @@
                                     </div>
                                     <div id="divRecebimento" name="formulario-oculto" class="span8" style=" display: none">
 
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group">
                                             <label for="recebimento">Data de Pagamento</label>
-                                            <input class="form-control datepicker" id="recebimento" type="date" name="recebimento" />	
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="formaPgto">Forma Pgto</label>
-                                            <select name="formaPgto" id="formaPgto" class="form-control">
-                                                <option value="Dinheiro">-</option>
-                                                <option value="Dinheiro">Dinheiro</option>
-                                                <option value="Cartão de Crédito">Cartão de Crédito</option>
-                                                <option value="Cheque">Cheque</option>
-                                                <option value="Boleto">Boleto</option>
-                                                <option value="Depósito">Depósito</option>
-                                                <option value="Débito">Débito</option>  			
-                                            </select>
-                                        </div>
-
+                                            <input class="form-control datepicker" id="data_pagamento" type="date" name="data_pagamento" />	
+                                        </div>                                      
                                     </div>
                                 </div>
                                 <br>
@@ -206,17 +205,90 @@
                 <td>{{$lancamento->formaPgto}}</td>                
                 <td style="width:25%;">
                     
-                    <a href="/sample/cliente/clienteEditar/"><button type="button" class="btn-sm btn-primary">Editar</button></a>
+                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal" data-whateverid="{{$lancamento->id}}" data-whateverdescricao="{{$lancamento->descricao}}"
+                    data-whatevertipo="{{$lancamento->tipo}}" data-whatevercliente="{{$lancamento->cliente}}" data-whateverdata_vencimento="{{$lancamento->data_vencimento}}" data-whateverdata_pagamento="{{$lancamento->data_pagamento}}"
+                    data-whatevervalor="{{$lancamento->valor}}" data-whateverformaPgto="{{$lancamento->formaPgto}}">Editar</button>
                     <a href="/sample/cliente/deletar/"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
               </tr>
+
+
              
               @endforeach
             </tbody>
           </table>
+        </div> 
+        <!-- Editar Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
+        <form method="post" action="/sample/relatorio/editar" >
+        
+          <div class="form-group">
+           <input type="hidden" class="form-control" name="id" id="recipient-id">
+           <input type="hidden" class="form-control" name="status" >
+            <label for="recipient-name" class="col-form-label">Descricao*:</label>
+            <input type="text" class="form-control" name="descricao" id="recipient-descricao">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Cliente / Fornecedor / Empresa*:</label>
+            <input type="text" class="form-control" name="cliente" id="recipient-cliente">
+          </div>
+          <div class="form-group" style="margin-left: 0">
+                <label for="valor">Valor*</label>
+                <input type="hidden" id="recipient-tipo" name="tipo" />	
+                <input type="text" class="form-control money" id="recipient-valor"  name="valor"  />
+            </div>
+            <div class="form-group" >
+                <label for="vencimento">Data Vencimento*</label>
+                <input class="form-control datepicker" id="recipient-data_vencimento" type="date" name="data_vencimento"  />
+            </div>
+            <div class="form-group">
+                <label for="formaPgto">Forma Pgto*</label>
+                <select name="formaPgto" id="recipient-formaPgto" class="form-control">
+                    <option value="Dinheiro">-</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cheque">Cheque</option>
+                    <option value="Boleto">Boleto</option>
+                    <option value="Depósito">Depósito</option>
+                    <option value="Débito">Débito</option>  			
+                </select>
+            </div>
         </div>
-          
+        <div class="span12" style="margin-left: 0"> 
+            <div class="form-group" style="margin-left: 0">
+                <label for="recebido">Foi Pago?</label>
+                &nbsp &nbsp &nbsp &nbsp
+                <input  id="recebido" type="checkbox" name="status" value="Pago" />	
+            </div>
+            <div id="divRecebimento" name="formulario-oculto" class="span8" style=" display: none">
+
+                <div class="form-group col-md-12">
+                    <label for="recebimento">Data de Pagamento</label>
+                    <input type="date" class="form-control datepicker" id="recipient-data_pagamento"  name="data_pagamento" />	
+                </div>                                      
+            </div>
+        </div>
+        <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
+</div>
+</div>       
           
         </div>
       </div>
@@ -230,18 +302,3 @@
 
   
 @endsection
-<script>
-$('[name="recebido"]').change(function () {
-        $('[name="formulario-oculto"]').toggle(200);
-    });
-    //script para passar o id para modal de excluir
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-
-        modal.find('.modal-body input').val(recipient)
-    });
-</script>
