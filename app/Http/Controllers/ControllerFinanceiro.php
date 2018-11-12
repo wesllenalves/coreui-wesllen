@@ -31,9 +31,15 @@ class ControllerFinanceiro extends Controller
         $inserir->data_vencimento = $request->data_vencimento;
         $inserir->formaPgto = $request->formaPgto;
         
+        
         if($request->status === null){
             $inserir->status = 'Devendo';
-        }       
+        }
+        if($request->status === 'Pago'){
+            $inserir->status = 'Pago';
+            $inserir->data_pagamento = $request->data_pagamento;
+        }
+        
         $inserir->save();
         
         if($inserir){
