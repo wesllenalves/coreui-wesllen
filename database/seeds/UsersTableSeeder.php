@@ -32,6 +32,17 @@ class UsersTableSeeder extends Seeder
         	'password' => bcrypt('123456'),
         ]);
         
+        DB::table('users')->insert([
+            'name' => 'Teste',
+            'cpf'  => '111111111',
+            'email' => 'teste@teste.com',
+            'endereco'  => 'sres',
+            'cidade'  => 'brasilia',
+            'complemento'  => 'Apartamento 01',
+            'perfil'  => 'Admin',        	
+        	'password' => bcrypt('123456'),
+        ]);
+        
         DB::table('produtos')->insert([
                 'nome' => 'Cadeira',
                 'medidas'  => '400Altura X 100Largura',
