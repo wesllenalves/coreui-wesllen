@@ -17,7 +17,16 @@
                 <div class="form-group row">
                     <div class="col-sm-5">
                         <label for="name">Nome do Cliente</label>
-                    <input type="text" class="form-control" name="name" id="name" value="{{$venda->usuario->name}}" >
+                        <select class="form-control" name="FkUsers">
+                          <option value="">Selecione Cliente</option>
+                          @foreach ($users as $user)
+  
+                          <option value="{{$user->id}}" @if (isset($venda) && $venda->usuario->name == $user->name)
+                          selected
+                          @endif
+                          </option>{{$user->name}}</option>                          
+                          @endforeach
+                          </select>
                     </div>
                     <div class="col-sm-5">
                         <label for="nome">Produto</label>
@@ -47,7 +56,7 @@
                 </div>
                 <div class="col-sm-2">
                   <label for="valorMedio">Valor unitario</label>
-                  <input type="text" class="form-control" name="" id="valorMedio" value="{{$venda->produto->valorMedio}}" disabled>
+                  <input type="text" class="form-control" name="valorMedio" id="valorMedio" value="{{$venda->produto->valorMedio}}" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
@@ -82,7 +91,7 @@
                 </div>
                 <div class="col-sm-3">
                   <label for="medidas">Medidas</label>
-                  <input type="text" class="form-control" name="" id="medidas" value="{{$venda->medidas}}" disabled>
+                  <input type="text" class="form-control" name="medidas" id="medidas" value="{{$venda->medidas}}" >
                 </div>
                 </div>
                 

@@ -39,8 +39,8 @@
                 <td style="width:25%;">
 
                     <a href="/sample/orcamento/visualizar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>
-                    <a href="/sample/vendas/editar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
-                    <a href="/sample/cliente/deletar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
+                    <a href="/sample/orcamento/editar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
+                    <a href="/sample/orcamento/deletar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
               </tr>

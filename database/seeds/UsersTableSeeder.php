@@ -54,6 +54,17 @@ class UsersTableSeeder extends Seeder
             	'categoria' => 'Moveis',
             ]);
 
+            DB::table('produtos')->insert([
+                'nome' => 'Sofa',
+                'medidas'  => 'xxxxxxxxxxxxx',
+                'descricao' => 'uma sofa sem muitas descrições',
+                'valorMedio'  => '100.00',
+                'gastoMedio'  => '50.00',
+                'lucroMedio'  => '50',
+                'tempoFabricacao'  => '2 meses',        	
+            	'categoria' => 'Moveis',
+            ]);
+
             DB::table('vendas')->insert([
                 'FkUsers' => 1,
                 'FkProdutos'  => 1,
@@ -66,6 +77,22 @@ class UsersTableSeeder extends Seeder
             	'taxaEntrega' => '20.00',
             	'taxaAdd' => '00.00',
             	'statusVenda' => 'Fazendo',
+            	'entrada' => '00.00',
+            	'descricao' => 'cliente exigente',
+            	'medidas' => '0000x0000',
+            ]);
+            DB::table('vendas')->insert([
+                'FkUsers' => 1,
+                'FkProdutos'  => 1,
+                'qtd' => '2',
+                'dataEntrega'  => '2018-11-22',
+                'valorUnd'  => '50.00',
+                'valorTotal'  => '120.00',
+                'desconto'  => '00.00',        	
+            	'gasto' => '00.00',
+            	'taxaEntrega' => '20.00',
+            	'taxaAdd' => '00.00',
+            	'statusVenda' => 'Negociando',
             	'entrada' => '00.00',
             	'descricao' => 'cliente exigente',
             	'medidas' => '0000x0000',
