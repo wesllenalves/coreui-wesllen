@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function() {
 	/*Orcamento*/
 	Route::get('/sample/orcamento', 'ControllerOrcamento@index');
 	Route::get('/sample/orcamento/visualizar/{id}', 'ControllerOrcamento@visualizar');
+	Route::get('/sample/orcamento/editar/{id}', 'ControllerOrcamento@editar');
+	Route::post('/sample/orcamento/OrcamentoEditar/{id}', 'ControllerOrcamento@editarSalvar');
 
 
 

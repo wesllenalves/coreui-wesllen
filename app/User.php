@@ -38,6 +38,6 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Venda');
         //     $this->belongsTo(relação, chave estrangeira local, primary key da relação);
-        //return $this->belongsTo('App\Venda', 'FkUsers', 'id');
+        return $this->belongsTo('App\Venda', 'FkUsers', 'id');
     }
 }
