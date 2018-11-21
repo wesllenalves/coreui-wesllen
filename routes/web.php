@@ -45,7 +45,12 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/vendas', 'ControllerVendas@index');
 	Route::get('/sample/vendas/visualizar/{idVenda}', 'ControllerVendas@editarIndex');
 	Route::post('/sample/vendas/editar/{idVenda}', 'ControllerVendas@editar');
-	
+	/*Orcamento*/
+	Route::get('/sample/orcamento', 'ControllerOrcamento@index');
+	Route::get('/sample/orcamento/visualizar/{id}', 'ControllerOrcamento@visualizar');
+
+
+
 
 	Route::view('/sample/dashboard','samples.dashboard');
 	Route::view('/sample/buttons','samples.buttons');

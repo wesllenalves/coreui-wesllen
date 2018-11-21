@@ -31,7 +31,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="icon-calculator"></i>Orçamentos</a>
+        <a class="nav-link" href="/sample/orcamento"><i class="icon-calculator"></i>Orçamentos</a>
       </li>
       <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i>Relatorio de Vendas</a>
