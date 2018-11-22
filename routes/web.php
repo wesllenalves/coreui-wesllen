@@ -11,14 +11,20 @@
 |
 */
 
-Auth::routes();
-/* CoreUI templates */
 
+/* CoreUI templates */
+//Route::get('/login', 'UserController@login');
+Route::get('/', 'controllerHome@home');
+
+
+Auth::routes();
 Route::middleware('auth')->group(function() {
-	Route::view('/', 'dashboard');
+	//Route::view('/', 'dashboard');
 	//Route::view('/', 'panel.blank');
 	// Section CoreUI elements
 	Route::view('dashboard','dashboard');
+
+	
 	/* --Clientes-- */
 	Route::get('/sample/cliente', 'ControllerCliente@index');
 	Route::get('/sample/cliente/visualizar/{id}', 'ControllerCliente@cliente');

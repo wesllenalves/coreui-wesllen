@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\User;
 class UserController extends Controller
 {
+    public function login(){
+        return view('pages.login');
+    }
+
     public function cadastro(Request $request){
         $user = $request->all();
 
