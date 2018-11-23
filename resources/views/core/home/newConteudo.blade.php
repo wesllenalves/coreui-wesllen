@@ -7,7 +7,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+</div>
 		<div class="container">
 				<div class="row news">
 					<div class="col-md-6  text-left">

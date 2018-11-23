@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 191)->unique();
             $table->string('endereco', 255)->nullable();
             $table->string('cidade', 100)->nullable();
-            $table->string('complemento', 45)->default()->nullable();
+            $table->string('complemento', 45)->nullable();
             $table->string('perfil', 45)->default('Cliente');
             $table->string('password')->nullable();
             $table->rememberToken();

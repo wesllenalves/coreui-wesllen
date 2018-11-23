@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
-		<title>Timber</title>
+		<title>Paletes Brasilia</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css')}}">
@@ -61,15 +61,15 @@
     
     <!--news start-->
     
-    <div id="news">
-	@include('core.home.newConteudo')
-    </div>
+    <!--<div id="news">
+	include('core.home.newConteudo')
+    </div>-->
     
     
     <!--contact start-->
     
-    <div id="contact">
-	@include('core.home.contactConteudo')
+    <div id="orcamento">
+	@include('core.home.orcamentoConteudo')
 	@include('core.home.footer')
     </div>		
 		

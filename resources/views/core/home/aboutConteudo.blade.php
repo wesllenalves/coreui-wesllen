@@ -3,18 +3,18 @@
 				<div class="row Fresh">
 					<div class="col-md-4 Des">
 						<i class="fa fa-heart"></i>
-						<h4>Fresh & Clean Design</h4>
-						<p>Nulla consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis justo adipiscing auctor ut auctor. feugiat </p>
+						<h4>Design</h4>
+						<p>Procuramos trabalhar com diversas formas para melhor agradar nossos clientes, moveis 100% rústicos</p>
 					</div>
 					<div class="col-md-4 Ver">
 						<i class="fa fa-cog"></i>
-						<h4>Very Flexible</h4>
-						<p>Nulla consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis justo adipiscing auctor ut auctor. feugiat </p>
+						<h4>Muito Flexivel</h4>
+						<p>Entendemos que o nosso cliente e o produto final. Por isso procuramos sempre trabalhar nas possibilidades do que o cliente está imaginando</p>
 					</div>
 					<div class="col-md-4 Fully">
 						<i class="fa fa-tablet"></i>
-						<h4>Fully Responsive</h4>
-						<p>Nulla consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis justo adipiscing auctor ut auctor. feugiat </p>
+						<h4>Consumo Responsavel</h4>
+						<p>Produzimos móveis a partir de madeiras de reuso, principalmente paletes. Acreditamos que esse modo de consumo além de econômizar recursos pode se transformar em fonte de renda para famílias empreendedoras.</p>
 					</div>		
 				</div>
 			</div>
@@ -77,110 +77,11 @@
 		</div>		
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3 bar">
-					<div class="progB chart" data-percent="64"  data-animate="3500">
-						<div class="chart chart-content">
-							<div class="percentage" data-percent="64">
-							  <span class="percent">64</span>
-							</div>
-						</div>
-					</div>
-					<div class="textP">
-						<h3>WordPress</h3>
-						<p>Nulla consectetur ornare nibh, a auctor <br/>mauris scelerisque eu proin nec urna quis. </p>
-					</div>
-				</div>
-				<div class="col-md-3 bar">
-					<div class="progB chart" data-percent="22"  data-animate="3500">
-						<div class="chart chart-content">
-							<div class="percentage" data-percent="22">
-							  <span class="percent">22</span>
-							</div>
-						</div>
-					</div>
-					<div class="textP">
-						<h3>HTML5</h3>
-						<p>Nulla consectetur ornare nibh, a auctor <br/>mauris scelerisque eu proin nec urna quis. </p>
-					</div>
-				</div>
-				<div class="col-md-3 bar ">
-					<div class="progB chart" data-percent="84"  data-animate="3500">
-						<div class="chart chart-content">
-							<div class="percentage" data-percent="22">
-							  <span class="percent">84</span>
-							</div>
-						</div>
-					</div>
-					<div class="textP">
-						<h3>CSS3</h3>
-						<p>Nulla consectetur ornare nibh, a auctor <br/>mauris scelerisque eu proin nec urna quis. </p>
-					</div>
-				</div>
-				<div class="col-md-3 bar ">
-					<div class="progB chart" data-percent="45"  data-animate="3500">
-						<div class="chart chart-content">
-							<div class="percentage" data-percent="45">
-							  <span class="percent">45</span>
-							</div>
-						</div>
-					</div>
-					<div class="textP">
-						<h3>Woocommerce</h3>
-						<p>Nulla consectetur ornare nibh, a auctor <br/>mauris scelerisque eu proin nec urna quis. </p>
-					</div>
-				</div>
+				<p><p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p></p>
 			</div>
 		</div>	
 		
 		
-		<div class="container">
-			<div class="row aboutUs">
-				<div class="col-md-12 ">
-					<h3>What Our Customers Say About Us?</h3>
-				</div>
-			</div>
-		</div>
 		
-		<div style="position: relative;">
 		
-			<div class="container">
-				<div class="row about">
-					<div class="col-md-6">
-						<div class="about1">
-						<img class="pic1Ab" src="images/picAbout/aboutP1.png">
-							<h3>Anna Smith, Company Inc.</h3>
-							<p>Nulla consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis justo adipiscing auctor ut auctor feugiat fermentum quisque eget pharetra, felis et venenatis. aliquam, nulla nisi lobortis elit ac.</p>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="about2">
-						<img class="pic2Ab" src="images/picAbout/aboutP2.png">
-							<h3>John Doe, Company Inc.</h3>
-							<p>Consectetur ornare nibh, a auctor mauris scelerisque eu proin nec urna quis justo, adipiscing auctor, ut auctor feugiat fermentum nec quisque eget pharetra, felis et venenatis aliquam, nulla nisi lobortis elit, ac luctus.</p>
-						</div>
-					</div>
-				</div>
-			</div>
 		
-			<div class="horL"></div>
-		
-			<div class="container">
-				<div class="row about">
-					<div class="col-md-6">
-						<div class="about1">
-						<img class="pic1Ab" src="images/picAbout/aboutP3.png">
-							<h3>Tom Sawyer, Company Inc.</h3>
-							<p>A auctor mauris scelerisque eu proin nec urna quis justo adipiscing auctor ut auctor feugiat fermentum quisque eget pharetra, felis et venenatis aliquam, nulla nisi lobortis elit, acnterdum ante feugiat vitae.</p>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="about2">
-						<img class="pic2Ab" src="images/picAbout/aboutP4.png">
-							<h3>Sarah White, Company Inc.</h3>
-							<p>Ornare nibh a auctor, mauris scelerisque eu proin nec urna nec a quis justo adipiscing auctor ut auctor feugiat fermentum quisque eget pharetra felis et venenatis aliquam, nulla nisi lobortis elit, ac eleifend nisl ante nec lorem. </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		
-		</div>

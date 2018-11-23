@@ -15,12 +15,13 @@
 /* CoreUI templates */
 //Route::get('/login', 'UserController@login');
 Route::get('/', 'controllerHome@home');
+Route::post('/orcamento', 'controllerHome@orcamento');
 
 
 Auth::routes();
 Route::middleware('auth')->group(function() {
 	//Route::view('/', 'dashboard');
-	//Route::view('/', 'panel.blank');
+	Route::view('/panel', 'panel.blank');
 	// Section CoreUI elements
 	Route::view('dashboard','dashboard');
 
