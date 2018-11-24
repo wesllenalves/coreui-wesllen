@@ -26,19 +26,19 @@ class CreateVendasTable extends Migration
                 ->references('idProduto')->on('produtos')
                 ->onDelete('cascade');
 
-            $table->string('qtd', 11);
-            $table->date('dataEntrega', 18,2);
-            $table->decimal('valorUnd', 18,2);
-            $table->decimal('valorTotal', 18,2);
-            $table->decimal('desconto', 18,2);
-            $table->decimal('gasto', 18,2);
-            $table->decimal('taxaEntrega', 18,2);
-            $table->decimal('taxaAdd', 18,2);
-            $table->string('statusVenda', 45);
-            $table->string('entrada', 45);
-            $table->string('descricao', 45);
-            $table->string('medidas', 45);
-            $table->timestamps();
+                $table->string('qtd', 11)->nullable();
+                $table->date('dataEntrega', 18,2)->nullable();
+                $table->decimal('valorUnd', 18,2)->nullable();
+                $table->decimal('valorTotal', 18,2)->nullable();
+                $table->decimal('desconto', 18,2)->nullable();
+                $table->decimal('gasto', 18,2)->nullable();
+                $table->decimal('taxaEntrega', 18,2)->nullable();
+                $table->decimal('taxaAdd', 18,2)->nullable();
+                $table->string('statusVenda', 45)->default('Negociando')->nullable();
+                $table->string('entrada', 45)->nullable();
+                $table->string('descricao', 45)->nullable();
+                $table->string('medidas', 45)->nullable();
+                $table->timestamps();
             
         });
     }

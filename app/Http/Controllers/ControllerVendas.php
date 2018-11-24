@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Venda;
+use App\Produto;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 class ControllerVendas extends Controller
@@ -15,7 +17,7 @@ class ControllerVendas extends Controller
 
     public function index()
     {   
-        $vendas = $this->venda->with('usuario', 'produto')->get();
+        $vendas = $this->venda->with('usuario', 'produto')->where('statusVenda', '<>', 'Negociando')->get(); 
 
         
 
@@ -56,9 +58,9 @@ class ControllerVendas extends Controller
      public function deletar($id)
     {
         $venda = $this->venda->find($id);
-        $update = $venda->delete();        
+        $deletar = $venda->delete();        
         /** faz a verificação para decidir para qual rota direcionar */
-        if($update)
+        if($deletar)
         {
             return redirect('/sample/vendas');
         }else{

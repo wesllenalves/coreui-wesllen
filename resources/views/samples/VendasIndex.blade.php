@@ -7,7 +7,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Combined All Table
+          <i class="fa fa-align-justify"></i> Vendas
         </div>
         <div class="card-body">
           <div id="dtHorizontalExample">
@@ -15,49 +15,37 @@
             <thead>
               <tr>
                 <th>Cliente</th>
-                <th>Produto</th>
-                <th>Data de Entrega</th>
-                <th>Unidades</th>
+                <th>Produto</th>                
                 <th>Valor Total</th>
-                <th>Desconto</th>
-                <th>Gasto</th>
-                <th>taxa de Entrega</th>
-                <th>Taxa Adicional</th>
-                <th>Status de Venda</th>
-                <th>Entrada</th>
-                <th>Descricao</th>
-                <th>Medidas</th>
+                <th>Status</th>                
+                <th>Data da Entrega</th>
+                
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($vendas as $venda)
-                  
+              
+            @foreach ($vendas as $venda)  
               
               <tr>
+                
+                
                 <td>{{$venda->usuario->name}}</td>
-                <td>{{$venda->produto->nome}}</td>                
-                <td>{{$venda->dataEntrega}}</td>
-                <td>{{$venda->qtd}}</td>
+                <td>{{$venda->produto->nome}}</td>
                 <td>{{$venda->valorTotal}}</td>
-                <td>{{$venda->desconto}}</td>
-                <td>{{$venda->gasto}}</td>
-                <td>{{$venda->taxaEntrega}}</td>
-                <td>{{$venda->taxaAdd}}</td>
                 <td>{{$venda->statusVenda}}</td>
-                <td>{{$venda->entrada}}</td>
-                <td>{{$venda->descricao}}</td>
-                <td>{{$venda->medidas}}</td>
+                <td>{{$venda->dataEntrega}}</td>
+                
                 <td style="width:25%;">
 
                     
                     <a href="/sample/vendas/visualizar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
-                    <a href="/sample/cliente/deletar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
+                    <a href="/sample/vendas/deletar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
                     
                 </td>                
               </tr>
-              @endforeach
               
+              @endforeach
             </tbody>
           </table>
         </div>

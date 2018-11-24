@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lancamento;
+use App\Venda;
 use Illuminate\Support\Facades\DB;
 
 class ControllerFinanceiro extends Controller
@@ -14,70 +15,14 @@ class ControllerFinanceiro extends Controller
     }
     public function index()
     {
-        $lancamentos = $this->lancamento->all();
-        return view('samples.FinanceiroIndex', ['lancamentos' => $lancamentos]);
+        $vendas = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->get();
+        
+        return view('samples.FinanceiroIndex', ['vendas' => $vendas]);
     }    
     
     
     
-    public function adicionarReceita(Request $request)
-    {
-            
-        $inserir = new Lancamento;
-        $inserir->tipo = $request->tipo;
-        $inserir->descricao = $request->descricao;
-        $inserir->cliente = $request->cliente;
-        $inserir->valor = $request->valor;
-        $inserir->data_vencimento = $request->data_vencimento;
-        $inserir->formaPgto = $request->formaPgto;
-        
-        
-        if($request->status === null){
-            $inserir->status = 'Devendo';
-        }
-        if($request->status === 'Pago'){
-            $inserir->status = 'Pago';
-            $inserir->data_pagamento = $request->data_pagamento;
-        }
-        
-        $inserir->save();
-        
-        if($inserir){
-            return redirect('/sample/relatorio');
-        }else{
-            return redirect('/sample/relatorio')->with(['errors' => 'Falha ao Inserir']);
-        }
-        
-    }
-
-
-    public function adicionarDespesa(Request $request)
-    {
-        $inserir = new Lancamento;
-        $inserir->tipo = $request->tipo;
-        $inserir->descricao = $request->descricao;
-        $inserir->cliente = $request->cliente;
-        $inserir->valor = $request->valor;
-        $inserir->data_vencimento = $request->data_vencimento;
-        $inserir->formaPgto = $request->formaPgto;
-        
-        
-        if($request->status === null){
-            $inserir->status = 'Devendo';
-        }
-        if($request->status === 'Pago'){
-            $inserir->status = 'Pago';
-            $inserir->data_pagamento = $request->data_pagamento;
-        }
-        
-        $inserir->save();
-        
-        if($inserir){
-            return redirect('/sample/relatorio');
-        }else{
-            return redirect('/sample/relatorio')->with(['errors' => 'Falha ao Inserir']);
-        }
-    }
+    
 
     public function editar(Request $request)
     {

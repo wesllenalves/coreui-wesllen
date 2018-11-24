@@ -55,11 +55,11 @@
 			  </div>
 			  <div class="col-sm-6">
 					  <label  for="select">Produto</label>
-                        <select id="select" name="FkProdutos" class="form-control">
-                          <option value="0">Please select</option>
-                          <option value="1">Option #1</option>
-                          <option value="2">Option #2</option>
-                          <option value="3">Option #3</option>
+                        <select id="select" name="FKProdutos" class="form-control">
+												<option value="">Please select</option>
+													@foreach($produtos as $produto)													
+                          <option value="{{$produto->nome}}">{{$produto->nome}}</option>
+													@endforeach
                         </select>
                       </div>
 			  </div>

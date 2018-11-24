@@ -7,7 +7,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Combined All Table
+          <i class="fa fa-align-justify"></i> Orçamentos
         </div>
         <div class="card-body">
           <div id="dtHorizontalExample">

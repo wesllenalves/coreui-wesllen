@@ -31,6 +31,17 @@ class UsersTableSeeder extends Seeder
             'perfil'  => 'Admin',        	
         	'password' => bcrypt('123456'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Wesllen Alves',
+            'cpf'  => '111111111',
+            'email' => 'teste@teste.com',
+            'endereco'  => 'sres',
+            'cidade'  => 'brasilia',
+            'complemento'  => 'Apartamento 01',
+            'perfil'  => 'Admin',        	
+        	'password' => bcrypt('teste'),
+        ]);
         
         DB::table('users')->insert([
             'name' => 'Teste',
@@ -117,6 +128,42 @@ class UsersTableSeeder extends Seeder
                 'formaPgto' => 'Dinheiro',
                 'status' => 'Devendo',                              
                 'data_pagamento' => NULL,
+            ]);
+            DB::table('projetos')->insert([
+                'titulo' => 'Balcao',
+                'imagem' => '/img3.jpg',                
+                'preco' => '200.00',
+                
+            ]);
+            DB::table('projetos')->insert([
+                'titulo' => 'Balcao',
+                'imagem' => '/img2.jpg',                
+                'preco' => '200.00',
+                
+            ]);
+            DB::table('projetos')->insert([
+                'titulo' => 'Balcao',
+                'imagem' => '/img1.jpg',                
+                'preco' => '200.00',
+                
+            ]);
+            DB::table('projetos')->insert([
+                'titulo' => 'Balcao',
+                'imagem' => '/img3.jpg',                
+                'preco' => '200.00',
+                
+            ]);
+            DB::table('projetos')->insert([
+                'titulo' => 'Balcao',
+                'imagem' => '/img2.jpg',                
+                'preco' => '200.00',
+                
+            ]);
+            DB::table('projetos')->insert([
+                'titulo' => 'Balcao',
+                'imagem' => '/img1.jpg',                
+                'preco' => '200.00',
+                
             ]);
     }
 }

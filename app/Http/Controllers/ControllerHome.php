@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Projetos;
+use App\Produto;
 use App\User;
 use App\Venda;
 use Faker\Provider\zh_CN\DateTime;
@@ -16,11 +17,10 @@ class ControllerHome extends Controller
     public function home()
     {
         $projetos = Projetos::all();
-
-        
-        return view('home', ['projetos' => $projetos]);
+        $produtos = Produto::all();
+        return view('home', ['projetos' => $projetos, 'produtos' => $produtos]);
     }
-
+ 
     public function orcamento(Request $request)
     {
         
@@ -35,6 +35,20 @@ class ControllerHome extends Controller
         $usuarios->cidade = $request->cidade;
         $usuarios->complemento = $request->complemento;
         $usuarios->password = $senha;
-        $usuarios->save();
+        $updateUsuario = $usuarios->save();
+        $id =$usuarios->id;
+
+        $venda = new Venda;
+        $venda->FKUsers = $id;
+        $venda->FKProdutos = $request->FKProdutos;
+        $venda->descricao = $request->descricao;
+        $updateVenda = $venda->save();
+
+        if($updateUsuario)
+        {
+            return redirect('/#orcamento');
+        }else{
+            return redirect()->route('/#orcamento')->with(['errors' => 'Falha ao inserir orcamento']);
+        }
     }
 }
