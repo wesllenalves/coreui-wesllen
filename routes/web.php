@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,9 @@
 
 
 /* CoreUI templates */
-//Route::get('/login', 'UserController@login');
+Route::get('/login', 'UserController@login');
 Route::get('/', 'controllerHome@home');
+Route::get('/home', 'controllerHome@home');
 Route::post('/orcamento', 'controllerHome@orcamento');
 
 
@@ -59,7 +61,10 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/orcamento/editar/{id}', 'ControllerOrcamento@editar');
 	Route::post('/sample/orcamento/OrcamentoEditar/{id}', 'ControllerOrcamento@editarSalvar');
 	Route::get('/sample/orcamento/deletar/{id}', 'ControllerOrcamento@deletar');
-
+	/*Configurações */
+	Route::get('/sample/usuarios', 'ControllerConfiguracoes@usuarios');
+	Route::get('/sample/img/principal', 'ControllerConfiguracoes@imgPrincipal');
+	Route::post('/sample/img/upload', 'ControllerConfiguracoes@upload');
 
 
 

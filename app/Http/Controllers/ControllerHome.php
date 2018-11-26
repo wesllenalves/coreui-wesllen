@@ -16,9 +16,14 @@ class ControllerHome extends Controller
     
     public function home()
     {
-        $projetos = Projetos::all();
+        $galerias = Projetos::where('status', '=', 'galeria')->get();
+        $principais = Projetos::where('status', '=', 'principal')->get();
         $produtos = Produto::all();
-        return view('home', ['projetos' => $projetos, 'produtos' => $produtos]);
+        return view('home', [
+            'galerias' => $galerias,
+            'produtos' => $produtos,
+            'principais' => $principais
+        ]);
     }
  
     public function orcamento(Request $request)

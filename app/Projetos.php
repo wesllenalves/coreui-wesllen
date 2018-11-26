@@ -10,6 +10,6 @@ class Projetos extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'titulo', 'imagem', 'preco', 
+        'titulo', 'imagem', 'preco', 'status', 
     ]; 
 }

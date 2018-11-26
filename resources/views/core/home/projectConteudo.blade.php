@@ -14,14 +14,14 @@
 				<div class="container">			
   <div class="col-sm-12">
   <div class="row">
-  @foreach( $projetos as $projeto)
+  @foreach( $galerias as $galeria)
 
         <div class="col-sm-5 col-md-3">
             <div class="thumbnail">
                 <h4>
                     Post Thumbnail List                    
                 </h4>
-                <img class="img-fluid" src="{{ asset('images/projetos')}}{{$projeto->imagem}}" alt="..."  style="height:210px;">
+                <img class="img-fluid" src="{{ asset('images/projetos')}}{{$galeria->imagem}}" alt="..."  style="height:210px;">
                 <span href="#" class="btn btn-primary col-xs-12" >R$:00,00</span>
                 <div class="clearfix"></div>
             </div>
