@@ -34,9 +34,9 @@
 						
 						<div class="camera_wrap camera_white_skin" id="camera_wrap_1">
 						@foreach ( $principais as $principal)
-							<div data-thumb="" data-src="{{url('')}}{{$principal->imagem}}">
+							<div data-thumb="" data-src='{{ asset("storage/principal/{$principal->imagem}")}}'>
 								<div class="img-responsive camera_caption fadeFromBottom"     style="margin-left: 50px;">
-									<img src="{{url('')}}{{$principal->imagem}}" style="margin-top:-100px; width:70%; margin-lef:100px; position:relative;">
+									<img src='{{ asset("storage/principal/{$principal->imagem}")}}' style="margin-top:-100px; width:70%; margin-lef:100px; position:relative;">
 								</div>
 							</div>
 						@endforeach
