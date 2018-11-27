@@ -108,3 +108,10 @@
  margin-left: 10%;
   
 }
+.formulario-imagem{
+  border: 1px solid rgb(163, 161, 161);
+  border-radius: 3px;
+  margin-bottom : 20px;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+}

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use File;
 use App\Projetos;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ControllerConfiguracoes extends Controller
 {
@@ -17,7 +19,8 @@ class ControllerConfiguracoes extends Controller
 
     public function imgPrincipal()
     {
-        return view('samples.ConfiguracoesImgPrincipal');
+        $projetos = Projetos::where('status', '=', 'principal')->get();
+        return view('samples.ConfiguracoesImgPrincipal', ['projetos' => $projetos]);
     }
 
     public function upload(Request $request)
@@ -27,26 +30,69 @@ class ControllerConfiguracoes extends Controller
         if($request->hasFile('image') && $request->file('image')->isValid()){
             
             $imagem = $request->file('image');
-            $name = $request->file('image');
-            $ImageName =  $name->getClientOriginalName();
-            //($name);
+            $ImageName =  $imagem->getClientOriginalName();
+            
             $extenstion = $imagem->getClientOriginalExtension();
             
             if($extenstion != 'jpg' && $extenstion != 'png')
             {
                 return back()->with('erro', 'Erro: Este arquivo não é uma imagem');
             }
-           $caminho = File::move($imagem, public_path().'/storage/principal/'.$ImageName);
-           
-           $projetos->titulo = 'teste';
-           $projetos->preco = '00.00';
-           $projetos->status = 'principal';
-           $projetos->imagem =  '/storage/principal/'.$ImageName;
-           $upload = $projetos->save();
 
-           if($upload){
+           //$caminho = File::move($imagemRed, public_path().'/storage/principal/'.$ImageName);
+           
+           $img = Image::make(
+                            $request->file('image'))
+                            ->resize(464, 660)
+                            ->save(public_path().'/storage/principal/'.$ImageName
+                                );
+           
+          // $caminho = File::move($img, );
+
+           $projetos->titulo = 'teste';
+           $projetos->status = 'principal';
+           $projetos->imagem =  $ImageName;
+           $insert = $projetos->save();
+
+           if($insert){
             return redirect('/sample/img/principal');
            }
+        }
+    }
+
+    public function imgEditar(Request $request, $id)
+    {
+        $projetos = new Projetos;
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $imagem = $request->file('image');$name = $request->file('image');
+            $ImageName =  $imagem->getClientOriginalName();
+            $extenstion = $imagem->getClientOriginalExtension();
+            
+            if($extenstion != 'jpg' && $extenstion != 'png')
+            {
+                return back()->with('erro', 'Erro: Este arquivo não é uma imagem');
+            }
+
+            $img = Projetos::find($id);
+            
+            $status = unlink('storage/principal/'.$img->imagem);
+
+            Image::make(
+                                $request->file('image'))
+                                ->resize(464, 660)
+                                ->save(public_path().'/storage/principal/'.$ImageName
+                                );
+
+            
+            $dados = [
+                'titulo' => 'teste de update',
+                'imagem' => $ImageName                
+            ];
+
+            $update = $img->update($dados);
+
+            return back()->with('success', 'Sucesso: Imagem editada com sucesso');
         }
     }
 }

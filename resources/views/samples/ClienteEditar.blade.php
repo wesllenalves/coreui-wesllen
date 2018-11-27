@@ -12,7 +12,7 @@
               </div>
               <div class="card-body">
               @foreach ($clientes as $cliente)
-              <form  method="POST" action="{{url("/sample/cliente/editar/{$cliente->id}")}}">
+              <form  method="POST" action='{{url("/sample/cliente/editar/{$cliente->id}")}}'>
               
                 {{ csrf_field() }}
                 <input type="hidden"  name="id"  value="{{$cliente->id}}">
