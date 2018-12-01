@@ -22,6 +22,10 @@ DB_DATABASE=coreui
 DB_USERNAME=root
 DB_PASSWORD=
 ```
+- Para trabalhar com imagens e trazer seus caminhos
+```bash
+php artisan storage:link
+```
 
 - To create table in database
 ```bash
@@ -31,10 +35,7 @@ DB_PASSWORD=
 ```bash
 	php artisan migrate:fresh --seed
 ``` 
-- Para trabalhar com imagens e trazer seus caminhos
-```bash
-php artisan storage:link
-``` 
+ 
 
 
 ##### That's all. Enjoy.

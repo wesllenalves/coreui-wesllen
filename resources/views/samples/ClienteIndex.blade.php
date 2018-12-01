@@ -41,9 +41,8 @@
               
             </tbody>
           </table>
-          <nav>
-          <ul class="pagination">
-          {!! $users->links() !!}
+          
+          
           <!--nav>
             <ul class="pagination">
               <li class="page-item"><a class="page-link" href="#">Prev</a></li>
@@ -56,9 +55,9 @@
               <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
           </nav-->
-          </ul>
-          </nav>
+          {!! $users->render("pagination::bootstrap-4") !!}
         </div>
+        
       </div>
     </div>
     <!--/.col-->
