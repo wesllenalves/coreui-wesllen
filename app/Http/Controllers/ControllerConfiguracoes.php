@@ -40,7 +40,7 @@ class ControllerConfiguracoes extends Controller
             }
 
            //$caminho = File::move($imagemRed, public_path().'/storage/principal/'.$ImageName);
-           $save_path= public_path().'/imagens/principal/';
+           $save_path= public_path().'/storage/principal/';
            
             
 
