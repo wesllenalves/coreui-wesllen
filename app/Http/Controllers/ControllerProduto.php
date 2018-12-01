@@ -9,13 +9,14 @@ use App\Produto;
 class ControllerProduto extends Controller
 {   
     private $produto;
+    private $totalPage = 5;
 
     public function __construct(Produto $produto)
     {
         $this->produto = $produto;
     }
     public function index(){
-        $produtos = $this->produto->all();
+        $produtos = $this->produto->paginate($this->totalPage);
         return view('samples.ProdutoIndex', ['produtos' => $produtos]);
     }
 
