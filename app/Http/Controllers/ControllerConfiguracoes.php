@@ -40,14 +40,24 @@ class ControllerConfiguracoes extends Controller
             }
 
            //$caminho = File::move($imagemRed, public_path().'/storage/principal/'.$ImageName);
+           $save_path= public_path().'/imagens/principal/';
            
+            
+
+           if (!file_exists($save_path)) {
+            mkdir($save_path, 666, true);
+        }
+
+
+
            $img = Image::make(
                             $request->file('image'))
                             ->resize(464, 660)
-                            ->save(public_path().'/storage/principal/'.$ImageName
+                            ->save($save_path.$ImageName
                                 );
-           
-          // $caminho = File::move($img, );
+           // dd($img);
+          
+                                // $caminho = File::move($img, );
 
            $projetos->titulo = 'teste';
            $projetos->status = 'principal';

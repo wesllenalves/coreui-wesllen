@@ -31,7 +31,10 @@ DB_PASSWORD=
 ```bash
 	php artisan migrate:fresh --seed
 ``` 
-
+- Para trabalhar com imagens e trazer seus caminhos
+```bash
+php artisan storage:link
+``` 
 
 
 ##### That's all. Enjoy.

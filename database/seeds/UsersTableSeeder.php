@@ -133,36 +133,42 @@ class UsersTableSeeder extends Seeder
                 'titulo' => 'Balcao',
                 'imagem' => '/img3.jpg',                
                 'preco' => '200.00',
+                'status' => 'galeria',
                 
             ]);
             DB::table('projetos')->insert([
                 'titulo' => 'Balcao',
                 'imagem' => '/img2.jpg',                
                 'preco' => '200.00',
+                'status' => 'galeria',
                 
             ]);
             DB::table('projetos')->insert([
                 'titulo' => 'Balcao',
                 'imagem' => '/img1.jpg',                
                 'preco' => '200.00',
+                'status' => 'galeria',
                 
             ]);
             DB::table('projetos')->insert([
                 'titulo' => 'Balcao',
                 'imagem' => '/img3.jpg',                
                 'preco' => '200.00',
+                'status' => 'galeria',
                 
             ]);
             DB::table('projetos')->insert([
                 'titulo' => 'Balcao',
                 'imagem' => '/img2.jpg',                
                 'preco' => '200.00',
+                'status' => 'galeria',
                 
             ]);
             DB::table('projetos')->insert([
                 'titulo' => 'Balcao',
                 'imagem' => '/img1.jpg',                
                 'preco' => '200.00',
+                'status' => 'galeria',
                 
             ]);
     }
