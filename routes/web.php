@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/img/principal', 'ControllerConfiguracoes@imgPrincipal');
 	Route::post('/sample/img/upload', 'ControllerConfiguracoes@upload');
 	Route::post('/sample/img/editar/{id}', 'ControllerConfiguracoes@imgEditar');
+	Route::get('/sample/img/editar/{id}', 'ControllerConfiguracoes@imgDeletar');
 
 
 

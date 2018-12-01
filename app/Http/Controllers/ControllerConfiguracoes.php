@@ -102,7 +102,28 @@ class ControllerConfiguracoes extends Controller
 
             $update = $img->update($dados);
 
-            return back()->with('success', 'Sucesso: Imagem editada com sucesso');
+            return back()
+                    ->with('success', 'Sucesso: Imagem editada com sucesso');
         }
+    }
+
+    public function imgDeletar($id)
+    {
+        // Recupera o nome da imagen pelo seu id
+        if ( !$imgens = Projetos::find($id) )
+        return redirect()->back();
+
+        // Deleta o registro do usuário
+    if ( $imgens->delete() ) {
+        // Deleta a imagem (Não esqueça: use Illuminate\Support\Facades\Storage;)
+        $path_deletar = "principal/{$imgens->imagem}";        
+        $deleta =  Storage::delete($path_deletar); // true ou falses
+        // Redireciona, informando que deu tudo certo!
+        return redirect('/sample/img/principal')
+                    ->with('success', 'Sucesso ao deletar!');
+    }
+        // Em caso de falhas redireciona o usuário de vola e informa que não foi possível deletar
+        return back()
+                    ->with('error', 'Falha ao deletar!');
     }
 }

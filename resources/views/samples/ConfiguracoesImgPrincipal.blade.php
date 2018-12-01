@@ -45,7 +45,7 @@
     margin-right: auto;"></td>
                 <td style="width:25%;">                    
                     <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#ModalEditarImg">Editar</button>
-                    <a href="/sample/cliente/deletar/"><button type="button" class="btn-sm btn-danger">Remover</button></a>                    
+                    <a href="/sample/img/editar/{{$projeto->id}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>                    
 
                     <!-- Modal -->
                     <div class="modal fade" id="ModalEditarImg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
