@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\DB;
 class ControllerFinanceiro extends Controller
 {   
     private $lancamento;
+    private $totalPage = 5;
     public function __construct(Lancamento $lancamento){
         $this->lancamento = $lancamento;
     }
     public function index()
     {
-        $vendas = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->get();
+        $vendas = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->paginate($this->totalPage);
         
         return view('samples.FinanceiroIndex', ['vendas' => $vendas]);
     }    

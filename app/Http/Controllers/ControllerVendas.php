@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\DB;
 class ControllerVendas extends Controller
 {   
     private $venda;
+    private $totalPage = 5;
     public function __construct(Venda $venda){
         $this->venda = $venda;
     }
 
     public function index()
     {   
-        $vendas = $this->venda->with('usuario', 'produto')->where('statusVenda', '<>', 'Negociando')->get(); 
+        $vendas = $this->venda->with('usuario', 'produto')->where('statusVenda', '<>', 'Negociando')->paginate($this->totalPage); 
 
         
 
