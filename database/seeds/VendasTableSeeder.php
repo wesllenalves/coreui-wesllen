@@ -22,7 +22,7 @@ class VendasTableSeeder extends Seeder
             'gasto' => '00.00',
             'taxaEntrega' => '20.00',
             'taxaAdd' => '00.00',
-            'statusVenda' => 'Fazendo',
+            'statusVenda' => 'Em andamento',
             'entrada' => '00.00',
             'descricao' => 'cliente exigente',
             'medidas' => '0000x0000',

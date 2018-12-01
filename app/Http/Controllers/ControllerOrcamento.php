@@ -17,7 +17,10 @@ class ControllerOrcamento extends Controller
 
     public function index()
     {
-        $vendas = $this->venda->with('usuario', 'produto')->where('statusVenda', '=', 'Negociando')->get(); 
+        $vendas = Venda::with('usuario', 'produto')->where(function ($query) {
+            $query->where('statusVenda', '=', 'Orcamento')
+            ->orWhere('statusVenda', '=', 'Negociando');
+        })->get();//toSql();//get(); 
           
         return view('samples.OrcamentoIndex', ['vendas' => $vendas]);
     }
@@ -39,12 +42,13 @@ class ControllerOrcamento extends Controller
     public function editarSalvar(Request $request, $id)
     {
         $dataForm = $request->except('_token');
-        $venda = $this->venda->find($id);        
         
+        $venda = Venda::find($id);        
+        
+        $venda->update($dataForm);
+
         if($venda){
-            DB::table('vendas')->update($dataForm);
-           
-        
+            
             return redirect('/sample/orcamento');
         }else{
             return redirect()->route('/sample/orcamento/editar/'.$id)->with(['errors' => 'Falha ao Editar']);

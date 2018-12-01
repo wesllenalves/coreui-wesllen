@@ -18,28 +18,34 @@ class ControllerVendas extends Controller
 
     public function index()
     {   
-        $vendas = $this->venda->with('usuario', 'produto')->where('statusVenda', '<>', 'Negociando')->paginate($this->totalPage); 
-
-        
-
-        /*$users = $vendas;
-        foreach ($users as $use){
-           print_r($use->usuario->name); die();
-        }*/
+        $vendas = Venda::with('usuario', 'produto')
+        ->where(function ($query) {
+            $query->where('statusVenda', '<>', 'Orcamento')
+            ->Where('statusVenda', '<>', 'Negociando');
+        })->paginate($this->totalPage); 
     
         return view('samples.VendasIndex', ['vendas' => $vendas]);
     }
     
     public function editarIndex($id)
-    {
+    {   
+        
+
         $usuarios = DB::table('users')->get();
         
         $produtos = DB::table('produtos')->select('idProduto', 'nome')->get();
         
         
-        $vendas = $this->venda->with('usuario', 'produto')->where('idVenda', $id)->get();
+        $vendas = $this->venda
+        ->with('usuario', 'produto')
+        ->where('idVenda', $id)
+        ->get();
         
-        return view('samples.VendasEditar', ['vendas' => $vendas], ['usuarios' => $usuarios], compact('produtos'));
+        return view('samples.VendasEditar', [
+            'vendas' => $vendas,
+            'usuarios' => $usuarios,
+            'produtos' => $produtos
+            ]);
     }
     
     public function editar(Request $request, $id)

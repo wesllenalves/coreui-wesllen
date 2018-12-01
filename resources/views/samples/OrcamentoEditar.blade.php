@@ -81,9 +81,16 @@
                   <label for="taxaAdd">Taxas Adicionais</label>
                   <input type="text" class="form-control" name="taxaAdd" id="taxaAdd" value="{{$venda->taxaAdd}}" >
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                   <label for="statusVenda">Status da Venda</label>
-                  <input type="text" class="form-control" name="statusVenda" id="statusVenda" value="{{$venda->statusVenda}}" >
+                  <select class="form-control" name="statusVenda">
+                      <option value="">Selecione Status</option>
+                      <option value="Orcamento">Orçamento</option>
+                      <option value="Negociando">Em Andamento</option>
+                      <option value="Efetivada">Efetivada</option>
+                      <option value="Cancelado">Cancelado</option>
+                      <option value="Cancelado Estornado">Cancelado é Estornado</option>
+                  </select>
                 </div>
                 <div class="col-sm-2">
                   <label for="entrada">Dinheiro de Entrada</label>
@@ -106,7 +113,7 @@
 
                 <div class="row btn-visualizar">
                 <button type="submit" class="btn btn-primary">Salvar</button>
-                  <a href="/sample/cliente"><button type="button" class="btn btn-warning">Voltar</button></a>
+                  <a href="/sample/orcamento"><button type="button" class="btn btn-warning">Voltar</button></a>
                 </div>
                 </form>
                 <!--/.row-->
