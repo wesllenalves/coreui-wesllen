@@ -23,7 +23,7 @@ class ControllerCliente extends Controller
     public function index() 
     {   
         /** traz todos os dados existente na model*/
-        $users = $this->user->paginate($this->totalPage);
+        $users = $this->user->where('perfil', 'Cliente')->paginate($this->totalPage);
         /** retorna a view com todos os dados encontrado */
         return view('samples.ClienteIndex', ['users' => $users]);
     }
