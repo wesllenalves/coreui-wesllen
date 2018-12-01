@@ -11,6 +11,7 @@ use App\Http\Requests\ClienteFormRequest;
 class ControllerCliente extends Controller
 {
     private $user;
+    private $totalPage = 5;
 
     /* ================================== Metodo de Construtor ================================================== */
     public function __construct(User $user)
@@ -22,7 +23,7 @@ class ControllerCliente extends Controller
     public function index() 
     {   
         /** traz todos os dados existente na model*/
-        $users = $this->user->all();
+        $users = $this->user->paginate($this->totalPage);
         /** retorna a view com todos os dados encontrado */
         return view('samples.ClienteIndex', ['users' => $users]);
     }
