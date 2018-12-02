@@ -11,15 +11,22 @@
           
         </div>
         <div class="card-body">
-        <form action="{{url('/sample/filtro/financeiro')}}" method="POST" class="form form-inline"> 
+        <div class="col-md-12 form-filtro">
+        <form action="{{url('/sample/filtro/financeiro')}}" method="POST" > 
         <div class="form-group">
-        {!! csrf_field() !!}           
-            <input type="text" class="form-control col-sm-1" name="id" placeholder="ID">&nbsp;&nbsp;
-            <input type="date" class="form-control col-sm-4" name="dataInicial" placeholder="Data Inicial">&nbsp;&nbsp;
-            <input type="date" class="form-control col-sm-4" name="dataFinal" placeholder="Data Inicial">&nbsp;&nbsp;
+        {!! csrf_field() !!} 
+            <label for="id" class="text-label">ID</label>        
+            <input type="text" class="form-control-sm col-sm-1" name="id">
+            <label for="id" class="text-label">Data Inicial</label>
+            <input type="date" class="form-control-sm col-sm-3" name="dataInicial">
+            <label for="id" class="text-label">Data Final</label>
+            <input type="date" class="form-control-sm col-sm-3" name="dataFinal" >
+            <label for="id" class="text-label">Valor Total</label>
+            <input type="text" class="form-control-sm col-sm-1" name="valorTotal" >
             <button type="submit" class="btn btn-primary">Pesquisar</button>
         </div>
         </form><br>
+        </div>
           <div id="dtHorizontalExample">
           <table  class="table table-responsive table-bordered table-striped table-sm">
             <thead>
@@ -38,11 +45,11 @@
               </tr>
             </thead>
             <tbody>
-              
+              <?php $array=[];?>
             @foreach ($vendas as $venda)  
               
               <tr>
-                
+              <?php $array=[$venda];?>
                 <td>{{$venda->idVenda}}</td>
                 <td>{{$venda->usuario->name}}</td>
                 <td>{{$venda->produto->nome}}</td>               
@@ -63,7 +70,12 @@
         </div>
           
           <nav>
-              {!! $vendas->render("pagination::bootstrap-4") !!}
+          @if(isset($dataForm))
+              {!! $vendas->appends($dataForm)->links("pagination::bootstrap-4") !!}
+          @else
+              {!! $vendas->links("pagination::bootstrap-4") !!}
+          @endif
+          <a href="/sample/filtro/relatorio"><button  class="btn btn-primary">Relatorio PDF</button></>
           </nav>
         </div>
       </div>

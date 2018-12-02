@@ -36,6 +36,8 @@ class Venda extends Model
         $pesquisa = $this->where(function ($query) use ($data) {
             if(isset($data['id'])) 
                 $query->where('idVenda', $data['id']);
+            if(isset($data['valorTotal'])) 
+            $query->where('valorTotal', $data['valorTotal']);
             if(isset($data['dataInicial']) AND isset($data['dataFinal'])) {
                 $query->whereBetween('dataEntrega', [
                     $data['dataInicial'],
@@ -45,8 +47,7 @@ class Venda extends Model
             }
             
         })
-        //->toSql();
-        //dd($pesquisa);
+        // ->toSql();dd($pesquisa);
         ->where('statusVenda', '=', 'Fechado')
         ->paginate($totalPage);
         return $pesquisa;

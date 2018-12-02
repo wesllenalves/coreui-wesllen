@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Lancamento;
 use App\Venda;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class ControllerFinanceiro extends Controller
 {   
@@ -16,10 +17,18 @@ class ControllerFinanceiro extends Controller
     }
     public function index()
     {
-        $vendas = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->paginate($this->totalPage);
-        
+        $vendas = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->paginate($this->totalPage);              
+
         return view('samples.FinanceiroIndex', ['vendas' => $vendas]);
-    }    
+    }
+    
+    public function relatorio()
+    {    
+        $vendas = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->get();
+
+        $pdf = PDF::loadView('samples.FinanceiroIndex', ['vendas' => $vendas]);
+        return $pdf->download('invoice.pdf');
+    }
      
     
     public function editar(Request $request)
@@ -56,16 +65,6 @@ class ControllerFinanceiro extends Controller
         }
     }
 
-    public function deletar($id)
-    {
-        $lancamentos = $this->lancamento->find($id);
-        
-        $deletar = $lancamentos->delete();
-
-        if($deletar){
-            return redirect('/sample/relatorio');
-        }else{
-            return redirect('/sample/relatorio')->with(['errors' => 'Falha ao Inserir']);
-        }  
-    }
+     
+    
 }

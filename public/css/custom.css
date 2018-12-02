@@ -115,3 +115,12 @@
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.05);
 }
+.form-filtro{
+  padding-top: 10px;
+  padding-left: 0;
+  height: 60px;
+}
+.text-label{
+  position: absolute;
+  margin-top: -20px;
+}
