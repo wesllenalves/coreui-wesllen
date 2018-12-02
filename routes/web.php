@@ -61,6 +61,8 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/orcamento/editar/{id}', 'ControllerOrcamento@editar');
 	Route::post('/sample/orcamento/OrcamentoEditar/{id}', 'ControllerOrcamento@editarSalvar');
 	Route::get('/sample/orcamento/deletar/{id}', 'ControllerOrcamento@deletar');
+	/*filtro de pesquisa */
+	Route::post('/sample/filtro/financeiro', 'ControllerFiltroPesquisa@pesquisarFinanceiro');
 	/*Configurações */
 	Route::get('/sample/usuarios', 'ControllerConfiguracoes@usuarios');
 	Route::get('/sample/img/principal', 'ControllerConfiguracoes@imgPrincipal');

@@ -8,8 +8,18 @@
       <div class="card">
         <div class="card-header">
           <i class="fa fa-align-justify"></i> Financeiro
+          
         </div>
         <div class="card-body">
+        <form action="{{url('/sample/filtro/financeiro')}}" method="POST" class="form form-inline"> 
+        <div class="form-group">
+        {!! csrf_field() !!}           
+            <input type="text" class="form-control col-sm-1" name="id" placeholder="ID">&nbsp;&nbsp;
+            <input type="date" class="form-control col-sm-4" name="dataInicial" placeholder="Data Inicial">&nbsp;&nbsp;
+            <input type="date" class="form-control col-sm-4" name="dataFinal" placeholder="Data Inicial">&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </div>
+        </form><br>
           <div id="dtHorizontalExample">
           <table  class="table table-responsive table-bordered table-striped table-sm">
             <thead>
@@ -43,11 +53,7 @@
                 <td>{{$venda->valorTotal}}</td>
                 
                 <td style="width:25%;">
-
-                    
                     <a href="#/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
-                    <a href="#/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-danger">Remover</button></a>
-                    
                 </td>                
               </tr>
               

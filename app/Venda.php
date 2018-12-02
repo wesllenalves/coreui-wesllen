@@ -30,4 +30,25 @@ class Venda extends Model
     {
         return $this->belongsTo('App\Produto', 'FkProdutos');
     }
+
+    public function searsh(array $data, $totalPage)
+    {
+        $pesquisa = $this->where(function ($query) use ($data) {
+            if(isset($data['id'])) 
+                $query->where('idVenda', $data['id']);
+            if(isset($data['dataInicial']) AND isset($data['dataFinal'])) {
+                $query->whereBetween('dataEntrega', [
+                    $data['dataInicial'],
+                    $data['dataFinal'],
+                ]);
+                
+            }
+            
+        })
+        //->toSql();
+        //dd($pesquisa);
+        ->where('statusVenda', '=', 'Fechado')
+        ->paginate($totalPage);
+        return $pesquisa;
+    }
 }

@@ -20,11 +20,8 @@ class ControllerFinanceiro extends Controller
         
         return view('samples.FinanceiroIndex', ['vendas' => $vendas]);
     }    
+     
     
-    
-    
-    
-
     public function editar(Request $request)
     {
         if($request->data_pagamento === null){
