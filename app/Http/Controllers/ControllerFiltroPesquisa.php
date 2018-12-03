@@ -12,8 +12,7 @@ class ControllerFiltroPesquisa extends Controller
     public function pesquisarFinanceiro(Request $request, Venda $venda)
     {
         $dataForm = $request->except('_token');
-        $vendas = $venda->searsh($dataForm, $this->totalPage);
-        
+        $vendas = $venda->searsh($dataForm)->where('statusVenda', '=', 'Fechado')->paginate($this->totalPage);        
         return view('samples.FinanceiroIndex', ['vendas' => $vendas, 'dataForm' => $dataForm]);
     }
 

@@ -63,7 +63,9 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/orcamento/deletar/{id}', 'ControllerOrcamento@deletar');
 	/*filtro de pesquisa */
 	Route::any('/sample/filtro/financeiro', 'ControllerFiltroPesquisa@pesquisarFinanceiro');
-	Route::any('/sample/filtro/relatorio', 'ControllerFinanceiro@relatorio');
+	
+	/*Relatorio PDF */
+	Route::any('/sample/filtro/relatorio', 'ControllerRelatorio@relatorioPDF');
 	/*Configurações */
 	Route::get('/sample/usuarios', 'ControllerConfiguracoes@usuarios');
 	Route::get('/sample/img/principal', 'ControllerConfiguracoes@imgPrincipal');

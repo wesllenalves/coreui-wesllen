@@ -75,7 +75,52 @@
           @else
               {!! $vendas->links("pagination::bootstrap-4") !!}
           @endif
-          <a href="/sample/filtro/relatorio"><button  class="btn btn-primary">Relatorio PDF</button></>
+          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm"><button class="btn btn-primary">
+          Relatorio PDF</button></a>
+
+
+
+          <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Selecione o intervalo de datas</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <div class="modal-body mx-2">
+                  <form action="{{url('/sample/filtro/relatorio')}}" method="POST" >
+                    <div class="md-form mb-2">
+                    
+                    {!! csrf_field() !!}
+                      <i class="fa fa-user prefix grey-text"></i>
+                      <label data-error="wrong" data-success="right" for="form34">Data Inicial</label>
+                      <input type="date" class="form-control validate" name="dataInicial">                    
+                    </div>
+
+                    <div class="md-form mb-5">
+                      <i class="fa fa-envelope prefix grey-text"></i>
+                      <label data-error="wrong" data-success="right" for="form29">Data Final</label>
+                      <input type="date" class="form-control validate" name="dataFinal">                    
+                    </div>
+                    
+                  </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button type="submit" class="btn btn-unique">Gerar Relatorio <i class="fa fa-paper-plane-o ml-1"></i></button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+<div class="text-center">
+  
+</div>
+
+
+
           </nav>
         </div>
       </div>

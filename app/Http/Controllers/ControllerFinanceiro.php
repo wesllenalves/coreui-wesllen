@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Lancamento;
 use App\Venda;
 use Illuminate\Support\Facades\DB;
-use PDF;
+
 
 class ControllerFinanceiro extends Controller
 {   
@@ -22,13 +22,7 @@ class ControllerFinanceiro extends Controller
         return view('samples.FinanceiroIndex', ['vendas' => $vendas]);
     }
     
-    public function relatorio()
-    {    
-        $vendas = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->get();
-
-        $pdf = PDF::loadView('samples.FinanceiroIndex', ['vendas' => $vendas]);
-        return $pdf->download('invoice.pdf');
-    }
+    
      
     
     public function editar(Request $request)
