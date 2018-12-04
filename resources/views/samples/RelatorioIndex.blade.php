@@ -1,24 +1,11 @@
-@extends('dashboard')
-@section('content')
-<div class="container-fluid">
-<div class="animated fadeIn">
-
-<div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-align-justify"></i> Financeiro
-          
-        </div>
-        <div class="card-body">        
-          <div id="dtHorizontalExample">
-          <table  class="table table-responsive table-bordered table-striped table-sm">
+<?php
+          $aquivo = '<table  class="table table-responsive table-bordered table-striped table-sm">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Cliente</th>
                 <th>Produto</th>                
-                
+               
                                 
                 <th>Data da Entrega</th>
                 <th>Status</th>
@@ -43,6 +30,11 @@
 
 </div>
 
-</div>
+</div>';?>
 
-@endsection
+ <?php 
+                use Mpdf\Mpdf;
+                 $mpdf = new Mpdf();
+
+                 $mpdf->Output($aquivo, 'I');
+                ?>

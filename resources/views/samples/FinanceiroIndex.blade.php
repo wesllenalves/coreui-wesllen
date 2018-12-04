@@ -45,9 +45,15 @@
               </tr>
             </thead>
             <tbody>
-              <?php $array=[];?>
+              <?php 
+              $receita = 0;
+              $despesa = 0;
+              ?>
             @foreach ($vendas as $venda)  
-              
+              <?php
+              $receita = $receita + $venda->valorTotal;
+              $despesa = $despesa + $venda->produto->gastoMedio;
+              ?>
               <tr>
               <?php $array=[$venda];?>
                 <td>{{$venda->idVenda}}</td>
@@ -56,15 +62,24 @@
                 
                 <td>{{$venda->dataEntrega}}</td>
                 <td>{{$venda->statusVenda}}</td>
-                <td>{{$venda->gasto}}</td>
+                <td>{{$venda->produto->gastoMedio}}</td>
                 <td>{{$venda->valorTotal}}</td>
                 
                 <td style="width:25%;">
                     <a href="#/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-primary">Editar</button></a>
                 </td>                
               </tr>
-              
               @endforeach
+              <?php
+              $receita = number_format($receita, 2, ',', '.');
+              $despesa = number_format($despesa, 2, ',', '.');
+              ?>
+              <tr>
+                  <th  class="tg-baqh" colspan="5">Total </th>
+                  <th  class="tg-baqh" >R$:{{$despesa}}</th>
+                  <th  class="tg-baqh" >R$:{{$receita}}</th>
+                  <th  class="tg-baqh" ></th>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -75,8 +90,8 @@
           @else
               {!! $vendas->links("pagination::bootstrap-4") !!}
           @endif
-          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm"><button class="btn btn-primary">
-          Relatorio PDF</button></a>
+          <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">
+          <button class="btn btn-primary">Relatorio PDF</button></a>
 
 
 
