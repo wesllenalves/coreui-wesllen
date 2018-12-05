@@ -72,16 +72,17 @@
                   <input type="number" class="form-control input-teste" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" >
                 </div>
                 <div class="col-sm-2">
-                  <label for="valorTotal">Valor Total</label>
-                  <input type="number" class="form-control" name="valorTotal" id="show-total" value="" disabled>
+                  <label for="taxaAdd">Taxas Adicionais</label>
+                  <input type="text" class="form-control input-teste" name="taxaAdd" id="taxaAdd" value="{{$venda->taxaAdd}}" >
                 </div>
                 </div>
 
                 <div class="form-group row">
                 <div class="col-sm-2">
-                  <label for="taxaAdd">Taxas Adicionais</label>
-                  <input type="text" class="form-control" name="taxaAdd" id="taxaAdd" value="{{$venda->taxaAdd}}" >
+                  <label for="valorTotal">Valor Total</label>
+                  <input type="number" class="form-control" name="valorTotal" id="show-total" value="" disabled>
                 </div>
+                
                 <div class="col-sm-3">
                   <label for="statusVenda">Status da Venda</label>
                   <select class="form-control" name="statusVenda">

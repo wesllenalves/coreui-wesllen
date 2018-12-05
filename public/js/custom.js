@@ -64,6 +64,7 @@ $('[name="status"]').change(function () {
             var qtd = parseFloat($("#qtd").val(), 5);
             var desconto = parseFloat($("#desconto").val(), 5);
             var gasto = parseFloat($("#gasto").val(), 5);
+            var taxaAdd = parseFloat($("#taxaAdd").val(), 5);
             var taxaEntrega = parseFloat($("#taxaEntrega").val(), 5);
             var valorMedio = parseFloat($("#valorMedio").val(), 5);
             var total = qtd * valorMedio;
@@ -77,6 +78,9 @@ $('[name="status"]').change(function () {
             }
             if(taxaEntrega){
                 total = total + taxaEntrega;
+            }
+            if(taxaAdd){
+                total = total + taxaAdd;
             }
             
             $("#show-total").val(total);
