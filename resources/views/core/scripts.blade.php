@@ -8,3 +8,4 @@
 <!-- CoreUI main scripts -->
 <script src="{{ asset('js/app.js')}}"></script>
 <script src="{{ asset('js/custom.js')}}"></script>
+<script src="{{ asset('js/jquery.mask.min.js')}}"></script>

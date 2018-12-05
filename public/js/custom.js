@@ -85,7 +85,15 @@ $('[name="status"]').change(function () {
             
             $("#show-total").val(total);
           });
-    
+
+/** Mascara dos inputs */
+ $(document).ready(function(){
+            $('#desconto').mask('00.00');
+            $('#gasto').mask('00.00');
+            $('#taxaAdd').mask('00.00');
+            $('#taxaEntrega').mask('00.00');
+            $('#entrada').mask('00.00');            
+});
 
 
      

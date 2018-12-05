@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/slicknav.css')}}">
 		<link rel="stylesheet" href="{{ asset('css/prettyPhoto.css')}}" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/style-home.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/customhome.css')}}">
 		
 		
 		<script type="text/javascript" src="{{ asset('js/jquery-1.8.3.min.js')}}"></script>
@@ -68,7 +69,8 @@
     
     <!--contact start-->
     
-    <div id="orcamento">
+    <div id="orcamento" style="position: relative;
+    z-index: 0;">
 	@include('core.home.orcamentoConteudo')
 	@include('core.home.footer')
     </div>		

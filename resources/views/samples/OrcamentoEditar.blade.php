@@ -15,7 +15,7 @@
                 <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
                 {{ csrf_field() }}
                 <div class="form-group row">
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <label for="name">Nome do Cliente</label>
                         <select class="form-control" name="FkUsers">
                           <option value="">Selecione Cliente</option>
@@ -28,7 +28,7 @@
                           @endforeach
                           </select>
                     </div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         <label for="nome">Produto</label>
                         <select class="form-control" name="FkProdutos">
                         <option value="">Selecione Produto</option>
@@ -42,50 +42,49 @@
                         @endforeach
                         </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-1">
                         <label for="qtd">Quantidade</label>
-                        <input type="number" class="form-control input-teste" name="qtd" id="qtd" value="{{$venda->qtd}}" >
+                        <input type="number" class="form-control input-teste" name="qtd" id="qtd" value="{{$venda->qtd}}" required>
+                    </div>
+                    <div class="col-3">
+                      <label for="dataEntrega">Data de Entrega</label>
+                      <input type="text" class="form-control" name="dataEntrega" id="dataEntrega" value="{{$venda->dataEntrega}}" required>
                     </div>
                 </div>
                 
 
                 <div class="form-group row">
                 <div class="col-sm-2">
-                  <label for="dataEntrega">Data de Entrega</label>
-                  <input type="text" class="form-control" name="dataEntrega" id="dataEntrega" value="{{$venda->dataEntrega}}" >
-                </div>
-                <div class="col-sm-2">
-                  <label for="valorMedio">Valor unitario</label>
-                  <input type="number" class="form-control" name="valorMedio" id="valorMedio" value="{{$venda->produto->valorMedio}}" disabled>
-                </div>
-                
-                <div class="col-sm-2">
                   <label for="desconto">Desconto</label>
-                  <input type="text" class="form-control input-teste" name="desconto" id="desconto" value="{{$venda->desconto}}" >
+                  <input type="text" class="form-control input-teste" name="desconto" id="desconto" value="{{$venda->desconto}}" required>
                 </div>
                 <div class="col-sm-2">
                   <label for="gasto">Gastos</label>
-                  <input type="text" class="form-control input-teste" name="gasto" id="gasto" value="{{$venda->gasto}}" >
+                  <input type="text" class="form-control input-teste" name="gasto" id="gasto" value="{{$venda->gasto}}" required>
                 </div>
                 <div class="col-sm-2">
                   <label for="taxaEntrega">Taxa de Entrega</label>
-                  <input type="text" class="form-control input-teste" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" >
+                  <input type="text" class="form-control input-teste" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" required>
                 </div>
                 <div class="col-sm-2">
                   <label for="taxaAdd">Taxas Adicionais</label>
-                  <input type="text" class="form-control input-teste" name="taxaAdd" id="taxaAdd" value="{{$venda->taxaAdd}}" >
+                  <input type="text" class="form-control input-teste" name="taxaAdd" id="taxaAdd" value="{{$venda->taxaAdd}}" required>
                 </div>
                 </div>
 
                 <div class="form-group row">
                 <div class="col-sm-2">
+                  <label for="valorMedio">Valor unitario</label>
+                  <input type="number" class="form-control" name="valorUnd" id="valorMedio" value="{{$venda->produto->valorMedio}}" readonly>
+                </div>
+                <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="number" class="form-control" name="valorTotal" id="show-total" value="" disabled>
+                  <input type="number" class="form-control" name="valorTotal" id="show-total" value="" readonly>
                 </div>
                 
                 <div class="col-sm-3">
                   <label for="statusVenda">Status da Venda</label>
-                  <select class="form-control" name="statusVenda">
+                  <select class="form-control" name="statusVenda" required>
                       <option value="">Selecione Status</option>
                       <option value="Orcamento">Orçamento</option>
                       <option value="Negociando">Em Andamento</option>
@@ -96,11 +95,11 @@
                 </div>
                 <div class="col-sm-2">
                   <label for="entrada">Dinheiro de Entrada</label>
-                  <input type="text" class="form-control" name="entrada" id="entrada" value="{{$venda->entrada}}" >
+                  <input type="text" class="form-control" name="entrada" id="entrada" value="{{$venda->entrada}}" required>
                 </div>
                 <div class="col-sm-3">
                   <label for="medidas">Medidas</label>
-                  <input type="text" class="form-control" name="medidas" id="medidas" value="{{$venda->medidas}}" >
+                  <input type="text" class="form-control" name="medidas" id="medidas" value="{{$venda->medidas}}" required>
                 </div>
                 </div>
                 
