@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-sm-2">
                         <label for="qtd">Quantidade</label>
-                        <input type="text" class="form-control" name="qtd" id="qtd" value="{{$venda->qtd}}" >
+                        <input type="number" class="form-control input-teste" name="qtd" id="qtd" value="{{$venda->qtd}}" >
                     </div>
                 </div>
                 
@@ -56,23 +56,24 @@
                 </div>
                 <div class="col-sm-2">
                   <label for="valorMedio">Valor unitario</label>
-                  <input type="text" class="form-control" name="valorMedio" id="valorMedio" value="{{$venda->produto->valorMedio}}" disabled>
+                  <input type="number" class="form-control" name="valorMedio" id="valorMedio" value="{{$venda->produto->valorMedio}}" disabled>
                 </div>
-                <div class="col-sm-2">
-                  <label for="valorTotal">Valor Total</label>
-                  <input type="text" class="form-control" name="valorTotal" id="valorTotal" value="{{$venda->valorTotal}}" >
-                </div>
+                
                 <div class="col-sm-2">
                   <label for="desconto">Desconto</label>
-                  <input type="text" class="form-control" name="desconto" id="desconto" value="{{$venda->desconto}}" >
+                  <input type="number" class="form-control input-teste" name="desconto" id="desconto" value="{{$venda->desconto}}" >
                 </div>
                 <div class="col-sm-2">
                   <label for="gasto">Gastos</label>
-                  <input type="text" class="form-control" name="gasto" id="gasto" value="{{$venda->gasto}}" >
+                  <input type="number" class="form-control input-teste" name="gasto" id="gasto" value="{{$venda->gasto}}" >
                 </div>
                 <div class="col-sm-2">
                   <label for="taxaEntrega">Taxa de Entrega</label>
-                  <input type="text" class="form-control" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" >
+                  <input type="number" class="form-control input-teste" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" >
+                </div>
+                <div class="col-sm-2">
+                  <label for="valorTotal">Valor Total</label>
+                  <input type="number" class="form-control" name="valorTotal" id="show-total" value="" disabled>
                 </div>
                 </div>
 

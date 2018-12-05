@@ -57,3 +57,33 @@ $('[name="status"]').change(function () {
         modal.find('#recipient-status').val(recipientstatus)
       })
 
+       //Pega os valores do inputs que serao usados nas  contas
+       //soma faz as contas e retorna o valor total para o input #show-total
+
+        $(".input-teste").change(function(){
+            var qtd = parseFloat($("#qtd").val(), 5);
+            var desconto = parseFloat($("#desconto").val(), 5);
+            var gasto = parseFloat($("#gasto").val(), 5);
+            var taxaEntrega = parseFloat($("#taxaEntrega").val(), 5);
+            var valorMedio = parseFloat($("#valorMedio").val(), 5);
+            var total = qtd * valorMedio;
+            //alert(valorMedio);
+
+            if(desconto){
+                total = total - desconto;
+            }
+            if(gasto){
+                total = total - gasto;
+            }
+            if(taxaEntrega){
+                total = total + taxaEntrega;
+            }
+            
+            $("#show-total").val(total);
+          });
+    
+
+
+     
+
+

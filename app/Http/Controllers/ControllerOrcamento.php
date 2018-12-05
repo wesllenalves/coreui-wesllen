@@ -53,17 +53,5 @@ class ControllerOrcamento extends Controller
         }else{
             return redirect()->route('/sample/orcamento/editar/'.$id)->with(['errors' => 'Falha ao Editar']);
         }
-    }
-    public function deletar($id)
-    {
-        $venda = $this->venda->find($id);
-        $deletar = $venda->delete();
-
-        if($deletar)
-        {
-            return redirect('/sample/orcamento');
-        }else{
-            return redirect('/sample/orcamento');
-        }
-    }
+    }    
 }
