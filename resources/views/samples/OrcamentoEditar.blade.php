@@ -61,15 +61,15 @@
                 
                 <div class="col-sm-2">
                   <label for="desconto">Desconto</label>
-                  <input type="number" class="form-control input-teste" name="desconto" id="desconto" value="{{$venda->desconto}}" >
+                  <input type="text" class="form-control input-teste" name="desconto" id="desconto" value="{{$venda->desconto}}" >
                 </div>
                 <div class="col-sm-2">
                   <label for="gasto">Gastos</label>
-                  <input type="number" class="form-control input-teste" name="gasto" id="gasto" value="{{$venda->gasto}}" >
+                  <input type="text" class="form-control input-teste" name="gasto" id="gasto" value="{{$venda->gasto}}" >
                 </div>
                 <div class="col-sm-2">
                   <label for="taxaEntrega">Taxa de Entrega</label>
-                  <input type="number" class="form-control input-teste" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" >
+                  <input type="text" class="form-control input-teste" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" >
                 </div>
                 <div class="col-sm-2">
                   <label for="taxaAdd">Taxas Adicionais</label>
