@@ -32,7 +32,7 @@
     </div>  
     <div class="lbox" id="cama">
         <div class="box_img">
-            <a href="" class="but" id="prev">&#171;</a>
+            <a href="#img3" class="but" id="prev">&#171;</a>
             <a href="#project" class="but" id="close">X</a>
             <img  class="img" src="{{ asset('images/projetos/img1.jpg')}}">
             <a href="#img2" class="but" id="next">&#187</a>
@@ -43,7 +43,15 @@
             <a href="#cama" class="but" id="prev">&#171;</a>
             <a href="#project" class="but" id="close">X</a>
             <img class="img" src="{{ asset('images/projetos/img2.jpg')}}">
-            <a href="" class="but" id="next">&#187</a>
+            <a href="#img3" class="but" id="next">&#187</a>
+        </div>
+    </div>
+    <div class="lbox" id="img3">
+        <div class="box_img">
+            <a href="#img2" class="but" id="prev">&#171;</a>
+            <a href="#project" class="but" id="close">X</a>
+            <img class="img" src="{{ asset('images/projetos/img3.jpg')}}">
+            <a href="#cama" class="but" id="next">&#187</a>
         </div>
     </div>
 </div>

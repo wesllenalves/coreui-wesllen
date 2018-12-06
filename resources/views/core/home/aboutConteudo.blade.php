@@ -4,7 +4,7 @@
 					<div class="col-md-4 Des">
 						<i class="fa fa-heart"></i>
 						<h4>Design</h4>
-						<p>Procuramos trabalhar com diversas formas para melhor agradar nossos clientes, moveis 100% rústicos</p>
+						<p> tetetettetetteteteteetetet teteteteteteteteteteteete tetetetteteeteeeteeteteteteteteetetteteteet</p>
 					</div>
 					<div class="col-md-4 Ver">
 						<i class="fa fa-cog"></i>
