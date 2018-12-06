@@ -14,20 +14,9 @@
 				<div class="container">			
   <div class="col-sm-12">
   <div class="row">
-  @foreach( $galerias as $galeria)
+  
 
-        <div class="col-sm-5 col-md-3">
-            <div class="thumbnail">
-                <h4>
-                    Post Thumbnail List                    
-                </h4>
-                <img class="img-fluid" src="{{ asset('images/projetos')}}{{$galeria->imagem}}" alt="..."  style="height:210px;">
-                <span href="#" class="btn btn-primary col-xs-12" >R$:00,00</span>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-
-   @endforeach 
+     
 
 
    <div class="col-sm-5 col-md-3">
@@ -40,7 +29,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-    </div>
+    </div>  
     <div class="lbox" id="cama">
         <div class="box_img">
             <a href="" class="but" id="prev">&#171;</a>
@@ -49,7 +38,6 @@
             <a href="#img2" class="but" id="next">&#187</a>
         </div>
     </div>
-
     <div class="lbox" id="img2">
         <div class="box_img">
             <a href="#cama" class="but" id="prev">&#171;</a>

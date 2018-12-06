@@ -20,6 +20,7 @@
 							<li><a href="#about">Sobre Nos</a></li>
 							<li><a href="#project">Projetos</a></li>							
 							<li><a href="#orcamento">Orçamento</a></li>
+							<li><a href="/login">Login</a></li>
 							
 							<!--li><a href="#features">Features</a></li-->
 						</ul>
@@ -59,21 +60,14 @@
 
 	<div class="container">
 			<div class="row">
-				<div class="col-md-4 project">
-					<h3 id="counter">0</h3>
-					<h4>Awesome Projects</h4>
-					<p>Dolor sit amet, consectetur adipiscing elit quisque tempus eget diam et lorem a laoreet phasellus ut nisi id leo molestie. </p>
-				</div>
-				<div class="col-md-4 project">
-					<h3 id="counter1">0</h3>
-					<h4>Happy Customers</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque tempus eget diam et. laoreet phasellus ut nisi id leo.  </p>
-				</div>
-				<div class="col-md-4 project">
-					<h3 id="counter2" style="margin-left: 20px;">0</h3>
-					<h4 style="margin-left: 20px;">Professional Awards</h4>
-					<p>Consectetur adipiscing elit quisque tempus eget diam et laoreet phasellus ut nisi id leo molestie adipiscing vitae a vel. </p>
-				</div>
+				<br>
+				<br>
+				<br>
+				<p>Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.
+
+“Conjunto de palavras e frases articuladas, escritas sobre qualquer suporte”[1].
+
+“Obra escrita considerada na sua redação original e autêntica (por oposição a sumário, tradução, notas, comentários, etc.)”[2].</p>
 			</div>
 		</div>
 

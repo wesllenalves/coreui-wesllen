@@ -86,11 +86,29 @@ class VendasTableSeeder extends Seeder
             'gasto' => '00.00',
             'taxaEntrega' => '20.00',
             'taxaAdd' => '00.00',
-            'statusVenda' => 'Cncelado',
+            'statusVenda' => 'Cancelado',
             'entrada' => '00.00',
             'descricao' => 'cliente exigente',
             'medidas' => '0000x0000',
         ]);
+
+        DB::table('vendas')->insert([
+            'FkUsers' => 1,
+            'FkProdutos'  => 1,
+            'qtd' => '2',
+            'dataEntrega'  => '2018-11-22',
+            'valorUnd'  => '50.00',
+            'valorTotal'  => '120.00',
+            'desconto'  => '00.00',        	
+            'gasto' => '00.00',
+            'taxaEntrega' => '20.00',
+            'taxaAdd' => '00.00',
+            'statusVenda' => 'Cancelado e estornado',
+            'entrada' => '00.00',
+            'descricao' => 'cliente exigente',
+            'medidas' => '0000x0000',
+        ]);
+
         DB::table('vendas')->insert([
             'FkUsers' => 1,
             'FkProdutos'  => 1,

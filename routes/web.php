@@ -15,9 +15,9 @@
 
 /* CoreUI templates */
 Route::get('/login', 'UserController@login');
-Route::get('/', 'controllerHome@home');
-Route::get('/home', 'controllerHome@home');
-Route::post('/orcamento', 'controllerHome@orcamento');
+Route::get('/', 'ControllerHome@home');
+Route::get('/home', 'ControllerHome@home');
+Route::post('/orcamento', 'ControllerHome@orcamento');
 
 
 Auth::routes();
