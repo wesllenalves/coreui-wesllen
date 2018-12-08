@@ -8,9 +8,9 @@
 			<div class="row">
 				<div class="logo col-md-4">
 					<div>
-						<a href="#">
-							<img src="images/logo.png">
-						</a>
+						<h2 style="font-family: 'Roboto', sans-serif;
+						font-family: 'Lato', sans-serif;
+						font-family: 'Audiowide', cursive;">Paletes Brasília</h2>
 					</div>
 				</div>
 				<div class="col-md-8">

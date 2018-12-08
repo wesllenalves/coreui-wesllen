@@ -28,43 +28,31 @@
 			<div class="row team">
 				<div class="col-md-4 b1">
 						<img class="img-responsive" src="images/picTeam/picT1.png">
-						<h4>Tom Simpson</h4>
-						<h5>CEO</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit <br/>quisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. adipiscing vitae vel quam proin eget mauris eget.</p>
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" ></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-						</ul>
+						<h4>Adriana Martins Braga</h4>
+						<h5>Administradora</h5>
+						<p>Responsável pelo departamento comercial e administrativo da empresa. 
+						Atua na comunicação com os clientes, fornecedores e colaboradores. 
+						Recebe os pedidos de venda, realiza orçamentos e contratos. </p>
 				</div>
 			
 			
 				<div class="col-md-4">
 						<img class="img-responsive" src="images/picTeam/picT2.png">
-						<h4>John Doe</h4>
-						<h5>Project Manager</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit<br/> quisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. adipiscing vitae vel quam proin eget mauris eget.</p>
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" ></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-						</ul>
+						<h4>Wellington Rodrigo da Conceição</h4>
+						<h5>CEO</h5>
+						<p>Parte criativa da empresa, projeta e executa os pedidos mediante os contratos.
+						Também é responsável por descobrir novidades para incorporar na fabricação dos móveis
+						e nos objetos de decoração.</p>						
 				</div>
 		
 			
 				<div class="col-md-4 b3">
 						<img class="img-responsive" src="images/picTeam/picT3.png">
-						<h4>Anna White</h4>
-						<h5>Developer</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit<br/> quisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. adipiscing vitae vel quam proin eget mauris eget.</p>
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter" ></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
-						</ul>
+						<h4>Camila Martins dos Santos</h4>
+						<h5>Marketing</h5>
+						<p>Atua na divulgação da empresa nas redes sociais, facebook, 
+						instagram e youtube. Responsável pela participação do quadro Mandando 
+						Bem do Caldeirão do Huck em 28 abril de 2018.</p>
 				</div>
 			</div>
 		</div>
