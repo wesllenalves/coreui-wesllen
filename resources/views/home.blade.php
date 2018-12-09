@@ -18,6 +18,7 @@
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700|Open+Sans:700' rel='stylesheet' type='text/css'>
 		<link href="https://fonts.googleapis.com/css?family=Audiowide|Lato|Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
 		<script type="text/javascript" src="{{ asset('js/jquery.mobile.customized.min.js')}}"></script>
 		<script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js')}}"></script> 
 		<script type="text/javascript" src="{{ asset('js/camera.min.js')}}"></script>

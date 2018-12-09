@@ -63,19 +63,15 @@
 				<br>
 				<br>
 				<br>
-				<p>Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.
-
-“Conjunto de palavras e frases articuladas, escritas sobre qualquer suporte”[1].
-
-“Obra escrita considerada na sua redação original e autêntica (por oposição a sumário, tradução, notas, comentários, etc.)”[2].</p>
+				<p style="font-family: 'Noto Serif SC', serif; text-align: justify;">&nbsp;&nbsp;&nbsp;A Paletes Brasília é uma empresa familiar que fabrica móveis personalizados feitos de
+					paletes e outras madeiras reutilizáveis. Nosso objetivo é conscientizar outras pessoas
+					sobre o potencial econômico que se pode obter com uso sustentável dos recursos naturais
+					através do reuso e da reciclagem de materiais, no nosso caso madeiras. Para isso
+					utilizamos as redes sociais como plataforma de divulgação dos nossos trabalhos e 
+					também de outras boas ideias com o mesmo princípio, a sustentabilidade. 
+					O sistema pode nos ajudar facilitando a administração da empresa, contribuindo para a 
+					agilidade no setor de vendas e proporcionando uma visão mais clara dos clientes sobre 
+					os móveis disponíveis
+				</p>
 			</div>
-		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 cBusiness">
-					<h3>The Best Way to Create Business Site &ndash; Attractive One Page</h3>
-					<h4>Discover elegant solution for your online business fast, reliable, affordable.</h4>
-				</div>
-			</div>
-		</div>
+		</div>		

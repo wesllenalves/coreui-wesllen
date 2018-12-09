@@ -4,7 +4,11 @@
 					<div class="col-md-4 Des">
 						<i class="fa fa-heart"></i>
 						<h4>Design</h4>
-						<p> tetetettetetteteteteetetet teteteteteteteteteteteete tetetetteteeteeeteeteteteteteteetetteteteet</p>
+						<p>
+							Nossos móveis são lixados, selados, envernizados ou pintados. Possuem grande resistência é durabilidade e são fabricados
+						 sob medida. Cada peça é feita de forma exclusiva e é uma verdadeira obra de arte. Alia bom gosto e qualidade 
+						 à sustentabilidade.
+						</p>
 					</div>
 					<div class="col-md-4 Ver">
 						<i class="fa fa-cog"></i>

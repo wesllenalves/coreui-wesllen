@@ -84,18 +84,19 @@
 				</div>
 				<div class="col-md-4 col-xs-10 cont" >
 					<ul>
-						<li><i class="fa fa-home"></i>5512 Lorem Ipsum Vestibulum 666/13</li>
-						<li><i class="fa fa-phone"></i>+1 800 789 50 12, +1 800 450 6935</li>
-						<li><a href="#"><i class="fa fa-envelope"></i>mail@compname.com</li></a>
-						<li><i class="fa fa-skype"></i>compname</li>
-						<li><a href="#"><i class="fa fa-twitter"></i>Twitter</li></a>
-						<li><a href="#"><i class="fa fa-facebook-square"></i>Facebook</li></a>
-						<li><a href="#"><i class="fa fa-dribbble"></i>Dribbble</li></a>
-						<li><a href="#"><i class="fa fa-flickr"></i>Flickr</li></a>
-						<li><a href="#"><i class="fa fa-youtube-play"></i>YouTube</li></a>
+						<li><i class="fa fa-home"></i>Samambaia Sul, Quadra 508 - Distrito Federal</li>
+						<li><i class="fa fa-phone"></i>(61) 98148-6492</li>
+						<li><a href="#"><i class="fa fa-envelope"></i>bbwell.gto@hotmail.com</li></a>
+						<li><a href="https://www.instagram.com/paletesbrasilia_oficial/"><i class="fa fa-instagram"></i>Instagran</li></a>
+						<li><a href="https://www.facebook.com/paletesbrasilia/"><i class="fa fa-facebook-square"></i>Facebook</li></a>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		
 		
