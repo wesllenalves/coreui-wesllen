@@ -27,7 +27,7 @@
 		<div class="container">
 			<div class="row team">
 				<div class="col-md-4 b1">
-						<img class="img-responsive" src="images/picTeam/picT1.png">
+						<img class="img-responsive" src="images/picTeam/adriana.png">
 						<h4>Adriana Martins Braga</h4>
 						<h5>Administradora</h5>
 						<p>Responsável pelo departamento comercial e administrativo da empresa. 
@@ -37,7 +37,7 @@
 			
 			
 				<div class="col-md-4">
-						<img class="img-responsive" src="images/picTeam/picT2.png">
+						<img class="img-responsive" src="images/picTeam/wellington.png">
 						<h4>Wellington Rodrigo da Conceição</h4>
 						<h5>CEO</h5>
 						<p>Parte criativa da empresa, projeta e executa os pedidos mediante os contratos.
@@ -47,7 +47,7 @@
 		
 			
 				<div class="col-md-4 b3">
-						<img class="img-responsive" src="images/picTeam/picT3.png">
+						<img class="img-responsive" src="images/picTeam/camila.png">
 						<h4>Camila Martins dos Santos</h4>
 						<h5>Marketing</h5>
 						<p>Atua na divulgação da empresa nas redes sociais, facebook, 

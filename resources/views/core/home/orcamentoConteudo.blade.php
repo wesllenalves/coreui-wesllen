@@ -1,3 +1,4 @@
+
 <div class="line5">					
 			<div class="container">
 				<div class="row Ama">
@@ -10,39 +11,41 @@
 		</div>
 		<div class="container">
 			<div class="row">
+					@include('core.home.alerts') 
 				<div class="col-md-8 col-xs-11 forma">
 				<div class="card">
                 
                 <div class="card-body">
 				<form  method="POST" action="{{url("/orcamento")}}">
-              
-			  {{ csrf_field() }}
+					    
+				{{ csrf_field() }}
+				<span id="text-requerid">Todos os campos com * são obrigatorios</span>
 			  <div class="form-group row">
 				  <div class="col-sm-6">
-					  <label for="nome">Nome</label>
+					  <label for="nome">Nome</label><span id="text-requerid">*</span>
 				  <input type="text" class="form-control" name="name" id="nome" value="">
 				  </div>
 				  <div class="col-sm-3">
-					  <label for="cpf">CPF</label>
+					  <label for="cpf">CPF</label><span id="text-requerid">*</span>
 					  <input type="text" class="form-control" name="cpf" id="cpf" value="">
 				  </div>
 				  <div class="col-sm-3">
-					  <label for="telefone">Telefone</label>
+					  <label for="telefone">Telefone</label><span id="text-requerid">*</span>
 					  <input type="text" class="form-control" name="telefone" id="telefone" value="">
 				  </div>
 			  </div>
 
 			  <div class="form-group row">
 			  <div class="col-sm-4">
-				<label for="email">E-mail</label>
+				<label for="email">E-mail</label><span id="text-requerid">*</span>
 				<input type="text" class="form-control" name="email" id="email" value="">
 			  </div>
 			  <div class="col-sm-5">
-				<label for="endereco">Endereco</label>
+				<label for="endereco">Endereco</label><span id="text-requerid">*</span>
 				<input type="text" class="form-control" name="endereco" id="endereco" value="">
 			  </div>
 			  <div class="col-sm-3">
-				<label for="cidade">Cidade</label>
+				<label for="cidade">Cidade</label><span id="text-requerid">*</span>
 				<input type="text" class="form-control" name="cidade" id="cidade" value="">
 			  </div>
 			  </div>
@@ -56,23 +59,22 @@
 			  <div class="col-sm-6">
 					  <label  for="select">Produto</label>
                         <select id="select" name="FKProdutos" class="form-control">
-												<option value="">Please select</option>
+												<option value="">Selecione o Produto</option>
 													@foreach($produtos as $produto)													
-                          <option value="{{$produto->nome}}">{{$produto->nome}}</option>
+                          <option value="{{$produto->idProduto}}">{{$produto->nome}}</option>
 													@endforeach
                         </select>
                       </div>
 			  </div>
 				<div class="form-group row">				
                       <div class="col-sm-12">
-					  <label  for="textarea-input">Descricao do Orçamento</label>
+					  <label  for="textarea-input">Descricao do Orçamento</label><span id="text-requerid">*</span>
                         <textarea id="textarea-input" name="descricao" rows="9" class="form-control" placeholder="Detalhe o maximo possivel..."></textarea>
                       </div> 
             	</div>
 			  <div class="form-group row">
 			  <div class="col-sm-6">
-				<button type="submit" class="btn btn-primary">Adicionar</button>
-				<a href="/sample/cliente"><button type="button" class="btn btn-warning">Cancelar</button></a>
+				<button type="submit" class="btn btn-primary">Solicitar</button>
 			  </div>
 			  </div>
 			  <!--/.row-->			  

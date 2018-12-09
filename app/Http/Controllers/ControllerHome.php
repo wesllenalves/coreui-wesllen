@@ -28,7 +28,8 @@ class ControllerHome extends Controller
     }
  
     public function orcamento(Request $request)
-    {
+    {   
+       // dd($request->all());
         
         $data =   date('Y-m-d H:i');
         $senha = md5($data);
@@ -52,7 +53,7 @@ class ControllerHome extends Controller
 
         if($updateUsuario)
         {
-            return redirect('/#orcamento');
+            return redirect('/#orcamento')->with(['success' => 'Parabéns Seu pedido foi feito. Logo entraremos em contato']);
         }else{
             return redirect()->route('/#orcamento')->with(['errors' => 'Falha ao inserir orcamento']);
         }
