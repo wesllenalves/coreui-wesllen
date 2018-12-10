@@ -2,7 +2,7 @@
 <div class="line4">		
 			<div class="container">
 				<div class="row Ama">
-					<div class="col-md-12">
+					<div class="col-md-12" >
 					<h3>Projetos Feitos</h3>
 					<p>Uma pequena amostra de projetos já realizados</p>
 					</div>
@@ -12,17 +12,47 @@
 				</div>
 				<br><br>
 				<div class="container">			
-  <div class="col-sm-12">
-  <div class="row">
-  
-
-     
-
-
-   <div class="col-sm-5 col-md-3">
+                <div class="col-sm-12" style="heigth:0px;padding:0;height: 800px;">
+                <div class="row">
             <div class="thumbnail">
                 <h4>
-                    Camas                    
+                    Area Externa                    
+                </h4>
+                <a href="#cama"><img class="img-fluid" src="{{ asset('images/projetos/areaExterna/img1.jpeg')}}" alt="..."  style="height:210px;"></a>
+                <span href="#cama" class="btn btn-primary col-xs-12 disabled" >Clique na imagem para ver Mais</span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="thumbnail">
+                <h4>
+                    Banheiro                  
+                </h4>
+                <a href="#cama"><img class="img-fluid" src="{{ asset('images/projetos/img1.jpg')}}" alt="..."  style="height:210px;"></a>
+                <span href="#cama" class="btn btn-primary col-xs-12 disabled" >Clique na imagem para ver Mais</span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="thumbnail">
+                <h4>
+                    Cozinha                 
+                </h4>
+                <a href="#cama"><img class="img-fluid" src="{{ asset('images/projetos/img1.jpg')}}" alt="..."  style="height:210px;"></a>
+                <span href="#cama" class="btn btn-primary col-xs-12 disabled" >Clique na imagem para ver Mais</span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="thumbnail">
+                <h4>
+                    Decoração                  
+                </h4>
+                <a href="#cama"><img class="img-fluid" src="{{ asset('images/projetos/img1.jpg')}}" alt="..."  style="height:210px;"></a>
+                <span href="#cama" class="btn btn-primary col-xs-12 disabled" >Clique na imagem para ver Mais</span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="thumbnail">
+                <h4>
+                    Para Lojas                 
                 </h4>
                 <a href="#cama"><img class="img-fluid" src="{{ asset('images/projetos/img1.jpg')}}" alt="..."  style="height:210px;"></a>
                 <span href="#cama" class="btn btn-primary col-xs-12 disabled" >Clique na imagem para ver Mais</span>
@@ -30,13 +60,20 @@
             </div>
             <div class="thumbnail">
                 <h4>
-                    Camas  2                  
+                    Quarto               
                 </h4>
                 <a href="#cama"><img class="img-fluid" src="{{ asset('images/projetos/img1.jpg')}}" alt="..."  style="height:210px;"></a>
                 <span href="#cama" class="btn btn-primary col-xs-12 disabled" >Clique na imagem para ver Mais</span>
                 <div class="clearfix"></div>
             </div>
-        </div>
+            <div class="thumbnail">
+                <h4>
+                    Sala                
+                </h4>
+                <a href="#cama"><img class="img-fluid" src="{{ asset('images/projetos/img1.jpg')}}" alt="..."  style="height:210px;"></a>
+                <span href="#cama" class="btn btn-primary col-xs-12 disabled" >Clique na imagem para ver Mais</span>
+                <div class="clearfix"></div>
+            </div>
     </div>  
     
     <div class="lbox" id="cama">

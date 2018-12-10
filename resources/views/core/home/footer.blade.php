@@ -5,7 +5,7 @@
 			<div class="container">
 				<div class="row downLine">					
 					<div class="col-md-6 text-left copy">
-						<p>Copyright &copy; 2018 Fabrica de Software. Projeção Guara 2.</p>
+						<p>Copyright &copy; 2018 Fabrica de Software. Faculdade Projeção Guara 2.</p>
 					</div>
 					<div class="col-md-6 text-right dm">
 						<ul id="downMenu">
