@@ -14,8 +14,11 @@
 					@include('core.home.alerts') 
 				<div class="col-md-8 col-xs-11 forma">
 				<div class="card">
-                
-                <div class="card-body">
+          <br>      
+          <br>      
+          <br>      
+          <br>      
+					<div class="card-body">
 				<form  method="POST" action="{{url("/orcamento")}}">
 					    
 				{{ csrf_field() }}
@@ -83,6 +86,12 @@
               </div>
 				</div>
 				<div class="col-md-4 col-xs-10 cont" >
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 					<ul>
 						<li><i class="fa fa-home"></i>Samambaia Sul, Quadra 508 - Distrito Federal</li>
 						<li><i class="fa fa-phone"></i>(61) 98148-6492</li>

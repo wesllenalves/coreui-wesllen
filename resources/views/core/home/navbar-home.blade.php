@@ -59,7 +59,7 @@
 
 
 	<div class="container">
-			<div class="row">
+			<div class="row sobre-empresa">
 				<br>
 				<br>
 				<br>
