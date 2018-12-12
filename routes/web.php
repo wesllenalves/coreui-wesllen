@@ -23,7 +23,7 @@ Route::post('/orcamento', 'ControllerHome@orcamento');
 Auth::routes();
 Route::middleware('auth')->group(function() {
 	//Route::view('/', 'dashboard');
-	Route::view('/panel', 'panel.blank');
+	Route::view('/painel', 'panel.blank');
 	// Section CoreUI elements
 	Route::view('dashboard','dashboard');
 
