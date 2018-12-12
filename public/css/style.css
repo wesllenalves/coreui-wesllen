@@ -7846,7 +7846,7 @@ base-chart.chart {
     padding: 0.5rem 1rem;
     margin-right: 0;
     background-color: #fff;
-    background-image: url("../img/logo.png");
+    /*background-image: url("../img/logo.png");*/
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 70px auto;
@@ -7867,7 +7867,7 @@ base-chart.chart {
   .app-header.navbar .nav-item {
     position: relative;
     min-width: 50px;
-    margin: 0 !important;
+    
     text-align: center; }
     .app-header.navbar .nav-item button {
       margin: 0 auto; }

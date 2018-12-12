@@ -6,7 +6,7 @@
       </li>
 
       <li class="nav-title">
-        UI Elements
+        Elementos
       </li>
       <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-people"></i>Cliente</a>

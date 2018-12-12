@@ -12,13 +12,11 @@
 		<link rel="stylesheet" href="{{ asset('css/prettyPhoto.css')}}" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/style-home.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/customhome.css')}}">
-		
-		
-		<script type="text/javascript" src="{{ asset('js/jquery-1.8.3.min.js')}}"></script>
-
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700|Open+Sans:700' rel='stylesheet' type='text/css'>
 		<link href="https://fonts.googleapis.com/css?family=Audiowide|Lato|Roboto" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+
+		<script type="text/javascript" src="{{ asset('js/jquery-1.8.3.min.js')}}"></script>
 		<script type="text/javascript" src="{{ asset('js/jquery.mobile.customized.min.js')}}"></script>
 		<script type="text/javascript" src="{{ asset('js/jquery.easing.1.3.js')}}"></script> 
 		<script type="text/javascript" src="{{ asset('js/camera.min.js')}}"></script>
@@ -50,25 +48,16 @@
     @include('core.home.navbar-home')  
     </div>
     
-    <!--about start-->    
-    
+    <!--about start-->       
     <div id="about">
 	@include('core.home.aboutConteudo')
-		
-		
+			
     </div>
     <!--project start-->    
     <div id="project">  
 	@include('core.home.projectConteudo')
-	</div>    
-    
-    <!--news start-->
-    
-    <!--<div id="news">
-	include('core.home.newConteudo')
-    </div>-->
-    
-    
+	</div>  
+
     <!--contact start-->
     
     <div id="orcamento" style="position: relative;

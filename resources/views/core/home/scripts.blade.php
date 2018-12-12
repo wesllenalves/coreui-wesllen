@@ -1,4 +1,5 @@
-<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.slicknav.js"></script>
 	<script>
