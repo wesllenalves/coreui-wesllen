@@ -65,9 +65,13 @@
     </div>
     <!--/.col-->
       </div>
+
+      <canvas id="bar-chart-grouped" width="400" height="190"></canvas>
+
   </div>
   </div>
 </div>
+<script src="{{ asset('js/views/charts.js') }}"></script>
 <script src="{{ asset('js/views/widgets.js') }}"></script>
 
 @endsection
