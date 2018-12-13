@@ -149,6 +149,8 @@ border: none;
 	display:none;
 }
 @media screen and (max-width: 991px) {
+	
+
 	.news p{
 		text-align: center;
 	}
@@ -184,6 +186,7 @@ border: none;
 	}
 }
 @media screen and (max-width: 1229px){
+	
 	.pic1Ab{
 		margin-bottom:50px ;
 	}
@@ -234,6 +237,7 @@ border: none;
 	
 }
 @media screen and (max-width: 1229px) {
+	
 	.cont {
 		/*text-align:center;*/
 		margin-left: 0px !important;
@@ -730,6 +734,7 @@ border: none;
 }
 
 @media screen and (min-device-width:1919px) {   
+	
 	.Ama {
 		margin-top: 246px;
 		margin-bottom: 164px;
@@ -1832,6 +1837,34 @@ textarea {
 /**/
 /*responsive*/
 @media screen and (max-width: 1190px){
+	.controle-galeria{
+		width: 800px;
+		height: 600px;
+        position: relative;        
+		background-color: blue;
+		left: 14%;
+	}
+
+	.imagem{
+		position: absolute;
+		width: 800px;
+		height: 600px;
+		padding: 10% ;
+		left:50%;
+		top:50%;
+		margin-left:-400px;
+		margin-top:-300px;
+	}
+	
+	.img{
+		max-width:500px;
+		max-height:450px;
+		width: auto;
+		height: auto;
+		
+	}
+
+
 	.horL {
 		display:none;
 	}

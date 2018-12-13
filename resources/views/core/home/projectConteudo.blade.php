@@ -126,12 +126,16 @@
             for($i=1; $i<$q; $i++){
             ?>
             <div class="lbox" id="banheiro{{$i}}">
+                <div class="controle-galeria">
                 <div class="box_img">
                     <a href="#banheiro<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=8 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
-                    <img  class="img" src="{{ asset("images/projetos/banheiro/img({$i}).jpeg")}}">
+                    <div class="imagem">
+                    <center><img  class="img" src="{{ asset("images/projetos/banheiro/img({$i}).jpeg")}}"></center>
+                    </div>
                     <a href="#banheiro<?php if($i === 7) echo $q - $i;
                     elseif($i!=8) echo $i+1; ?>" class="but" id="next">&#187</a>
+                </div>
                 </div>
             </div>
             <?php
