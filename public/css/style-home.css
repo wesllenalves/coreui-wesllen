@@ -1840,8 +1840,7 @@ textarea {
 	.controle-galeria{
 		width: 800px;
 		height: 600px;
-        position: relative;        
-		background-color: blue;
+        position: relative;
 		left: 14%;
 	}
 

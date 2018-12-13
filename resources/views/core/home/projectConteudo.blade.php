@@ -76,29 +76,7 @@
             </div>
     </div>  
     
-    <!--div class="lbox" id="cama">
-        <div class="box_img">
-            <a href="#img3" class="but" id="prev">&#171;</a>
-            <a href="#project" class="but" id="close">X</a>
-            <img  class="img" src="{{ asset('images/projetos/img1.jpg')}}">
-            <a href="#img2" class="but" id="next">&#187</a>
-        </div>
-    </div>
-    <div class="lbox" id="img2">
-        <div class="box_img">
-            <a href="#cama" class="but" id="prev">&#171;</a>
-            <a href="#project" class="but" id="close">X</a>
-            <img class="img" src="{{ asset('images/projetos/img2.jpg')}}">
-            <a href="#img3" class="but" id="next">&#187</a>
-        </div>
-    </div>
-    <div class="lbox" id="img3">
-        <div class="box_img">
-            <a href="#img2" class="but" id="prev">&#171;</a>
-            <a href="#project" class="but" id="close">X</a>
-            <img class="img" src="{{ asset('images/projetos/img3.jpg')}}">
-            <a href="#cama" class="but" id="next">&#187</a>
-        </div-->
+    
 
     <!-- Galeria Area Externa -->
             <?php 
@@ -107,12 +85,16 @@
             for($i=1; $i<$q; $i++){
             ?>
             <div class="lbox" id="areaexterna{{$i}}">
+                <div class="controle-galeria">
                 <div class="box_img">
                     <a href="#areaexterna<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=10 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
+                    <div class="imagem">
                     <img  class="img" src="{{ asset("images/projetos/areaExterna/img({$i}).jpeg")}}">
+                    </div>
                     <a href="#areaexterna<?php if($i === 9) echo $q - $i;
                     elseif($i!=10) echo $i+1; ?>" class="but" id="next">&#187</a>
+                </div>
                 </div>
             </div>
             <?php
@@ -149,12 +131,16 @@
             for($i=1; $i<$q; $i++){
             ?>
             <div class="lbox" id="cozinha{{$i}}">
+                <div class="controle-galeria">
                 <div class="box_img">
                     <a href="#cozinha<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=12 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
+                    <div class="imagem">
                     <img  class="img" src="{{ asset("images/projetos/Cozinha/img({$i}).jpg")}}">
+                    </div>
                     <a href="#cozinha<?php if($i === 11) echo $q - $i;
                     elseif($i!=12) echo $i+1; ?>" class="but" id="next">&#187</a>
+                </div>
                 </div>
             </div>
             <?php
@@ -168,12 +154,16 @@
             for($i=1; $i<$q; $i++){
             ?>
             <div class="lbox" id="decoracao{{$i}}">
+                <div class="controle-galeria">
                 <div class="box_img">
                     <a href="#decoracao<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=26 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
+                    <div class="imagem">
                     <img  class="img" src="{{ asset("images/projetos/Decoracao/img({$i}).jpg")}}">
+                    </div>
                     <a href="#decoracao<?php if($i === 25) echo $q - $i;
                     elseif($i!=26) echo $i+1; ?>" class="but" id="next">&#187</a>
+                </div>
                 </div>
             </div>
             <?php
@@ -187,12 +177,16 @@
             for($i=1; $i<$q; $i++){
             ?>
             <div class="lbox" id="paralojas{{$i}}">
+                <div class="controle-galeria">
                 <div class="box_img">
                     <a href="#paralojas<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=17 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
+                    <div class="imagem">
                     <img  class="img" src="{{ asset("images/projetos/ParaLojas/img({$i}).jpg")}}">
+                    </div>
                     <a href="#paralojas<?php if($i === 16) echo $q - $i;
                     elseif($i!=17) echo $i+1; ?>" class="but" id="next">&#187</a>
+                </div>
                 </div>
             </div>
             <?php
@@ -207,12 +201,16 @@
             for($i=1; $i<$q; $i++){
             ?>
             <div class="lbox" id="quarto{{$i}}">
+                <div class="controle-galeria">
                 <div class="box_img">
                     <a href="#quarto<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=18 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
+                    <div class="imagem">
                     <img  class="img" src="{{ asset("images/projetos/Quarto/img({$i}).jpg")}}">
+                    </div>
                     <a href="#quarto<?php if($i === 17) echo $q - $i;
                     elseif($i!=18) echo $i+1; ?>" class="but" id="next">&#187</a>
+                </div>
                 </div>
             </div>
             <?php
@@ -226,12 +224,16 @@
             for($i=1; $i<$q; $i++){
             ?>
             <div class="lbox" id="sala{{$i}}">
+                <div class="controle-galeria">
                 <div class="box_img">
                     <a href="#sala<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=60 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
+                    <div class="imagem">
                     <img  class="img" src="{{ asset("images/projetos/Sala/img({$i}).jpg")}}">
+                    </div>
                     <a href="#sala<?php if($i === 59) echo $q - $i;
                     elseif($i!=60) echo $i+1; ?>" class="but" id="next">&#187</a>
+                </div>
                 </div>
             </div>
             <?php
