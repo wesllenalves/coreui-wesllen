@@ -52,7 +52,7 @@
       <!-- Breadcrumb -->
       @include('core.breadcrumb')
 
-      @include('content')
+      @yield('content')
       <!-- /.container-fluid -->
     </main>
 

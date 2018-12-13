@@ -24,10 +24,9 @@ Auth::routes();
 Route::middleware('auth')->group(function() {
 	//Route::view('/', 'dashboard');
 	Route::view('/painel', 'panel.blank');
-	// Section CoreUI elements
-	Route::view('dashboard','dashboard');
 
-	
+	// Dashboard
+	Route::get('dashboard','ControllerDashboard@dashboard');	
 	/* --Clientes-- */
 	Route::get('/sample/cliente', 'ControllerCliente@index');
 	Route::get('/sample/cliente/visualizar/{id}', 'ControllerCliente@cliente');
