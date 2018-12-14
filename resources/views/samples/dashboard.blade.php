@@ -65,9 +65,6 @@
     </div>
     <!--/.col-->
       </div>
-
-      <canvas id="bar-chart-grouped" width="400" height="190"></canvas>
-
   </div>
   </div>
 </div>

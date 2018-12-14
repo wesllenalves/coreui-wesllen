@@ -1,9 +1,9 @@
 	
+<script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 	<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.slicknav.js"></script>
-	<script src="{{ asset('js/vendor/jquery.min.js') }}"></script>	
-<script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+	
 	<script>
 			$(document).ready(function(){
 			$(".bhide").click(function(){
