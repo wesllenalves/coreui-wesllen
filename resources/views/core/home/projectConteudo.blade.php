@@ -113,7 +113,7 @@
                     <a href="#banheiro<?php if($i === 1 ){ echo  $q - $i ; }elseif($i!=8 AND $i!=1){ echo $i-1;} ?>" class="but" id="prev">&#171;</a>
                     <a href="#project" class="but" id="close">X</a>
                     <div class="imagem">
-                    <center><img  class="img" src="{{ asset("images/projetos/banheiro/img({$i}).jpeg")}}"></center>
+                    <img  class="img" src="{{ asset("images/projetos/banheiro/img({$i}).jpeg")}}">
                     </div>
                     <a href="#banheiro<?php if($i === 7) echo $q - $i;
                     elseif($i!=8) echo $i+1; ?>" class="but" id="next">&#187</a>

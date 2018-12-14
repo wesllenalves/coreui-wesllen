@@ -10,6 +10,7 @@
           <i class="fa fa-align-justify"></i> Combined All Table
         </div>
         <div class="card-body">
+        <div style="overflow: auto; width: 980px">
           <table class="table table-responsive-sm table-bordered table-striped table-sm">
             <thead>
               <tr>
@@ -48,6 +49,7 @@
               
             </tbody>
           </table>
+          </div>
           
           <nav>
               {!! $produtos->render("pagination::bootstrap-4") !!}

@@ -86,13 +86,38 @@ $('[name="status"]').change(function () {
             $("#show-total").val(total);
           });
 
+        $(".lancar-lucro-produto").change(function(){
+            var valorMedio = parseFloat($("#valorMedio").val(), 5);
+            var gastoMedio = parseFloat($("#gastoMedio").val(), 5);
+            
+            var total = valorMedio - gastoMedio;
+            //alert(valorMedio);
+
+            
+            
+            $("#show-total").val(total);
+          });
+
+          $('#todos').change(function() {
+            window.location = $(this).val();
+        });
+
+             
+
 /** Mascara dos inputs */
  $(document).ready(function(){
             $('#desconto').mask('00.00');
             $('#gasto').mask('00.00');
             $('#taxaAdd').mask('00.00');
+            $('#valorMedio').mask('00.00');
+            $('#gastoMedio').mask('00.00');
+            $('#lucroMedio').mask('00.00');
             $('#taxaEntrega').mask('00.00');
             $('#entrada').mask('00.00');            
+            $('#telefone').mask('(00) 00000-0000');           
+            $('#cpf').mask('000.000.000-00'); 
+            
+            
 });
 
 new Chart(document.getElementById("bar-chart-grouped"), {

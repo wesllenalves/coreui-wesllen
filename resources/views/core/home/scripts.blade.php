@@ -2,6 +2,8 @@
 	<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.slicknav.js"></script>
+	<script src="{{ asset('js/vendor/jquery.min.js') }}"></script>	
+<script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 	<script>
 			$(document).ready(function(){
 			$(".bhide").click(function(){
@@ -126,4 +128,13 @@
 			jQuery(".pretty a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true, social_tools: ''});
 			
 		});
+	</script>
+	<script type="text/javascript" charset="utf-8">
+
+		$(document).ready(function(){                      
+            $('#telefone').mask('(00) 00000-0000');           
+            $('#cpf').mask('000.000.000-00'); 
+            
+            
+});
 	</script>

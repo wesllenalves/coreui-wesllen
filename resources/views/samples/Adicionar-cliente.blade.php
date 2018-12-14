@@ -11,13 +11,7 @@
                 <small>Cliente</small>
               </div>
               <div class="card-body">
-              @if( isset($errors) && count($errors) > 0)
-              <div class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                        <p>{{$error}}</p>
-                    @endforeach
-              </div>
-              @endif
+              @include('core.alerts')
               <form  method="POST" action="{{url("/sample/cliente/adicionarCliente")}}">
               
                 {{ csrf_field() }}

@@ -33,7 +33,7 @@
 					  <input type="text" class="form-control" name="cpf" id="cpf" value="">
 				  </div>
 				  <div class="col-sm-3">
-					  <label for="telefone">Telefone</label><span id="text-requerid">*</span>
+					  <label for="telefone">Telefone Celular</label><span id="text-requerid">*</span>
 					  <input type="text" class="form-control" name="telefone" id="telefone" value="">
 				  </div>
 			  </div>

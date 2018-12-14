@@ -50,6 +50,8 @@ class Venda extends Model
                 $query->where('dataEntrega', '>=', $data['dataInicial']);
                 if(isset($data['dataFinal'])) 
                 $query->where('dataEntrega', '<=', $data['dataFinal']);
+                if(isset($data['statusVenda'])) 
+                $query->where('statusVenda', '=', $data['statusVenda']);
                 
             }
             

@@ -49,9 +49,6 @@
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-pie-chart"></i>Configurações</a>
         <ul class="nav-dropdown-items">
           <li class="nav-item">
-            <a class="nav-link" href="/sample/usuarios"><i class="icon-basket"></i>Usuarios</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/sample/img/principal"><i class="icon-chart"></i>Imagens Principal</a>
           </li>
         </ul>

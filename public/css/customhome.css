@@ -19,27 +19,22 @@
 @media screen and (min-width: 1200px){ 
 
     .controle-galeria{
-        margin-top: -5px;
-		width: 800px;
-		height: 600px;
-        position: relative;
-		left: 14%;
+        
+        
     }
     
     .imagem{
 		position: absolute;
-		width: 900px;
+		width: 800px;
 		height: 700px;
-		padding: 8% ;
 		left:50%;
-		top:50%;
-		margin-left:-300px;
-		margin-top:-360px;
+		margin-left:-290px;
+		margin-top:100px;
     }
     
     .img{
-		max-width:500px;
-		max-height:450px;
+		max-width:700px;
+		max-height:500px;
 		width: auto;
 		height: auto;
 		
@@ -50,8 +45,6 @@
 
 .controle-galeria{
     top: 10%;
-    position: relative;
-    float: left;
     
 }
 

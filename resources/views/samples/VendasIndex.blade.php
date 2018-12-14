@@ -10,6 +10,29 @@
           <i class="fa fa-align-justify"></i> Vendas
         </div>
         <div class="card-body">
+        <div class="col-md-12 form-filtro">
+        <form action="{{url('/sample/filtro/venda')}}" method="POST" > 
+        <div class="form-group">
+        {!! csrf_field() !!} 
+            <label for="id" class="text-label">ID</label>        
+            <input type="text" class="form-control-sm col-sm-1" name="id">
+            <label for="id" class="text-label">Data Inicial</label>
+            <input type="date" class="form-control-sm col-sm-3" name="dataInicial">
+            <label for="id" class="text-label">Data Final</label>
+            <input type="date" class="form-control-sm col-sm-3" name="dataFinal" >
+            <label for="id" class="text-label">Status</label>
+            <select name="statusVenda" id="statusVenda" class="form-control-sm col-sm-3" >                
+                <option value="Em aberto">Em aberto</option>
+                <option value="Em andamento">Em andamento</option>
+                <option value="Fechado">Fechado</option>
+                <option value="Cancelado">Cancelado</option>
+                <option value="Cancelado e estornado">Cancelado e estornado</option>
+                <option value="/sample/vendas" id="todos">Todas</option>
+            </select>
+            <button type="submit" class="btn-sm btn-primary">Pesquisar</button>
+        </div>
+        </form><br>
+        </div>
           <div id="dtHorizontalExample">
           <table  class="table table-responsive table-bordered table-striped table-sm">
             <thead>
@@ -51,7 +74,11 @@
         </div>
           
           <nav>
-              {!! $vendas->render("pagination::bootstrap-4") !!}
+          @if(isset($dataForm))
+              {!! $vendas->appends($dataForm)->links("pagination::bootstrap-4") !!}
+          @else
+              {!! $vendas->links("pagination::bootstrap-4") !!}
+          @endif
           </nav>
         </div>
       </div>

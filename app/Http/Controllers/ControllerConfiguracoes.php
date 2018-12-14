@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
 use App\User;
 use File;
 use App\Projetos;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Validator;
 
 class ControllerConfiguracoes extends Controller
 {
@@ -34,9 +36,10 @@ class ControllerConfiguracoes extends Controller
             
             $extenstion = $imagem->getClientOriginalExtension();
             
-            if($extenstion != 'jpg' && $extenstion != 'png')
+            if($extenstion != 'jpg'  && $extenstion != 'jpeg' && $extenstion != 'png')
             {
-                return back()->with('erro', 'Erro: Este arquivo não é uma imagem');
+                    return redirect('/sample/img/principal')
+                    ->withErrors(['valide'=>'Formato de imagem invalido. Os formatos suportados são: JPG JPEG PNG']);
             }
 
            //$caminho = File::move($imagemRed, public_path().'/storage/principal/'.$ImageName);
@@ -65,7 +68,7 @@ class ControllerConfiguracoes extends Controller
            $insert = $projetos->save();
 
            if($insert){
-            return redirect('/sample/img/principal');
+            return redirect('/sample/img/principal')->with('mensagem', 'Upload da imagem realizado com sucesso');
            }
         }
     }
@@ -79,9 +82,9 @@ class ControllerConfiguracoes extends Controller
             $ImageName =  $imagem->getClientOriginalName();
             $extenstion = $imagem->getClientOriginalExtension();
             
-            if($extenstion != 'jpg' && $extenstion != 'png')
+            if($extenstion != 'jpg'  && $extenstion != 'jpeg' && $extenstion != 'png')
             {
-                return back()->with('erro', 'Erro: Este arquivo não é uma imagem');
+                return back()->withErrors(['valide'=>'Formato de imagem invalido. Os formatos suportados são: JPG JPEG PNG']);
             }
 
             $img = Projetos::find($id);
@@ -103,7 +106,7 @@ class ControllerConfiguracoes extends Controller
             $update = $img->update($dados);
 
             return back()
-                    ->with('success', 'Sucesso: Imagem editada com sucesso');
+                    ->with('mensagem', 'Sucesso: Imagem editada com sucesso');
         }
     }
 
@@ -120,10 +123,10 @@ class ControllerConfiguracoes extends Controller
         $deleta =  Storage::delete($path_deletar); // true ou falses
         // Redireciona, informando que deu tudo certo!
         return redirect('/sample/img/principal')
-                    ->with('success', 'Sucesso ao deletar!');
+        ->with('mensagem', 'Sucesso imagem deletada!');
     }
         // Em caso de falhas redireciona o usuário de vola e informa que não foi possível deletar
         return back()
-                    ->with('error', 'Falha ao deletar!');
+        ->withErrors(['valide'=>'Não foi possivel deletar a imagem']);;
     }
 }

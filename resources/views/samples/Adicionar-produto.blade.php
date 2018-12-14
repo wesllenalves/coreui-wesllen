@@ -33,15 +33,15 @@
                 <div class="form-group row">
                 <div class="col-sm-4">
                   <label for="valorMedio">Valor Medio</label>
-                  <input type="text" class="form-control" name="valorMedio" id="valorMedio" value="">
+                  <input type="text" class="form-control lancar-lucro-produto" name="valorMedio" id="valorMedio" value="">
                 </div>
                 <div class="col-sm-5">
                   <label for="gastoMedio">Gasto Medio</label>
-                  <input type="text" class="form-control" name="gastoMedio" id="gastoMedio" value="">
+                  <input type="text" class="form-control lancar-lucro-produto" name="gastoMedio" id="gastoMedio" value="">
                 </div>
                 <div class="col-sm-3">
-                  <label for="lucroMedio">Lucro Medio</label>
-                  <input type="text" class="form-control" name="lucroMedio" id="lucroMedio" value="">
+                  <label for="lucroMedio">Lucro Medio R$:</label>
+                  <input type="text" class="form-control" name="lucroMedio" id="show-total" value="" readonly>
                 </div>
                 </div>
 

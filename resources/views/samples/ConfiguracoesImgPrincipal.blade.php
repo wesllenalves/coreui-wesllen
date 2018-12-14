@@ -10,6 +10,7 @@
           <i class="fa fa-align-justify"></i> Configurações Imagem principal
         </div>
         <div class="card-body">
+        @include('core.alerts')
         <div class="formulario-imagem">
         <form method="POST" enctype="multipart/form-data" action='{{url("/sample/img/upload")}}'>
         {{ csrf_field() }}
