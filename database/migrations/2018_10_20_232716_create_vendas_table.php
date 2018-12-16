@@ -19,12 +19,7 @@ class CreateVendasTable extends Migration
             $table->integer('FkUsers')->unsigned();            
             $table->foreign('FkUsers')
                 ->references('id')->on('users')
-                ->onDelete('cascade');
-
-            $table->integer('FkProdutos')->unsigned()->nullable();            
-            $table->foreign('FkProdutos')
-                ->references('idProduto')->on('produtos')
-                ->onDelete('cascade');
+                ->onDelete('cascade');            
 
                 $table->string('qtd', 11)->nullable();
                 $table->date('dataEntrega', 18,2)->nullable();

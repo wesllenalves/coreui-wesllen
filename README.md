@@ -3,7 +3,7 @@ CoreUI-laravel is simple adaptation to Laravel the most beautiful free Bootstrap
 
 ![alt text](https://raw.githubusercontent.com/taboritis/coreui-laravel/master/sample_charts.png)
 
-### Instalation in 5 steps
+### Instalação em 5 passos
 ```bash
 git clone https://github.com/taboritis/coreui-laravel.git
 cd coreui-laravel
@@ -12,8 +12,8 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-- You have to register and login to app (database needed)
-- If you are user MySQL you can paste this to your .env file:
+- Você tem que se registrar e fazer login no aplicativo (banco de dados necessário)
+- Se você é usuário MySQL, você pode colá-lo em seu arquivo .env:
 ```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -26,12 +26,17 @@ DB_PASSWORD=
 ```bash
 php artisan storage:link
 ```
+- Para criar as pasta com node_modules para trazer as bibliotecas usadas
+```bash
+cd public/
+npm installl
+```
 
-- To create table in database
+- Para criar uma tabela no banco de dados
 ```bash
 	php artisan migrate
 ```
-(or to create table with exemplary user 'John Doe')
+(ou para criar tabela com o usuário exemplar "John Doe")
 ```bash
 	php artisan migrate:fresh --seed
 ``` 

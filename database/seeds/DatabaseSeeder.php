@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             ProdutosTableSeeder::class,
             ProjetosTableSeeder::class,
             VendasTableSeeder::class,
-            LancamentosTableSeeder::class
+            LancamentosTableSeeder::class,
+            ProdutosVendasTableSeeder::class
             
             ]);
         

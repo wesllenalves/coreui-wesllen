@@ -24,15 +24,11 @@
 				{{ csrf_field() }}
 				<span id="text-requerid">Todos os campos com * são obrigatorios</span>
 			  <div class="form-group row">
-				  <div class="col-sm-6">
+				  <div class="col-sm-8">
 					  <label for="nome">Nome</label><span id="text-requerid">*</span>
 				  <input type="text" class="form-control" name="name" id="nome" value="">
 				  </div>
-				  <div class="col-sm-3">
-					  <label for="cpf">CPF</label><span id="text-requerid">*</span>
-					  <input type="text" class="form-control" name="cpf" id="cpf" value="">
-				  </div>
-				  <div class="col-sm-3">
+				  <div class="col-sm-4">
 					  <label for="telefone">Telefone Celular</label><span id="text-requerid">*</span>
 					  <input type="text" class="form-control" name="telefone" id="telefone" value="">
 				  </div>

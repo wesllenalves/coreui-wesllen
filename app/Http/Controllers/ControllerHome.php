@@ -45,7 +45,6 @@ class ControllerHome extends Controller
         $senha = md5($data);
         $usuarios = new User;
         $usuarios->name = $request->name;
-        $usuarios->cpf = $request->cpf;
         $usuarios->telefone = $request->telefone;
         $usuarios->email = $request->email;
         $usuarios->endereco = $request->endereco;
