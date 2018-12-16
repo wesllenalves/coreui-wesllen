@@ -17,7 +17,7 @@ class ControllerOrcamento extends Controller
 
     public function index()
     {
-        $vendas = Venda::with('usuario', 'produto')->where(function ($query) {
+        $vendas = Venda::with('usuario', 'produtos')->where(function ($query) {
             $query->where('statusVenda', '=', 'Orcamento')
             ->orWhere('statusVenda', '=', 'Negociando');
         })->get();//toSql();//get(); 

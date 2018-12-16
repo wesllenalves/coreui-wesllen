@@ -26,6 +26,12 @@ class Venda extends Model
          //     $this->hasOne(relacao, chave estrangeira, primary key);
          return $this->hasOne('App\User', 'FkUsers', 'idVenda');
     }
+    
+    public function produtos()
+    {
+        return $this->belongsToMany('App\Produto', 'produtos_vendas','id_venda', 'id_produto');
+    }
+
 
     public function produto()
     {

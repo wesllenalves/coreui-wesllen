@@ -20,4 +20,9 @@ class Produto extends Model
     {
         return $this->hasMany('App\Venda');
     }
+
+    public function Vendas()
+    {
+        return $this->belongsToMany('App\Venda', 'produtos_vendas','id_venda', 'id_produto');
+    }
 }

@@ -31,7 +31,11 @@
                 
                 
                 <td>{{$venda->usuario->name}}</td>
-                <td>{{$venda->produto->nome}}</td>
+                <td>
+                  @foreach ($venda->produtos as $produto) 
+                    <button type="button" class="btn btn-danger btn-sm" aria-disabled="true" disabled>{{$produto->nome}}</button>
+                  @endforeach
+                </td>
                 <td>{{$venda->qtd}}</td>
                 <td>{{$venda->statusVenda}}</td>
                 <td>{{$venda->descricao}}</td>
