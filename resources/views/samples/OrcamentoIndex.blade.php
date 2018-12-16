@@ -32,9 +32,11 @@
                 
                 <td>{{$venda->usuario->name}}</td>
                 <td>
+                @if(iseet($venda->produtos))
                   @foreach ($venda->produtos as $produto) 
                     <button type="button" class="btn btn-danger btn-sm" aria-disabled="true" disabled>{{$produto->nome}}</button>
                   @endforeach
+                @endif
                 </td>
                 <td>{{$venda->qtd}}</td>
                 <td>{{$venda->statusVenda}}</td>
