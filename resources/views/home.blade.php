@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css')}}">
 		<link rel='stylesheet' id='camera-css'  href="{{ asset('css/camera.css')}}" type='text/css' media='all'>
+		<link rel='stylesheet'  href="{{ asset('node_modules/select2/dist/css/select2.min.css')}}" type='text/css' >
 
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/slicknav.css')}}">
 		<link rel="stylesheet" href="{{ asset('css/prettyPhoto.css')}}" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />

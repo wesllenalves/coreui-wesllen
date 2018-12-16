@@ -3,6 +3,13 @@
 	<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.slicknav.js"></script>
+	<script src="node_modules/select2/dist/js/select2.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('.js-select2-multiple').select2();
+		});
+	</script>
 	
 	<script>
 			$(document).ready(function(){

@@ -60,14 +60,14 @@
 				<input type="text" class="form-control" name="complemento" id="complemento" value="">
 			  </div>
 			  <div class="col-sm-6">
-					  <label  for="select">Produto</label>
-                        <select id="select" name="FKProdutos" class="form-control">
-												<option value="">Selecione o Produto</option>
-													@foreach($produtos as $produto)													
-                          <option value="{{$produto->idProduto}}">{{$produto->nome}}</option>
-													@endforeach
-                        </select>
-                      </div>
+							<label  for="select">Produto</label>
+									<select id="select" name="FKProdutos[]" class="form-control js-select2-multiple" multiple="multiple">
+										<option value="">Selecione o Produto</option>
+											@foreach($produtos as $produto)													
+											<option value="{{$produto->idProduto}}">{{$produto->nome}}</option>
+											@endforeach
+									</select>
+					</div>
 			  </div>
 				<div class="form-group row">				
                       <div class="col-sm-12">
