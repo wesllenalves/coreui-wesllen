@@ -3,7 +3,7 @@ CoreUI-laravel is simple adaptation to Laravel the most beautiful free Bootstrap
 
 ![alt text](https://raw.githubusercontent.com/taboritis/coreui-laravel/master/sample_charts.png)
 
-### Instalação em 5 passos
+### Instalação em 6 passos
 ```bash
 git clone https://github.com/taboritis/coreui-laravel.git
 cd coreui-laravel
