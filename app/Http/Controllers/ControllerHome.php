@@ -14,20 +14,9 @@ class ControllerHome extends Controller
 {
     //
     
-    public function home()
-    {
-        $galerias = Projetos::where('status', '=', 'galeria')->get()->toArray();
-       // dd($galerias);
-        $principais = Projetos::where('status', '=', 'principal')->get();
-        $produtos = Produto::all();
-        return view('home', [
-            'galerias' => $galerias,
-            'produtos' => $produtos,
-            'principais' => $principais
-        ]);
-    }
+    
  
-    public function orcamento(Request $request)
+    public function home(Request $request)
     {   
        /*$dataForm = [1,2];
         $vendas = Venda::find(1);
