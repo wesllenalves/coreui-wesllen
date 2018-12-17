@@ -61,9 +61,10 @@ class ControllerHome extends Controller
         $updateVenda = $venda->save();
         $id = $venda->idVenda;
 
+        dd($request->FkProdutos);
         //faz o cadastro na tabela pivo produtos_vendas
         $vendas = Venda::find($id);
-        $insertPivot = $vendas->produtos()->sync($request->FKProdutos);
+        $insertPivot = $vendas->produtos()->sync($request->FkProdutos);
 
         //se tudo ocorrer bem retorna para a rotar trazendo um mensagem de sucesso caso contratio
         //retorn mensagem de error

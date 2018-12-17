@@ -9,3 +9,10 @@
 <script src="{{ asset('js/app.js')}}"></script>
 <script src="{{ asset('js/custom.js')}}"></script>
 <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+<script src="{{ asset('node_modules/select2/dist/js/select2.min.js')}}"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('.js-select2-multiple').select2();
+		});
+	</script>

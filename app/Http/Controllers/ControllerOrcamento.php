@@ -34,20 +34,43 @@ class ControllerOrcamento extends Controller
     public function editar($id)
     {   
         $produtos = Produto::select('idProduto','nome')->get();
+        
         $users = User::select('id','name')->get();
         //dd($users);
-        $vendas = $this->venda->with('usuario', 'produto')->where('idVenda', '=', $id)->get();
+        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+        
+        
+
         return view('samples.OrcamentoEditar', ['vendas' => $vendas, 'produtos' => $produtos, 'users' => $users]);
+
+        
     }
+
     public function editarSalvar(Request $request, $id)
     {
-        $dataForm = $request->except('_token');
-        
+        $dataForm = [
+            "FkUsers" => $request->FkUsers,
+            "qtd" => $request->qtd,
+            "dataEntrega" => $request->dataEntrega,
+            "desconto" => $request->desconto,
+            "gasto" => $request->gasto,
+            "taxaEntrega" => $request->taxaEntrega,
+            "taxaAdd" => $request->taxaAdd,
+            "valorUnd" => $request->valorUnd,
+            "valorTotal" => $request->valorTotal,
+            "statusVenda" => $request->statusVenda,
+            "entrada" => $request->entrada,
+            "medidas" => $request->medidas,
+            "descricao" => $request->descricao,
+        ];
+
+
         $venda = Venda::find($id);        
+        $produto = $venda->produtos()->sync($request->FKProdutos);
         
         $venda->update($dataForm);
 
-        if($venda){
+        if($venda && $produto){
             
             return redirect('/sample/orcamento');
         }else{

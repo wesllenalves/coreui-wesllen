@@ -15,45 +15,43 @@
                 <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
                 {{ csrf_field() }}
                 <div class="form-group row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         <label for="name">Nome do Cliente</label>
-                        <select class="form-control" name="FkUsers">
-                          <option value="">Selecione Cliente</option>
-                          @foreach ($users as $user)
-  
+                        <select class="form-control" name="FkUsers">                          
+                          @foreach ($users as $user)  
                           <option value="{{$user->id}}" @if (isset($venda) && $venda->usuario->name == $user->name)
                           selected
                           @endif
                           </option>{{$user->name}}</option>                          
                           @endforeach
-                          </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="nome">Produto</label>
-                        <select class="form-control" name="FkProdutos">
-                        <option value="">Selecione Produto</option>
-                        @foreach ($produtos as $produto)
-
-                        <option value="{{$produto->idProduto}}" @if (isset($venda) && $venda->produto->nome == $produto->nome)
-                        selected
-                        @endif
-                        </option>{{$produto->nome}}</option>
-                        
-                        @endforeach
                         </select>
                     </div>
-                    <div class="col-1">
+                    <div class="col-sm-3">
+                        <label for="nome">Produto</label>
+                        <select id="select" name="FKProdutos[]" class="form-control js-select2-multiple" multiple="multiple">
+										    <option value="">Selecione o Produto</option>
+
+                        @foreach ($produtos as $produto)
+                        <option value="{{$produto->idProduto}}">{{$produto->nome}}</option>
+                              
+                        
+                        @endforeach
+
+                        </select>
+                    </div>
+                    <div class="col-2">
                         <label for="qtd">Quantidade</label>
                         <input type="number" class="form-control input-teste" name="qtd" id="qtd" value="{{$venda->qtd}}" required>
                     </div>
-                    <div class="col-3">
-                      <label for="dataEntrega">Data de Entrega</label>
-                      <input type="text" class="form-control" name="dataEntrega" id="dataEntrega" value="{{$venda->dataEntrega}}" required>
-                    </div>
+                    
                 </div>
                 
 
                 <div class="form-group row">
+                <div class="col-3">
+                  <label for="dataEntrega">Data de Entrega</label>
+                  <input type="text" class="form-control" name="dataEntrega" id="dataEntrega" value="{{$venda->dataEntrega}}" required>
+                </div>
                 <div class="col-sm-2">
                   <label for="desconto">Desconto</label>
                   <input type="text" class="form-control input-teste" name="desconto" id="desconto" value="{{$venda->desconto}}" required>
@@ -75,7 +73,7 @@
                 <div class="form-group row">
                 <div class="col-sm-2">
                   <label for="valorMedio">Valor unitario</label>
-                  <input type="number" class="form-control" name="valorUnd" id="valorMedio" value="{{$venda->produto->valorMedio}}" readonly>
+                  <input type="number" class="form-control" name="valorUnd" id="valorMedio" value="" readonly>
                 </div>
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
