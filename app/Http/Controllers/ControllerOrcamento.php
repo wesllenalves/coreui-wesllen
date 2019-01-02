@@ -33,7 +33,7 @@ class ControllerOrcamento extends Controller
     }
     public function editar($id)
     {   
-        $produtos = Produto::select('idProduto','nome')->get();
+        $produtos = Produto::select('idProduto','nome','valorMedio')->get();
         
         $users = User::select('id','name')->get();
         //dd($users);
@@ -48,6 +48,17 @@ class ControllerOrcamento extends Controller
 
     public function editarSalvar(Request $request, $id)
     {
+        $dados = $request->all();
+        $produto = array('Produto');
+        $produtoCombinado = array_combine_(array('Produto'), $request->nomeProduto);
+        //$resultado = array_merge($request->nomeProduto, $request->qtProduto);
+
+
+        dd($produtoCombinado);
+
+
+
+
         $dataForm = [
             "FkUsers" => $request->FkUsers,
             "qtd" => $request->qtd,

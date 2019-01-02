@@ -60,7 +60,7 @@ $('[name="status"]').change(function () {
        //Pega os valores do inputs que serao usados nas  contas
        //soma faz as contas e retorna o valor total para o input #show-total
 
-        $(".input-teste").change(function(){
+        /*$(".input-teste").change(function(){
             var qtd = parseFloat($("#qtd").val(), 5);
             var desconto = parseFloat($("#desconto").val(), 5);
             var gasto = parseFloat($("#gasto").val(), 5);
@@ -100,9 +100,30 @@ $('[name="status"]').change(function () {
 
           $('#todos').change(function() {
             window.location = $(this).val();
+        });*/
+
+           
+        jQuery(document).ready(function() {
+            jQuery('select[name="FKProdutos[]"]').change(function() {
+        
+                let selects = jQuery("select[name=\"FKProdutos[]\"]");
+                let total = 0;
+                
+                /* Percorre todos os select */
+                $(selects).map(function(i, e) {
+                  let values = $(e).find(":selected");
+                
+                  /* Percorre todos os valores selecionados */
+                  $(values).map(function(k, j) {
+                    total += parseFloat( $(j).data('valor')/*.replace(",", ".") */);
+                  });
+                });
+                
+                $("#valor").val(total);
+            });
         });
 
-             
+
 
 /** Mascara dos inputs */
  $(document).ready(function(){

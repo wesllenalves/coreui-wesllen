@@ -15,6 +15,56 @@
                 <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
                 {{ csrf_field() }}
                 <div class="form-group row">
+                    <div class="form-inline">                    
+                         <select class="form-control" id="nmProduto" style="max-width: 300px;" >
+                           
+                           <option value="">Selecione o Produto</option>
+                           @foreach ($produtos as $produto)
+
+                            <option data-param="{{$produto->valorMedio}}" value="{{$produto->nome}}">{{$produto->nome}}</option>
+                              
+                        
+                          @endforeach
+                          
+                         </select>
+
+                         <label class="sr-only" for="inlineFormInput">Quantidade</label>
+                         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 ml-sm-2" id="qtProduto" placeholder="Quant" style="width:70px">
+                         <label class="sr-only" for="inlineFormInput">Valor</label>                       
+                         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="vlProduto" placeholder="Valor (R$)" style="width:98px" readonly>
+                         <button type="button" class="btn btn-primary" id="btnAdicionarProduto">+</button>
+                         <p class="text-danger ml-3 pt-2 invisible" id="msgValidaForm">Favor preencher <strong>todos os campos</strong> do produto!</p>
+                         
+                     
+                     <table class="table table-sm table-striped mt-3 table-produtos">
+                       <thead>
+                         <tr>
+                           <th style="max-width: 600px;">Produto</th>
+                           <th>Quantidade</th>
+                           <th class="pr-5">Valor (R$)</th>
+                           <th class="pr-5 vlTotalProduto">Total</th>
+                           <th>Ação</th>
+                         </tr>
+                       </thead>
+                       <tbody>
+                       </tbody>
+                       <tfoot class="invisible">
+                         <tr>
+                           <th></th>
+                           <th></th>
+                           <th class="text-right">SubTotal ❯</th>
+                           <th class="text-right pr-5" id="vlTotalPedido"></th>
+                           <th></th>
+                           
+                         </tr>
+                         
+                       </tfoot>
+                       
+                     </table>
+                     
+                    </div>
+
+
                     <div class="col-sm-5">
                         <label for="name">Nome do Cliente</label>
                         <select class="form-control" name="FkUsers">                          
@@ -24,19 +74,6 @@
                           @endif
                           </option>{{$user->name}}</option>                          
                           @endforeach
-                        </select>
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="nome">Produto</label>
-                        <select id="select" name="FKProdutos[]" class="form-control js-select2-multiple" multiple="multiple">
-										    <option value="">Selecione o Produto</option>
-
-                        @foreach ($produtos as $produto)
-                        <option value="{{$produto->idProduto}}">{{$produto->nome}}</option>
-                              
-                        
-                        @endforeach
-
                         </select>
                     </div>
                     <div class="col-2">
@@ -77,7 +114,7 @@
                 </div>
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="number" class="form-control" name="valorTotal" id="show-total" value="" readonly>
+                  <input type="number" class="form-control" name="valor" id="valor" value="" readonly>
                 </div>
                 
                 <div class="col-sm-3">

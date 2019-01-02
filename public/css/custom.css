@@ -124,3 +124,7 @@
   position: absolute;
   margin-top: -20px;
 }
+
+.delete {cursor: pointer;}
+.chosen-results li {font-size: 11px;}
+.table-produtos tbody tr td {font-size: 10px;}

@@ -25,7 +25,8 @@
   <!-- Main styles for this application -->
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <!-- Styles required by this views -->
-  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">  
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.css">  
 </head>
 <!-- BODY options, add following classes to body to change options
 '.header-fixed' - Fixed Header
