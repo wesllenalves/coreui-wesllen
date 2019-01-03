@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Venda;
 use App\Produto;
 use App\User;
+use App\Produtos_vendas;
 use Illuminate\Support\Facades\DB;
 
 class ControllerOrcamento extends Controller
@@ -17,12 +18,15 @@ class ControllerOrcamento extends Controller
 
     public function index()
     {
+        $pivos = Produtos_vendas::get();
+        
+        
         $vendas = Venda::with('usuario', 'produtos')->where(function ($query) {
             $query->where('statusVenda', '=', 'Orcamento')
             ->orWhere('statusVenda', '=', 'Negociando');
         })->get();//toSql();//get(); 
           
-        return view('samples.OrcamentoIndex', ['vendas' => $vendas]);
+        return view('samples.OrcamentoIndex', ['vendas' => $vendas, 'pivos' => $pivos]);
     }
 
     public function visualizar($id)
@@ -47,18 +51,15 @@ class ControllerOrcamento extends Controller
     }
 
     public function editarSalvar(Request $request, $id)
-    {
-        $dados = $request->all();
-        $produto = array('Produto');
-        $produtoCombinado = array_combine_(array('Produto'), $request->nomeProduto);
-        //$resultado = array_merge($request->nomeProduto, $request->qtProduto);
+    {   
+       
+        
+        //traz todos os aray dos inputes e armazena em variaveis
+        $produtos = $request->idProduto;
+        $quantidade = $request->qtdProduto;
+        $valores = $request->valorProduto;
 
-
-        dd($produtoCombinado);
-
-
-
-
+       
         $dataForm = [
             "FkUsers" => $request->FkUsers,
             "qtd" => $request->qtd,
@@ -75,10 +76,36 @@ class ControllerOrcamento extends Controller
             "descricao" => $request->descricao,
         ];
 
-
-        $venda = Venda::find($id);        
-        $produto = $venda->produtos()->sync($request->FKProdutos);
         
+        $venda = Venda::find($id); 
+
+        
+        
+        $attributes = [];
+
+        foreach($produtos as  $index => $produ)
+        {
+            
+             /// cria o array com indece da tabela
+            $attributes = [
+               'id_produto' => $produ,
+                'qtd' => $quantidade[$index],
+               'valor' => $valores[$index]
+                
+
+            ];
+
+            //grava s produtos na tabela pivo
+            $produto = $venda->produtos()->attach([$id => $attributes]);
+            
+           // print_r($produ.',');
+            //$produto = $venda->produtos()->sync($produto, $attributes);
+            //print_r($attributes);
+        }     
+        
+        
+           
+        $produto = $venda->produtos()->sync([$id => ['id_produto' => 1, 'qtd' => 2, 'valor' => 50 ], ['id_produto' => 2, 'qtd' => 2, 'valor' => 50 ]]);
         $venda->update($dataForm);
 
         if($venda && $produto){

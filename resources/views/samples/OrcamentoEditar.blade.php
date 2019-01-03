@@ -21,7 +21,7 @@
                            <option value="">Selecione o Produto</option>
                            @foreach ($produtos as $produto)
 
-                            <option data-param="{{$produto->valorMedio}}" value="{{$produto->nome}}">{{$produto->nome}}</option>
+                            <option  value="{{$produto->idProduto}}" data-param="{{$produto->valorMedio}}">{{$produto->nome}}</option>
                               
                         
                           @endforeach

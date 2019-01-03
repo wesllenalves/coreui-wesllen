@@ -16,16 +16,19 @@ $("document").ready(function(){
     $("#btnAdicionarProduto").on('click', function($e){
        /* Evita que o evento ocorra */
        $e.preventDefault();
-
+      
        /* Adiciona os produtos somente se o formulário for preenchido */
        if(validaForm())
        {
+         
+
+
           /* Declarando a variável tb */
           var tb;
 
           /* preenchendo informações na variável tb para inserção no tbody da tabela */
-          tb = "<tr><td><input class='form-control col-10' type='text' value='" + $("#nmProduto").val() + "' name='nomeProduto[]' readonly></td>" +
-               "<td style='width:20px;'><input class='form-control col-3' type='text' value='" + $("#qtProduto").val() + "' name='qtProduto[]' readonly></td>" +
+          tb = "<tr><td><input class='form-control col-10' type='text' value='" + $("#nmProduto option:selected").text() + "'  readonly><input class='form-control col-10' type='hidden' value='" + $("#nmProduto").val() + "' name='idProduto[]' readonly></td>" +
+               "<td style='width:20px;'><input class='form-control col-3' type='text' value='" + $("#qtProduto").val() + "' name='qtdProduto[]' readonly></td>" +
                "<td class=\"pr-5\"><input class='form-control col-4' type='text' value='" + ($("#vlProduto").val() * 1).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
                "<td class=\"pr-5\">" + ( $("#vlProduto").val() * $("#qtProduto").val() ).toFixed(2) + "</td>" +
                "<td><button class=\"btn btn-light btn-sm delete text-danger\">✖</button></td></tr>";

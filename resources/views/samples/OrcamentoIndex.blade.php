@@ -38,7 +38,13 @@
                   @endforeach
                 @endif
                 </td>
-                <td>{{$venda->qtd}}</td>
+                <td>
+                  @foreach ($pivos as $pivo)  
+                  {{$loop->first ? '' : ', '}}
+                  {{$pivo->qtd}}
+                 
+                  @endforeach
+                </td>
                 <td>{{$venda->statusVenda}}</td>
                 <td>{{$venda->descricao}}</td>
                 <td>{{$venda->medidas}}</td>
