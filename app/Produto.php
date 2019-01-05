@@ -23,6 +23,6 @@ class Produto extends Model
 
     public function Vendas()
     {
-        return $this->belongsToMany('App\Venda', 'produtos_vendas','id_venda', 'id_produto');
+        return $this->belongsToMany('App\Venda', 'produtos_vendas','id_venda', 'id_produto')->withPivot(['qtd','valor']);
     }
 }

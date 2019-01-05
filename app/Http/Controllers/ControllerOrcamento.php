@@ -18,15 +18,13 @@ class ControllerOrcamento extends Controller
 
     public function index()
     {
-        $pivos = Produtos_vendas::get();
-        
         
         $vendas = Venda::with('usuario', 'produtos')->where(function ($query) {
             $query->where('statusVenda', '=', 'Orcamento')
             ->orWhere('statusVenda', '=', 'Negociando');
         })->get();//toSql();//get(); 
           
-        return view('samples.OrcamentoIndex', ['vendas' => $vendas, 'pivos' => $pivos]);
+        return view('samples.OrcamentoIndex', ['vendas' => $vendas]);
     }
 
     public function visualizar($id)
@@ -35,13 +33,17 @@ class ControllerOrcamento extends Controller
         
         return view('samples.OrcamentoVisualizar', ['vendas' => $vendas]);
     }
+
     public function editar($id)
     {   
         $produtos = Produto::select('idProduto','nome','valorMedio')->get();
-        
+
+        //$pivos = Produtos_vendas::where('id_venda', $id)->get();
+
         $users = User::select('id','name')->get();
         //dd($users);
         $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+        
         
         
 
@@ -58,7 +60,19 @@ class ControllerOrcamento extends Controller
         $produtos = $request->idProduto;
         $quantidade = $request->qtdProduto;
         $valores = $request->valorProduto;
+        $verificacao = Produtos_vendas::where('id_venda',  $id)
+        ->whereIn('id_produto', $produtos)
+        ->exists();
+        
+        
 
+
+        if( $verificacao == TRUE){
+            return redirect('/sample/orcamento/editar/'.$id)->with(['error' => 'Já existe dados iguais cadastrados.Para não obter dados duplicados apague todos os produtos é insira com todos os produtos pretendidos']);
+            
+        }
+
+        
        
         $dataForm = [
             "FkUsers" => $request->FkUsers,
@@ -75,44 +89,38 @@ class ControllerOrcamento extends Controller
             "medidas" => $request->medidas,
             "descricao" => $request->descricao,
         ];
-
         
-        $venda = Venda::find($id); 
 
+        $venda = Venda::find($id);        
         
-        
-        $attributes = [];
-
+        $attributes = [];   
         foreach($produtos as  $index => $produ)
         {
-            
              /// cria o array com indece da tabela
             $attributes = [
                'id_produto' => $produ,
-                'qtd' => $quantidade[$index],
+               'qtd' => $quantidade[$index],
                'valor' => $valores[$index]
-                
-
             ];
-
             //grava s produtos na tabela pivo
             $produto = $venda->produtos()->attach([$id => $attributes]);
-            
-           // print_r($produ.',');
-            //$produto = $venda->produtos()->sync($produto, $attributes);
-            //print_r($attributes);
+                      
         }     
-        
-        
+            
            
-        $produto = $venda->produtos()->sync([$id => ['id_produto' => 1, 'qtd' => 2, 'valor' => 50 ], ['id_produto' => 2, 'qtd' => 2, 'valor' => 50 ]]);
+        //$produto = $venda->produtos()->sync([$id => ['id_produto' => 1, 'qtd' => 2, 'valor' => 50 ], ['id_produto' => 2, 'qtd' => 2, 'valor' => 50 ]]);
         $venda->update($dataForm);
 
-        if($venda && $produto){
+        if($venda){
             
             return redirect('/sample/orcamento');
         }else{
             return redirect()->route('/sample/orcamento/editar/'.$id)->with(['errors' => 'Falha ao Editar']);
         }
-    }    
+    } 
+    
+    public function deletarProduto(Request $request, $id)
+    {
+        dd($request->all());
+    }
 }

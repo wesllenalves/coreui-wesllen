@@ -10,6 +10,8 @@ class Produtos_vendas extends Model
       protected $table      = 'produtos_vendas';
 
       protected $primaryKey = 'id';
+
+      public  $timestamps   = true;
   
       protected $fillable = [
           'id_venda', 'id_produto', 'qtd', 'valor',

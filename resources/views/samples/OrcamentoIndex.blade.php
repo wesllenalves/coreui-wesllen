@@ -35,16 +35,20 @@
                 @if(isset ($venda->produtos))
                   @foreach ($venda->produtos as $produto) 
                     <button type="button" class="btn btn-danger btn-sm" aria-disabled="true" disabled>{{$produto->nome}}</button>
+                  
                   @endforeach
-                @endif
+                  @endif
                 </td>
+                
                 <td>
-                  @foreach ($pivos as $pivo)  
-                  {{$loop->first ? '' : ', '}}
-                  {{$pivo->qtd}}
-                 
-                  @endforeach
+                @if(isset ($venda->produtos))
+                @foreach ($venda->produtos as $produto)
+                {{$loop->first ? '' : ', '}}
+                {{$produto->pivot->qtd}}
+                @endforeach 
+                @endif 
                 </td>
+               
                 <td>{{$venda->statusVenda}}</td>
                 <td>{{$venda->descricao}}</td>
                 <td>{{$venda->medidas}}</td>

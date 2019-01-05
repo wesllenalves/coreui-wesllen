@@ -5,17 +5,63 @@
 
 <div class="row">
     <div class="col-sm-12">
+        @include('core.alerts')
+
         <div class="card">
+            <div class="card-header">
+                <strong>Produtos</strong>
+                <small>Cadastrado</small>
+            </div>
+              <div class="card-body">
+                  @foreach ($vendas as $venda) 
+                  <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/deletarProduto/{$venda->idVenda}")}}">
+                    {{ csrf_field() }}
+                  <table class="table">
+                      <thead>
+                        <p>Seleciones os itens para deletar</p>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Produto</th>
+                          <th scope="col">Deletar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          
+                          @foreach ($venda->produtos as $value)
+                        <tr>
+                            <td>{{$value->idProduto}}</td>
+                            <td>{{$value->nome}}</td>
+                            <td><input type="checkbox" name="produtos[]" value="{{$value->idProduto}}" id=produtos[]></td>
+                          </tr>     
+                          @endforeach
+                                            
+                      </tbody>
+                      
+                      @endforeach 
+                  </table>
+                  <div class="text-right">
+                      <button type="submit" class="btn btn-danger" >Deletar</button>
+
+                    </div>
+                  </form>
+              </div>
+        </div>
+        
+        <div class="card">
+            
+          
             <div class="card-header">
                 <strong>Detalhes</strong>
                 <small>Cliente</small>
-              </div>
+            </div>
               <div class="card-body">
+
               @foreach ($vendas as $venda)
                 <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
                 {{ csrf_field() }}
                 <div class="form-group row">
-                    <div class="form-inline">                    
+                    <div class="form-inline"> 
+                        <label class="col-sm-2 col-form-label">Insira os produtos</label>                
                          <select class="form-control" id="nmProduto" style="max-width: 300px;" >
                            
                            <option value="">Selecione o Produto</option>
