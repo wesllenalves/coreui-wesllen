@@ -1,5 +1,5 @@
 <!-- Bootstrap and necessary plugins -->
-<script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+<!--script src="{{ asset('js/vendor/jquery.min.js') }}"></script-->
 <script src="{{ asset('js/vendor/popper.min.js') }}"></script>
 <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/vendor/pace.min.js') }}"></script>
@@ -11,7 +11,7 @@
 <script src="{{ asset('js/jquery.mask.min.js')}}"></script>
 <script src="{{ asset('node_modules/select2/dist/js/select2.min.js')}}"></script>
 <script src="{{ asset('js/codigoproduto.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.jquery.js" type="text/javascript"></script>
+<script src="{{ asset('js/chosen.jquery.js')}}" type="text/javascript"></script>
 
 	<script>
 		$(document).ready(function() {

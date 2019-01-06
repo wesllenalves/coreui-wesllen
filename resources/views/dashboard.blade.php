@@ -15,6 +15,7 @@
   <meta name="author" content="Łukasz Holeczek">
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
   <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Paletes Brasilia</title>
 
   <!-- Icons -->
@@ -27,6 +28,7 @@
   <!-- Styles required by this views -->
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.2/chosen.css">  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <!-- BODY options, add following classes to body to change options
 '.header-fixed' - Fixed Header

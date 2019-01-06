@@ -35,7 +35,7 @@ $("document").ready(function(){
           
           /* Adiciona a variável tb acima que contém os dados do produto no tbody da tabela.
              Estas informações são inseridas no final do tbody */
-          $("tbody").append(tb);
+          $("#produto-inserir").append(tb);
 
           /* Após inserção da linha do produto, os valores do pedido são atualizados */
           atualizaVlPedido();
@@ -115,5 +115,6 @@ $("document").ready(function(){
    $('#vlProduto').val(valor);
     });
    
+    
    
    }) 

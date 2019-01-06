@@ -13,10 +13,12 @@
                 <small>Cadastrado</small>
             </div>
               <div class="card-body">
-                  @foreach ($vendas as $venda) 
-                  <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/deletarProduto/{$venda->idVenda}")}}">
-                    {{ csrf_field() }}
-                  <table class="table">
+                <div class="recarrega">
+                  @foreach ($vendas as $venda)
+                  <form id="form">                
+                  
+                    <table class="table" >
+                        <input id="url" type="hidden" value="{{$venda->idVenda}}" name="url">
                       <thead>
                         <p>Seleciones os itens para deletar</p>
                         <tr>
@@ -25,13 +27,13 @@
                           <th scope="col">Deletar</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="produtos">
                           
                           @foreach ($venda->produtos as $value)
                         <tr>
                             <td>{{$value->idProduto}}</td>
                             <td>{{$value->nome}}</td>
-                            <td><input type="checkbox" name="produtos[]" value="{{$value->idProduto}}" id=produtos[]></td>
+                            <td><input type="checkbox" name="checks[]" value="{{$value->idProduto}}" id="pro"></td>
                           </tr>     
                           @endforeach
                                             
@@ -40,10 +42,11 @@
                       @endforeach 
                   </table>
                   <div class="text-right">
-                      <button type="submit" class="btn btn-danger" >Deletar</button>
+                      <input type="submit" class="btn btn-danger" value="Deletar">
 
                     </div>
                   </form>
+                </div>
               </div>
         </div>
         
@@ -61,6 +64,7 @@
                 {{ csrf_field() }}
                 <div class="form-group row">
                     <div class="form-inline"> 
+                      
                         <label class="col-sm-2 col-form-label">Insira os produtos</label>                
                          <select class="form-control" id="nmProduto" style="max-width: 300px;" >
                            
@@ -92,8 +96,8 @@
                            <th>Ação</th>
                          </tr>
                        </thead>
-                       <tbody>
-                       </tbody>
+                       <tbody id="produto-inserir">
+                       </tbody >
                        <tfoot class="invisible">
                          <tr>
                            <th></th>
@@ -207,6 +211,48 @@
         </div>
     </div>
 </div>
+@endsection
+@section('myscript')
+<script type="text/javascript">
+  
+$(document).ready(function(){
+    // o evento Ajax ocorrerá quando o usuário clicar no link
+  $("#form").on("submit", function(e){
+      e.preventDefault();
+      var Url = $("#url").val();
+      var tabela = $(this);
 
+      var checkeds = new Array();
+      $("input[name='checks[]']:checked").each(function ()
+      {
+        // valores inteiros usa-se parseInt
+        //checkeds.push(parseInt($(this).val()));
+        // string
+        checkeds.push( $(this).val());
+      });
+      
+      //setup para o cscrf do laravel
+      $.ajaxSetup({
+          beforeSend: function(xhr, type) {
+              if (!type.crossDomain) {
+                  xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+              }
+          },
+      });      
+      // agora iniciamos a requisição ajax
+      $.post({        
+          url: '/sample/orcamento/OrcamentoEditar/deletarProduto/'+Url,
 
+          async: true, // link de exemplo
+          data: { produto: ''+checkeds },      
+          success: function( data ) {
+            $("#form").html(data);
+          
+          
+          } 
+      });    
+  });
+});
+
+</script>
 @endsection

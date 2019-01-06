@@ -121,6 +121,60 @@ class ControllerOrcamento extends Controller
     
     public function deletarProduto(Request $request, $id)
     {
-        dd($request->all());
+        $venda = Venda::find($id);
+
+        $venda->produtos()->detach($request->produto);
+        $response = array("success" => true);
+
+        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+
+        
+        
+        
+        
+    
+
+        foreach ($vendas as  $venda) {
+
+        $resultado = 
+        
+        "<form id='form'>                
+                  
+        <table class='table' >
+            <input id='url' type='hidden' value='{$venda->idVenda}' name='url'>
+          <thead>
+            <p>Seleciones os itens para deletar</p>
+            <tr>
+              <th scope='col'>#</th>
+              <th scope='col'>Produto</th>
+              <th scope='col'>Deletar</th>
+            </tr>
+          </thead>
+          <tbody id='produtos'>"; 
+          
+          
+            foreach ($venda->produtos as $value){
+                
+                    $resultado .= "<tr>
+                    <td>{$value->idProduto}</td>
+                    <td>{$value->nome}</td>
+                    <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                </tr>  ";     
+              
+                }
+            }
+          
+          
+          
+            $resultado .="                
+          </tbody>  
+      </table>
+      <div class='text-right'>
+          <input type='submit' class='btn btn-danger' value='Deletar'>
+
+        </div>
+      </form>";
+    
+        return $resultado;
     }
 }
