@@ -9,7 +9,10 @@ class Venda extends Model
 {   
     //Nome da tabela.
     protected $table      = 'vendas';
+    
     protected $dates = ['dataEntrega'];
+
+    public  $timestamps   = true;
 
     //Primary Key da Tabela.
     protected $primaryKey = 'idVenda';

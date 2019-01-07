@@ -12,4 +12,6 @@ class Projetos extends Model
     protected $fillable = [
         'titulo', 'imagem', 'preco', 'status', 
     ]; 
+
+    public  $timestamps   = true;
 }

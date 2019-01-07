@@ -16,6 +16,8 @@ class User extends Authenticatable
      */
     //Nome da tabela.
     protected $table      = 'users';
+    
+    public  $timestamps   = true;
 
     //Primary Key da Tabela.
     protected $primaryKey = 'id';

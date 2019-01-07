@@ -15,4 +15,6 @@ class Lancamento extends Model
    protected $fillable = [
        'tipo', 'descricao', 'cliente', 'valor', 'data_vencimento', 'formaPgto', 'status', 'data_pagamento',  
    ]; 
+
+   public  $timestamps   = true;
 }
