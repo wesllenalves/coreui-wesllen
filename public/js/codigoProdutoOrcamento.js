@@ -1,3 +1,4 @@
+//trabalho feito exatamente para o formulario de orcamento
 $("document").ready(function(){
     /* Produto recebe o foco ao chamar o sistema */
     $("#nmProduto").chosen().trigger('chosen:activate');

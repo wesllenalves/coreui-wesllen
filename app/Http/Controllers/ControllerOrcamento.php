@@ -54,8 +54,6 @@ class ControllerOrcamento extends Controller
 
     public function editarSalvar(Request $request, $id)
     {   
-       
-        
         //traz todos os aray dos inputes e armazena em variaveis
         $produtos = $request->idProduto;
         $quantidade = $request->qtdProduto;
@@ -63,17 +61,13 @@ class ControllerOrcamento extends Controller
         //procurar saber se esse produto ja foi cadastrado anteriomente
         $verificacao = Produtos_vendas::where('id_venda',  $id)
         ->whereIn('id_produto', $produtos)
-        ->exists();
-        
-        
+        ->exists();   
 
         //verifica se a variavel traz valor boolean true se existir retorna uma mensagem
         if( $verificacao == TRUE){
             return redirect('/sample/orcamento/editar/'.$id)->with(['error' => 'Já existe dados iguais cadastrados.Para não obter dados duplicados apague todos os produtos é insira com todos os produtos pretendidos']);
             
-        }
-
-        
+        }        
        
         $dataForm = [
             "FkUsers" => $request->FkUsers,
@@ -126,14 +120,7 @@ class ControllerOrcamento extends Controller
 
         $venda->produtos()->detach($request->produto);
         $response = array("success" => true);
-
         $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
-
-        
-        
-        
-        
-    
 
         foreach ($vendas as  $venda) {
 

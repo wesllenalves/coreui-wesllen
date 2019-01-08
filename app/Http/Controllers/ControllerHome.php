@@ -40,9 +40,7 @@ class ControllerHome extends Controller
  
     public function orcamento(Request $request)
     {  
-        //Faz o cadastro do usuario retornando o id do usuario cadastrado
-
-        
+        //Faz o cadastro do usuario retornando o id do usuario cadastrado       
 
         $produtos = $request->idProduto;
         $quantidade = $request->qtdProduto;
