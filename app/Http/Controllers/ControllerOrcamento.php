@@ -60,13 +60,14 @@ class ControllerOrcamento extends Controller
         $produtos = $request->idProduto;
         $quantidade = $request->qtdProduto;
         $valores = $request->valorProduto;
+        //procurar saber se esse produto ja foi cadastrado anteriomente
         $verificacao = Produtos_vendas::where('id_venda',  $id)
         ->whereIn('id_produto', $produtos)
         ->exists();
         
         
 
-
+        //verifica se a variavel traz valor boolean true se existir retorna uma mensagem
         if( $verificacao == TRUE){
             return redirect('/sample/orcamento/editar/'.$id)->with(['error' => 'Já existe dados iguais cadastrados.Para não obter dados duplicados apague todos os produtos é insira com todos os produtos pretendidos']);
             

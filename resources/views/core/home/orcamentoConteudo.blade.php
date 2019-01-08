@@ -54,17 +54,57 @@
 			  <div class="col-sm-6">
 				<label for="complemento">Complemento</label>
 				<input type="text" class="form-control" name="complemento" id="complemento" value="">
-			  </div>
-			  <div class="col-sm-6">
-							<label  for="select">Produto</label>
-									<select id="select" name="FKProdutos[]" class="form-control js-select2-multiple" multiple="multiple">
-										<option value="">Selecione o Produto</option>
-											@foreach($produtos as $produto)													
-											<option value="{{$produto->idProduto}}">{{$produto->nome}}</option>
-											@endforeach
-									</select>
+				</div>
+			</div>
+
+			  <div class="col-sm-12">
+					<div class="form-inline"> 
+                      
+						<label class="col-sm-2 col-form-label">Selecione os produtos</label>                
+						 <select class="form-control" id="nmProduto" style="max-width: 300px;" >
+							 
+							 <option value="">Selecione o Produto</option>
+							 @foreach ($produtos as $produto)
+
+								<option  value="{{$produto->idProduto}}" data-param="{{$produto->valorMedio}}">{{$produto->nome}}</option>
+									
+						
+							@endforeach
+							
+						 </select>
+
+						 <label class="sr-only" for="inlineFormInput">Quantidade</label>
+						 <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0 m3-sm-4" id="qtProduto" placeholder="Quant" style="width:70px">
+						 
+						 <button type="button" class="btn btn-primary" id="btnAdicionarProduto">+</button>
+						 <p class="text-danger ml-3 pt-2 invisible" id="msgValidaForm">Favor preencher <strong>todos os campos</strong> do produto!</p>
+						 
+				 
+				 <table class="table table-sm table-striped mt-3 table-produtos">
+					 <thead>
+						 <tr>
+							 <th style="max-width: 600px;">Produto</th>
+							 <th>Quantidade</th>							 
+							 <th>Ação</th>
+						 </tr>
+					 </thead>
+					 <tbody id="produto-inserir">
+					 </tbody >
+					 <tfoot class="invisible">
+						 <tr>
+							 <th></th>
+							 <th></th>							 
+							 <th></th>
+							 
+						 </tr>
+						 
+					 </tfoot>
+					 
+				 </table>
+				 
+				</div>
 					</div>
-			  </div>
+			  
 				<div class="form-group row">				
                       <div class="col-sm-12">
 					  <label  for="textarea-input">Descricao do Orçamento</label><span id="text-requerid">*</span>

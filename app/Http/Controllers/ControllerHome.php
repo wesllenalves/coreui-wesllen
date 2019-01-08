@@ -41,6 +41,12 @@ class ControllerHome extends Controller
     public function orcamento(Request $request)
     {  
         //Faz o cadastro do usuario retornando o id do usuario cadastrado
+
+        
+
+        $produtos = $request->idProduto;
+        $quantidade = $request->qtdProduto;
+
         $data =   date('Y-m-d H:i');
         $senha = md5($data);
         $usuarios = new User;
@@ -61,18 +67,29 @@ class ControllerHome extends Controller
         $updateVenda = $venda->save();
         $id = $venda->idVenda;
 
-        dd($request->FkProdutos);
+        
         //faz o cadastro na tabela pivo produtos_vendas
         $vendas = Venda::find($id);
-        $insertPivot = $vendas->produtos()->sync($request->FkProdutos);
 
+        $attributes = [];   
+        foreach($produtos as  $index => $produ)
+        {
+            // cria o array com indece da tabela
+            $attributes = [
+               'id_produto' => $produ,
+               'qtd' => $quantidade[$index]               
+            ];
+            //grava s produtos na tabela pivo
+            $produto = $venda->produtos()->attach([$id => $attributes]);
+            
+        }
         //se tudo ocorrer bem retorna para a rotar trazendo um mensagem de sucesso caso contratio
         //retorn mensagem de error
-        if($updateUsuario && $updateVenda && $insertPivot)
+        if($updateUsuario && $updateVenda)
         {
             return redirect('/#orcamento')->with(['success' => 'Parabéns Seu pedido foi feito. Logo entraremos em contato']);
         }else{
-            return redirect()->route('/#orcamento')->with(['errors' => 'Falha ao inserir orcamento']);
+            return redirect()->route('/#orcamento')->with(['error' => 'Falha ao inserir orcamento']);
         }
     }
 }

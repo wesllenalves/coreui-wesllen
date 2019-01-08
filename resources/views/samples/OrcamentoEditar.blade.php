@@ -18,7 +18,7 @@
                   <form id="form">                
                   
                     <table class="table" >
-                        <input id="url" type="hidden" value="{{$venda->idVenda}}" name="url">
+                        <input id="id" type="hidden" value="{{$venda->idVenda}}" name="id">
                       <thead>
                         <p>Seleciones os itens para deletar</p>
                         <tr>
@@ -50,9 +50,7 @@
               </div>
         </div>
         
-        <div class="card">
-            
-          
+        <div class="card">  
             <div class="card-header">
                 <strong>Detalhes</strong>
                 <small>Cliente</small>
@@ -219,7 +217,7 @@ $(document).ready(function(){
     // o evento Ajax ocorrerá quando o usuário clicar no link
   $("#form").on("submit", function(e){
       e.preventDefault();
-      var Url = $("#url").val();
+      var id = $("#id").val();
       var tabela = $(this);
 
       var checkeds = new Array();
@@ -241,7 +239,7 @@ $(document).ready(function(){
       });      
       // agora iniciamos a requisição ajax
       $.post({        
-          url: '/sample/orcamento/OrcamentoEditar/deletarProduto/'+Url,
+          url: '/sample/orcamento/OrcamentoEditar/deletarProduto/'+ id,
 
           async: true, // link de exemplo
           data: { produto: ''+checkeds },      

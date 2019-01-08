@@ -1,9 +1,12 @@
 	
-<script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+	
 	<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.slicknav.js"></script>
 	<script src="node_modules/select2/dist/js/select2.min.js"></script>
+	<script src="{{ asset('js/jquery.mask.min.js')}}"></script>
+	<script src="{{ asset('js/codigoProdutoOrcamento.js')}}"></script>
+	<script src="{{ asset('js/chosen.jquery.js')}}" type="text/javascript"></script>
 	
 
 	<script>
