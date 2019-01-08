@@ -9,4 +9,6 @@ class Lucro_Mensal extends Model
     protected $fillable = [
         'fkVenda','mes', 'ano', 'lucroTotal',
     ];
+
+    public  $timestamps   = true;
 }

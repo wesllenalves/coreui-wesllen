@@ -21,9 +21,7 @@ class ProdutosVendas extends Migration
             $table->foreign('id_produto')->references('idProduto')->on('produtos')->onDelete('cascade');
             $table->string('qtd',255)->nullable();
             $table->string('valor', 255)->nullable();
-                
-                
-                $table->timestamps();
+            $table->timestamps();
             
         });
     }
