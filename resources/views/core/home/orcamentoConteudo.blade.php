@@ -75,7 +75,7 @@
 
 						 <label class="sr-only" for="inlineFormInput">Quantidade</label>
 						 <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0 m3-sm-4" id="qtProduto" placeholder="Quant" style="width:70px">
-						 
+						 <input type="hidden" class="form-control mb-2 mr-sm-2 mb-sm-0" id="vlProduto" placeholder="Valor (R$)" style="width:98px" readonly>
 						 <button type="button" class="btn btn-primary" id="btnAdicionarProduto">+</button>
 						 <p class="text-danger ml-3 pt-2 invisible" id="msgValidaForm">Favor preencher <strong>todos os campos</strong> do produto!</p>
 						 
@@ -95,6 +95,7 @@
 							 <th></th>
 							 <th></th>							 
 							 <th></th>
+							 <th><input class='form-control col-4' id='vlTotalPedido' type='hidden' value='' name='valorTotal' readonly></th>
 							 
 						 </tr>
 						 

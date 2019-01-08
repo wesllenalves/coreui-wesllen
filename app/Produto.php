@@ -10,6 +10,8 @@ class Produto extends Model
     protected $table      = 'produtos';
 
     protected $primaryKey = 'idProduto';
+    
+    public  $timestamps   = true;
 
     protected $fillable = [
         'nome', 'medidas', 'descricao', 'valorMedio',

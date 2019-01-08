@@ -29,14 +29,17 @@ $("document").ready(function(){
 
           /* preenchendo informações na variável tb para inserção no tbody da tabela */
           tb = "<tr><td><input class='form-control col-10' type='text' value='" + $("#nmProduto option:selected").text() + "'  readonly><input class='form-control col-10' type='hidden' value='" + $("#nmProduto").val() + "' name='idProduto[]' readonly></td>" +
-               "<td style='width:20px;'><input class='form-control col-3' type='text' value='" + $("#qtProduto").val() + "' name='qtdProduto[]' readonly></td>" +      
+               "<td style='width:20px;'><input class='form-control col-3' type='text' value='" + $("#qtProduto").val() + "' name='qtdProduto[]' readonly></td>" +
+               "<td class=\"pr-5\" style='display:none'><input class='form-control col-4' type='hidden' value='" + ($("#vlProduto").val() * 1).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
+               "<td class=\"pr-5\" style='display:none'>" + ( $("#vlProduto").val() * $("#qtProduto").val() ).toFixed(2) + "</td>" +
                "<td><button class=\"btn btn-light btn-sm delete text-danger\">✖</button></td></tr>";
           
           /* Adiciona a variável tb acima que contém os dados do produto no tbody da tabela.
              Estas informações são inseridas no final do tbody */
           $("#produto-inserir").append(tb);
 
-          
+            /* Após inserção da linha do produto, os valores do pedido são atualizados */
+            atualizaVlPedido();
 
           /* Se existir mais que 1 item no pedido, é removido a classe 
              invisible do foot da tabela, mostrando assim o valor total do pedido */
@@ -63,7 +66,8 @@ $("document").ready(function(){
        if($(".table-produtos tbody tr").length === 0)
           $(".table-produtos tfoot").addClass("invisible");
        
-       
+       /* Após exclusão da linha, os valores do pedido são atualizados */
+       atualizaVlPedido();
     })
 
     /* Validação do Formulário */
@@ -89,6 +93,19 @@ $("document").ready(function(){
           return true;
     }
 
+    /* Atualiza Valor Total do Pedido */
+    function atualizaVlPedido()
+    {
+       /* Define o valor do pedido */
+       var vlTotalPedido = 0;
+
+       /* Varre todos os valores dos produtos da tabela */
+       $(".table-produtos tbody tr td:nth-child(4)").each(function() {
+          vlTotalPedido += parseFloat($(this).text());
+       })
+       /* Atualiza o valor do pedido na tabela */
+       $("#vlTotalPedido").val(vlTotalPedido.toFixed(2));
+    }
     
 
     $('#nmProduto').change(function () {

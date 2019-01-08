@@ -44,6 +44,9 @@ class ControllerHome extends Controller
 
         $produtos = $request->idProduto;
         $quantidade = $request->qtdProduto;
+        $valores = $request->valorProduto;
+
+        //dd($request->all());
 
         $data =   date('Y-m-d H:i');
         $senha = md5($data);
@@ -62,6 +65,7 @@ class ControllerHome extends Controller
         $venda = new Venda;
         $venda->FKUsers = $id;
         $venda->descricao = $request->descricao;        
+        $venda->valorTotal = $request->valorTotal;        
         $updateVenda = $venda->save();
         $id = $venda->idVenda;
 
@@ -70,17 +74,21 @@ class ControllerHome extends Controller
         $vendas = Venda::find($id);
 
         $attributes = [];   
+         
         foreach($produtos as  $index => $produ)
         {
             // cria o array com indece da tabela
             $attributes = [
                'id_produto' => $produ,
-               'qtd' => $quantidade[$index]               
+               'qtd' => $quantidade[$index],
+               'valor' => $valores[$index]
             ];
+
             //grava s produtos na tabela pivo
             $produto = $venda->produtos()->attach([$id => $attributes]);
             
         }
+         
         //se tudo ocorrer bem retorna para a rotar trazendo um mensagem de sucesso caso contratio
         //retorn mensagem de error
         if($updateUsuario && $updateVenda)
