@@ -12,21 +12,10 @@ use Faker\Provider\zh_CN\DateTime;
 
 class ControllerHome extends Controller
 {
-    //
     
-    
- 
     public function home(Request $request)
     {   
-       /*$dataForm = [1,2];
-        $vendas = Venda::find(1);
-        echo "<b>".$vendas->usuario->name."</b><br>";
-        $criar =  $vendas->produtos()->sync($dataForm);
-        
-        $produtos = $vendas->produtos;
-        foreach ($produtos as $produto) {
-            echo " {$produto->nome}, ";
-        }*/ 
+       
         //retorna as imagens da galeria
         $galerias = Projetos::where('status', '=', 'galeria')->get()->toArray();
         $principais = Projetos::where('status', '=', 'principal')->get();
@@ -39,15 +28,13 @@ class ControllerHome extends Controller
     }
  
     public function orcamento(Request $request)
-    {  
-        //Faz o cadastro do usuario retornando o id do usuario cadastrado       
-
+    {                 
+        //instancia a variaveis com os arrays vindo do formulario
         $produtos = $request->idProduto;
         $quantidade = $request->qtdProduto;
         $valores = $request->valorProduto;
 
-        //dd($request->all());
-
+        //Faz o cadastro do usuario retornando o id do usuario cadastrado
         $data =   date('Y-m-d H:i');
         $senha = md5($data);
         $usuarios = new User;
@@ -68,25 +55,24 @@ class ControllerHome extends Controller
         $venda->valorTotal = $request->valorTotal;        
         $updateVenda = $venda->save();
         $id = $venda->idVenda;
-
         
         //faz o cadastro na tabela pivo produtos_vendas
         $vendas = Venda::find($id);
 
+        //instancia uma variavel de array vazia
         $attributes = [];   
-         
+        //percorer os arrays com um laco de repetição 
         foreach($produtos as  $index => $produ)
         {
-            // cria o array com indece da tabela
+            // cria o array com indice da tabela
             $attributes = [
                'id_produto' => $produ,
                'qtd' => $quantidade[$index],
                'valor' => $valores[$index]
             ];
 
-            //grava s produtos na tabela pivo
-            $produto = $venda->produtos()->attach([$id => $attributes]);
-            
+            //grava os produtos na tabela pivo
+            $produto = $venda->produtos()->attach([$id => $attributes]);            
         }
          
         //se tudo ocorrer bem retorna para a rotar trazendo um mensagem de sucesso caso contratio

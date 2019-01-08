@@ -13,7 +13,7 @@ class ControllerOrcamento extends Controller
 {
     private $venda;
     public function __construct(Venda $venda){
-        $this->venda = $venda;
+        $this->venda                  = $venda;
     }
 
     public function index()
@@ -29,20 +29,20 @@ class ControllerOrcamento extends Controller
 
     public function visualizar($id)
     {
-        $vendas = $this->venda->with('usuario', 'produto')->where('idVenda', '=', $id)->get();
+        $vendas                       = $this->venda->with('usuario', 'produto')->where('idVenda', '=', $id)->get();
         
         return view('samples.OrcamentoVisualizar', ['vendas' => $vendas]);
     }
 
     public function editar($id)
     {   
-        $produtos = Produto::select('idProduto','nome','valorMedio')->get();
+        $produtos                     = Produto::select('idProduto','nome','valorMedio')->get();
 
         //$pivos = Produtos_vendas::where('id_venda', $id)->get();
 
-        $users = User::select('id','name')->get();
+        $users                        = User::select('id','name')->get();
         //dd($users);
-        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+        $vendas                       = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
         
         
         
@@ -55,11 +55,11 @@ class ControllerOrcamento extends Controller
     public function editarSalvar(Request $request, $id)
     {   
         //traz todos os aray dos inputes e armazena em variaveis
-        $produtos = $request->idProduto;
-        $quantidade = $request->qtdProduto;
-        $valores = $request->valorProduto;
+        $produtos                     = $request->idProduto;
+        $quantidade                   = $request->qtdProduto;
+        $valores                      = $request->valorProduto;
         //procurar saber se esse produto ja foi cadastrado anteriomente
-        $verificacao = Produtos_vendas::where('id_venda',  $id)
+        $verificacao                  = Produtos_vendas::where('id_venda',  $id)
         ->whereIn('id_produto', $produtos)
         ->exists();   
 
@@ -86,9 +86,9 @@ class ControllerOrcamento extends Controller
         ];
         
 
-        $venda = Venda::find($id);        
+        $venda                        = Venda::find($id);
         
-        $attributes = [];   
+        $attributes                   = [];
         foreach($produtos as  $index => $produ)
         {
              /// cria o array com indece da tabela
@@ -98,7 +98,7 @@ class ControllerOrcamento extends Controller
                'valor' => $valores[$index]
             ];
             //grava s produtos na tabela pivo
-            $produto = $venda->produtos()->attach([$id => $attributes]);
+            $produto                  = $venda->produtos()->attach([$id => $attributes]);
                       
         }     
             
@@ -116,29 +116,29 @@ class ControllerOrcamento extends Controller
     
     public function deletarProduto(Request $request, $id)
     {
-        $venda = Venda::find($id);
+        $venda                        = Venda::find($id);
 
         $venda->produtos()->detach($request->produto);
-        $response = array("success" => true);
-        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+        $response                     = array("success" => true);
+        $vendas                       = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
 
         foreach ($vendas as  $venda) {
 
-        $resultado = 
+        $resultado                    = 
         
-        "<form id='form'>                
+        "<form id                      'form'>
                   
-        <table class='table' >
-            <input id='url' type='hidden' value='{$venda->idVenda}' name='url'>
+        <table class                   'table' >
+            <input id                  'url' type='hidden' value='{$venda->idVenda}' name='url'>
           <thead>
             <p>Seleciones os itens para deletar</p>
             <tr>
-              <th scope='col'>#</th>
-              <th scope='col'>Produto</th>
-              <th scope='col'>Deletar</th>
+              <th scope                'col'>#</th>
+              <th scope                'col'>Produto</th>
+              <th scope                'col'>Deletar</th>
             </tr>
           </thead>
-          <tbody id='produtos'>"; 
+          <tbody id                    'produtos'>";
           
           
             foreach ($venda->produtos as $value){
@@ -146,7 +146,7 @@ class ControllerOrcamento extends Controller
                     $resultado .= "<tr>
                     <td>{$value->idProduto}</td>
                     <td>{$value->nome}</td>
-                    <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                    <td><input type'checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
                 </tr>  ";     
               
                 }
@@ -154,11 +154,11 @@ class ControllerOrcamento extends Controller
           
           
           
-            $resultado .="                
+            $resultado .= "
           </tbody>  
       </table>
-      <div class='text-right'>
-          <input type='submit' class='btn btn-danger' value='Deletar'>
+      <div class                       'text-right'>
+          <input type                  'submit' class='btn btn-danger' value='Deletar'>
 
         </div>
       </form>";

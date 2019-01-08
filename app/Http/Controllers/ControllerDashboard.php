@@ -11,9 +11,9 @@ class ControllerDashboard extends Controller
 {
     public function dashboard(User $user, Produto $produto, Venda $venda)
     {
-        $usuario = $user->where('perfil', '=', 'Cliente')->get()->count();
-        $produtos = $produto->get()->count();
-        $compras = $venda->where('statusVenda', '=', 'Fechado')->get()->count();
+        $usuario    = $user->where('perfil', '=', 'Cliente')->get()->count();
+        $produtos   = $produto->get()->count();
+        $compras    = $venda->where('statusVenda', '=', 'Fechado')->get()->count();
         $orcamentos = $venda->with('usuario', 'produto')
             ->where(function ($query)
                 {

@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\DB;
 class ControllerVendas extends Controller
 {   
     private $venda;
-    private $totalPage = 5;
+    private $totalPage    = 5;
     public function __construct(Venda $venda){
-        $this->venda = $venda;
+        $this->venda      = $venda;
     }
 
     public function index()
     {   
-        $vendas = Venda::with('usuario', 'produto')
+        $vendas           = Venda::with('usuario', 'produto')
         ->where(function ($query) {
             $query->where('statusVenda', '<>', 'Orcamento')
             ->Where('statusVenda', '<>', 'Negociando');
@@ -31,12 +31,12 @@ class ControllerVendas extends Controller
     {   
         
 
-        $usuarios = DB::table('users')->get();
+        $usuarios         = DB::table('users')->get();
         
-        $produtos = DB::table('produtos')->select('idProduto', 'nome')->get();
+        $produtos         = DB::table('produtos')->select('idProduto', 'nome')->get();
         
         
-        $vendas = $this->venda
+        $vendas           = $this->venda
         ->with('usuario', 'produto')
         ->where('idVenda', $id)
         ->get();
@@ -50,9 +50,9 @@ class ControllerVendas extends Controller
     
     public function editar(Request $request, $id)
     {
-        $dataForm = $request->all();
-        $venda = $this->venda->find($id);
-        $update = $venda->update($dataForm);        
+        $dataForm         = $request->all();
+        $venda            = $this->venda->find($id);
+        $update           = $venda->update($dataForm);
         /** faz a verificação para decidir para qual rota direcionar */
         if($update)
         {
@@ -64,8 +64,8 @@ class ControllerVendas extends Controller
     
      public function deletar($id)
     {
-        $venda = $this->venda->find($id);
-        $deletar = $venda->delete();        
+        $venda            = $this->venda->find($id);
+        $deletar          = $venda->delete();
         /** faz a verificação para decidir para qual rota direcionar */
         if($deletar)
         {

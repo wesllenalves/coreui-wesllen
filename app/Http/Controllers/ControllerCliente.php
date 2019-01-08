@@ -11,19 +11,19 @@ use App\Http\Requests\ClienteFormRequest;
 class ControllerCliente extends Controller
 {
     private $user;
-    private $totalPage = 5;
+    private $totalPage    = 5;
 
     /* ================================== Metodo de Construtor ================================================== */
     public function __construct(User $user)
     {
-        $this->user = $user;
+        $this->user       = $user;
     }
 
     /* ======================= Metodo de renderização da VieW com todos os  clientes ============================= */
     public function index() 
     {   
         /** traz todos os dados existente na model*/
-        $users = $this->user->where('perfil', 'Cliente')->paginate($this->totalPage);
+        $users            = $this->user->where('perfil', 'Cliente')->paginate($this->totalPage);
         /** retorna a view com todos os dados encontrado */
         return view('samples.ClienteIndex', ['users' => $users]);
     }
@@ -32,7 +32,7 @@ class ControllerCliente extends Controller
     public function cliente($id)
     {   
         /**traz somente os dados do id especifico*/
-        $clientes = DB::table('users')->where('id', $id)->get();
+        $clientes         = DB::table('users')->where('id', $id)->get();
         /** retorna a view com os dados do usuarios achado */
         return view('samples.ClienteVisualizar', ['clientes' => $clientes]);
     }
@@ -41,7 +41,7 @@ class ControllerCliente extends Controller
     public function clienteEditar($id)
     {   
         /**traz somente os dados do id especifico*/
-        $clientes = DB::table('users')->where('id', $id)->get();
+        $clientes         = DB::table('users')->where('id', $id)->get();
         /** retorna a view com os dados do usuarios achado */
         return view('samples.ClienteEditar', ['clientes' => $clientes]);
     }
@@ -50,11 +50,11 @@ class ControllerCliente extends Controller
     public function editar(Request $request, $id)
     {   
         /**traz todos os dados vindo do formulario de atualização*/
-        $dataForm = $request->all();
+        $dataForm         = $request->all();
         /** retorna para a variavel o usuario especifico do id */
-        $user = $this->user->find($id);
+        $user             = $this->user->find($id);
         /** realiza o update com os dados do formulario */
-        $update = $user->update($dataForm);        
+        $update           = $user->update($dataForm);
         /** faz a verificação para decidir para qual rota direcionar */
         if($update)
         {
@@ -73,14 +73,14 @@ class ControllerCliente extends Controller
     /* ============================== Metodo de Inserção de clientes ======================================= */
     public function adicionarCliente(ClienteFormRequest $request){
         /** recuperando os dados vindo do formulario e ignorando o campo de token */
-       $dataFrom = $request->except('_token');
+       $dataFrom          = $request->except('_token');
       
        
        /**usando help para fazer a validação, trazendo as regras da model USER */
        //$this->validate($request, $this->user->rules, $messages);
        /** inserindo os dados do formulario no banco */
 
-       $insert = User::create($dataFrom);
+       $insert            = User::create($dataFrom);
        /** faz a verificação para decidir para qual rota direcionar */
        if($insert)
        {
@@ -93,9 +93,9 @@ class ControllerCliente extends Controller
     /* ============================== Metodo de Delete de clientes ======================================= */
     public function deletar($id){
         /** recupera os dados do id especifico */
-        $user = $this->user->find($id);
+        $user             = $this->user->find($id);
         /** realiza a remoção dos dados do cliente achado */
-        $delete =  $user->delete();
+        $delete           = $user->delete();
         /** faz a verificação para decidir para qual rota direcionar */
         if($delete)
         {

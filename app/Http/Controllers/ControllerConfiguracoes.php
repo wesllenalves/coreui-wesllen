@@ -15,26 +15,26 @@ class ControllerConfiguracoes extends Controller
 {
     public function usuarios()
     {
-        $usuarios = User::all();
+        $usuarios               = User::all();
         return view('samples.ConfiguracoesUsuario', ['usuarios' => $usuarios]);
     }
 
     public function imgPrincipal()
     {
-        $projetos = Projetos::where('status', '=', 'principal')->get();
+        $projetos               = Projetos::where('status', '=', 'principal')->get();
         return view('samples.ConfiguracoesImgPrincipal', ['projetos' => $projetos]);
     }
 
     public function upload(Request $request)
     {
-        $projetos = new Projetos;
+        $projetos               = new Projetos;
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
             
-            $imagem = $request->file('image');
-            $ImageName =  $imagem->getClientOriginalName();
+            $imagem             = $request->file('image');
+            $ImageName          = $imagem->getClientOriginalName();
             
-            $extenstion = $imagem->getClientOriginalExtension();
+            $extenstion         = $imagem->getClientOriginalExtension();
             
             if($extenstion != 'jpg'  && $extenstion != 'jpeg' && $extenstion != 'png')
             {
@@ -43,7 +43,7 @@ class ControllerConfiguracoes extends Controller
             }
 
            //$caminho = File::move($imagemRed, public_path().'/storage/principal/'.$ImageName);
-           $save_path= public_path().'/storage/principal/';
+           $save_path           = public_path().'/storage/principal/';
            
             
 
@@ -53,7 +53,7 @@ class ControllerConfiguracoes extends Controller
 
 
 
-           $img = Image::make(
+           $img                 = Image::make(
                             $request->file('image'))
                             ->resize(464, 660)
                             ->save($save_path.$ImageName
@@ -62,10 +62,10 @@ class ControllerConfiguracoes extends Controller
           
                                 // $caminho = File::move($img, );
 
-           $projetos->titulo = 'teste';
-           $projetos->status = 'principal';
-           $projetos->imagem =  $ImageName;
-           $insert = $projetos->save();
+           $projetos->titulo    = 'teste';
+           $projetos->status    = 'principal';
+           $projetos->imagem    = $ImageName;
+           $insert              = $projetos->save();
 
            if($insert){
             return redirect('/sample/img/principal')->with('mensagem', 'Upload da imagem realizado com sucesso');
@@ -75,21 +75,21 @@ class ControllerConfiguracoes extends Controller
 
     public function imgEditar(Request $request, $id)
     {
-        $projetos = new Projetos;
+        $projetos               = new Projetos;
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
-            $imagem = $request->file('image');$name = $request->file('image');
-            $ImageName =  $imagem->getClientOriginalName();
-            $extenstion = $imagem->getClientOriginalExtension();
+            $imagem             = $request->file('image');$name = $request->file('image');
+            $ImageName          = $imagem->getClientOriginalName();
+            $extenstion         = $imagem->getClientOriginalExtension();
             
             if($extenstion != 'jpg'  && $extenstion != 'jpeg' && $extenstion != 'png')
             {
                 return back()->withErrors(['valide'=>'Formato de imagem invalido. Os formatos suportados são: JPG JPEG PNG']);
             }
 
-            $img = Projetos::find($id);
+            $img                = Projetos::find($id);
             
-            $status = unlink('storage/principal/'.$img->imagem);
+            $status             = unlink('storage/principal/'.$img->imagem);
 
             Image::make(
                                 $request->file('image'))
@@ -103,7 +103,7 @@ class ControllerConfiguracoes extends Controller
                 'imagem' => $ImageName                
             ];
 
-            $update = $img->update($dados);
+            $update             = $img->update($dados);
 
             return back()
                     ->with('mensagem', 'Sucesso: Imagem editada com sucesso');
@@ -119,8 +119,8 @@ class ControllerConfiguracoes extends Controller
         // Deleta o registro do usuário
     if ( $imgens->delete() ) {
         // Deleta a imagem (Não esqueça: use Illuminate\Support\Facades\Storage;)
-        $path_deletar = "principal/{$imgens->imagem}";        
-        $deleta =  Storage::delete($path_deletar); // true ou falses
+        $path_deletar           = "principal/{$imgens->imagem}";
+        $deleta                 = Storage::delete($path_deletar); // true ou falses
         // Redireciona, informando que deu tudo certo!
         return redirect('/sample/img/principal')
         ->with('mensagem', 'Sucesso imagem deletada!');
