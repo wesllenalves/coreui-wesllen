@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Venda;
 use App\Produto;
 use App\User;
+use Response;
 use App\Produtos_vendas;
 use Illuminate\Support\Facades\DB;
 
@@ -45,9 +46,10 @@ class ControllerOrcamento extends Controller
         $vendas                       = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
         
         
-        
 
-        return view('samples.OrcamentoEditar', ['vendas' => $vendas, 'produtos' => $produtos, 'users' => $users]);
+       
+
+       return view('samples.OrcamentoEditar', ['vendas' => $vendas, 'produtos' => $produtos, 'users' => $users]);
 
         
     }
@@ -122,7 +124,11 @@ class ControllerOrcamento extends Controller
         $response                     = array("success" => true);
         $vendas                       = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
 
-        foreach ($vendas as  $venda) {
+        
+       
+
+
+       foreach ($vendas as  $venda) {
 
         $resultado                    = 
         

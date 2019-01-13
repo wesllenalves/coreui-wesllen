@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function() {
 	Route::get('/sample/orcamento/visualizar/{id}', 'ControllerOrcamento@visualizar');
 	Route::get('/sample/orcamento/editar/{id}', 'ControllerOrcamento@editar');
 	Route::post('/sample/orcamento/OrcamentoEditar/{id}', 'ControllerOrcamento@editarSalvar');
-	Route::post('/sample/orcamento/OrcamentoEditar/deletarProduto/{id}', 'ControllerOrcamento@deletarProduto');
+	Route::any('/sample/orcamento/OrcamentoEditar/deletarProduto/{id}', 'ControllerOrcamento@deletarProduto');
 	Route::get('/sample/orcamento/deletar/{id}', 'ControllerOrcamento@deletar');
 	/*filtro de pesquisa */
 	Route::any('/sample/filtro/financeiro', 'ControllerFiltroPesquisa@pesquisarFinanceiro');

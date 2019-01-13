@@ -119,21 +119,26 @@ $("document").ready(function(){
    
    }) 
    // function Edit POST
-   $(document).on('click', '.edit-modal', function() {
-   $('#footer_action_button').text(" Update Post");
-   $('#footer_action_button').addClass('glyphicon-check');
-   $('#footer_action_button').removeClass('glyphicon-trash');
-   $('.actionBtn').addClass('btn-success');
-   $('.actionBtn').removeClass('btn-danger');
-   $('.actionBtn').addClass('edit');
-   $('.modal-title').text('Post Edit');
-   $('.deleteContent').hide();
-   $('.form-horizontal').show();
-   $('#fid').val($(this).data('id'));
-   $('#t').val($(this).data('title'));
-   $('#b').val($(this).data('body'));
-   $('#myModal').modal('show');
-   });
+   
+
+
+   $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipientqtd = button.data('qtd') // Extract info from data-* attributes
+      var recipientidProduto = button.data('idproduto') // Extract info from data-* attributes
+      var recipientidPivo = button.data('idpivo') // Extract info from data-* attributes
+      var titulo = "Editando quantidade"
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text(titulo)
+      modal.find('.modal-body input[id=recipient-qtd]').val(recipientqtd)
+      modal.find('.modal-body input[id=recipient-idProduto]').val(recipientidProduto)
+      modal.find('.modal-body input[id=recipient-idPivo]').val(recipientidPivo)
+      console.log(recipientidPivo)
+    })
+
+
    
    $('.modal-footer').on('click', '.edit', function() {
      $.ajax({
