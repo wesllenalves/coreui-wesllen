@@ -117,7 +117,7 @@ $("document").ready(function(){
    
     
    
-   }) 
+   
    // function Edit POST
    
 
@@ -140,7 +140,7 @@ $("document").ready(function(){
 
 
    
-   $('.modal-footer').on('click', '.edit', function() {
+   /*$('.modal-footer').on('click', '.edit', function() {
      $.ajax({
        type: 'POST',
        url: 'editPost',
@@ -161,4 +161,6 @@ $("document").ready(function(){
          "</tr>");
        }
      });
-   });
+   });*/
+
+});

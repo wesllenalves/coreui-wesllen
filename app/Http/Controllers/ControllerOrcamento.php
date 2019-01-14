@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Venda;
 use App\Produto;
 use App\User;
-use Response;
 use App\Produtos_vendas;
 use Illuminate\Support\Facades\DB;
 
@@ -170,5 +169,23 @@ class ControllerOrcamento extends Controller
       </form>";
     
         return $resultado;
+    }
+
+    public function QtdProduto(Request $request)
+    {
+       // dd($request->all());
+        $dataForm = [
+        "qtd" => $request->qtd,
+        ];
+       $pivo =  Produtos_vendas::find($request->id);
+       
+       $update = $pivo->update($dataForm);
+       
+       //dd($update);
+       if($update){
+        return redirect('/sample/orcamento');
+       }else{
+        return redirect('/sample/orcamento');
+       }
     }
 }

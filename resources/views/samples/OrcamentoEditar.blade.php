@@ -34,11 +34,12 @@
                           
                           @foreach ($venda->produtos as $value)
                         <tr>        
-                            {{$value->pivot}}                   
+                            {{-- $value->pivot --}}                   
                             <td>{{$value->idProduto}}</td>
                             <td>{{$value->nome}}</td>
                             <td>
                               <!--Editando modal-->
+                              <input type="number" class="form col-2" name="qtd" value="{{$value->pivot->qtd}}" id="qtd" disabled>
                               <button type="button" value="editar modal" id="bnt-editar-qtd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModal" data-qtd="{{$value->pivot->qtd}}" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}"><span class="fas fa-pen-square fa-2x"></span></button>
                               
                               
@@ -70,20 +71,24 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form id="form-edit-quantidade">
+                <form method="POST" action="{{url('/sample/orcamento/OrcamentoEditar/qtd/editar')}}" id="form-edit-quantidade" >
+                  
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Quantdade:</label>
+                    <label for="recipient-name" class="col-form-label">Quantdade:</label>
+                   
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
                     <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
+                    <button type="submit" id="btn-enviar" class="btn btn-primary">Enviar</button>
                   </div>
-                  
-                </form>
+                  </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btn-enviar" class="btn btn-primary">Enviar</button>
+                
               </div>
+            </form>
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/sample/relatorio/editar'
+        '/sample/relatorio/editar',
+        '/sample/orcamento/OrcamentoEditar/qtd/*' // * significa que todo o resto da url entrarar na exceção
     ];
 }
