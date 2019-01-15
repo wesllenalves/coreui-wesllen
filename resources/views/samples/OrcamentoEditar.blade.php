@@ -15,7 +15,7 @@
               <div class="card-body">
                 <div class="recarrega">
                   @foreach ($vendas as $venda)
-                  <form id="form">                
+                  <form id="form-tabela">                
                   
                     <table class="table" >
                         
@@ -30,26 +30,26 @@
                           <th scope="col">Deletar</th>
                         </tr>
                       </thead>
+                      @foreach ($venda->produtos as $value)
+                      <div class="tabela-produtos">
                       <tbody id="produtos">
                           
-                          @foreach ($venda->produtos as $value)
-                        <tr>        
-                            {{-- $value->pivot --}}                   
+                          
+                        <tr>                  
                             <td>{{$value->idProduto}}</td>
                             <td>{{$value->nome}}</td>
                             <td>
                               <!--Editando modal-->
                               <input type="number" class="form col-2" name="qtd" value="{{$value->pivot->qtd}}" id="qtd" disabled>
-                              <button type="button" value="editar modal" id="bnt-editar-qtd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModal" data-qtd="{{$value->pivot->qtd}}" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}"><span class="fas fa-pen-square fa-2x"></span></button>
-                              
-                              
+                              <button type="button" value="editar modal" id="bnt-editar-qtd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModal" data-qtd="{{$value->pivot->qtd}}" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td><input type="checkbox" name="checks[]" value="{{$value->idProduto}}" id="pro"></td>
                           </tr>     
-                          @endforeach
+                          
                                             
                       </tbody>
-                      
+                      </div>
+                      @endforeach
                       @endforeach 
                   </table>
                   <div class="text-right">

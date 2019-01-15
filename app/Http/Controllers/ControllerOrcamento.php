@@ -171,7 +171,7 @@ class ControllerOrcamento extends Controller
         return $resultado;
     }
 
-    public function QtdProduto(Request $request)
+    public function QtdProduto(Request $request, $id)
     {
        // dd($request->all());
         $dataForm = [
@@ -181,9 +181,48 @@ class ControllerOrcamento extends Controller
        
        $update = $pivo->update($dataForm);
        
-       //dd($update);
+       $resultado .= "<form id="form-tabela">                
+                  
+       <table class="table" >
+         <thead>
+            
+           <p>Seleciones os itens para deletar</p>
+           <tr>
+             <th scope="col">#</th>
+             <th scope="col">Produto</th>
+             <th scope="col">Editar Quantidade</th>
+             <th scope="col">Deletar</th>
+           </tr>
+         </thead>
+         @foreach ($venda->produtos as $value)
+         <div class="tabela-produtos">
+         <tbody id="produtos">
+             
+             
+           <tr>                  
+               <td>{{$value->idProduto}}</td>
+               <td>{{$value->nome}}</td>
+               <td>
+                 <!--Editando modal-->
+                 <input type="number" class="form col-2" name="qtd" value="{{$value->pivot->qtd}}" id="qtd" disabled>
+                 <button type="button" value="editar modal" id="bnt-editar-qtd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModal" data-qtd="{{$value->pivot->qtd}}" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+               </td>
+               <td><input type="checkbox" name="checks[]" value="{{$value->idProduto}}" id="pro"></td>
+             </tr>     
+             
+                               
+         </tbody>
+         </div>
+         @endforeach
+         @endforeach 
+     </table>
+     <div class="text-right">
+         <input type="submit" class="btn btn-danger" value="Deletar">
+
+       </div>
+     </form>"
        if($update){
-        return $update;//redirect('/sample/orcamento');
+        return json_encode($update);//redirect('/sample/orcamento');
        }else{
         return $update;//redirect('/sample/orcamento');
        }

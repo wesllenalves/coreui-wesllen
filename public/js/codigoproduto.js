@@ -125,6 +125,7 @@ $("document").ready(function(){
     var recipientqtd = button.data('qtd') // Extract info from data-* attributes
     var recipientidProduto = button.data('idproduto') // Extract info from data-* attributes
     var recipientidPivo = button.data('idpivo') // Extract info from data-* attributes
+    var recipientidvenda = button.data('idvenda') // Extract info from data-* attributes
     var titulo = "Editando quantidade"
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -133,28 +134,19 @@ $("document").ready(function(){
     modal.find('.modal-body input[id=recipient-qtd]').val(recipientqtd)
     modal.find('.modal-body input[id=recipient-idProduto]').val(recipientidProduto)
     modal.find('.modal-body input[id=recipient-idPivo]').val(recipientidPivo)
-    //console.log(recipientidPivo)
-
+    
     //formulario edição de quantidade de produto
   
-
-
     $("#form-edit-quantidade").on("submit", function(e){
        e.preventDefault();
        //$('#exampleModal').modal('hide');
        var quantidade = $('#recipient-qtd').val();
+       var sucesso = 'sucesso de envio';
        
-       //setup para o cscrf do laravel
-       /*$.ajaxSetup({
-             beforeSend: function(xhr, type) {
-                if (!type.crossDomain) {
-                   xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-                }
-             },
-       });      */
+       console.log(recipientidvenda);
        // agora iniciamos a requisição ajax
        $.post({        
-             url: '/sample/orcamento/OrcamentoEditar/qtd/editar',
+             url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidvenda,
              async: true, // link de exemplo
              data: {
                  id: recipientidPivo, 
@@ -162,7 +154,9 @@ $("document").ready(function(){
                  id_produto: recipientidProduto, 
                    },      
              success: function( data ) {
-             console.log(data);
+               
+               $("#form-tabela").html(sucesso);
+               $('#exampleModal').modal('hide');
              
              
              } 
