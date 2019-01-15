@@ -119,54 +119,61 @@ $("document").ready(function(){
    
    
    // function Edit POST
-   
-
-
+   //modal editar quantidade
    $('#exampleModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget) // Button that triggered the modal
-      var recipientqtd = button.data('qtd') // Extract info from data-* attributes
-      var recipientidProduto = button.data('idproduto') // Extract info from data-* attributes
-      var recipientidPivo = button.data('idpivo') // Extract info from data-* attributes
-      var titulo = "Editando quantidade"
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-      var modal = $(this)
-      modal.find('.modal-title').text(titulo)
-      modal.find('.modal-body input[id=recipient-qtd]').val(recipientqtd)
-      modal.find('.modal-body input[id=recipient-idProduto]').val(recipientidProduto)
-      modal.find('.modal-body input[id=recipient-idPivo]').val(recipientidPivo)
-      //console.log(recipientidPivo)
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipientqtd = button.data('qtd') // Extract info from data-* attributes
+    var recipientidProduto = button.data('idproduto') // Extract info from data-* attributes
+    var recipientidPivo = button.data('idpivo') // Extract info from data-* attributes
+    var titulo = "Editando quantidade"
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text(titulo)
+    modal.find('.modal-body input[id=recipient-qtd]').val(recipientqtd)
+    modal.find('.modal-body input[id=recipient-idProduto]').val(recipientidProduto)
+    modal.find('.modal-body input[id=recipient-idPivo]').val(recipientidPivo)
+    //console.log(recipientidPivo)
 
-      //formulario edição de quantidade de produto
-      $("#form-edit-quantidade").on("submit", function(e){
-         e.preventDefault();
-         $('#exampleModal').modal('hide');
-         var qtd = $('#recipient-qtd').val();
-         //setup para o cscrf do laravel
-         $.ajaxSetup({
-               beforeSend: function(xhr, type) {
-                  if (!type.crossDomain) {
-                     xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-                  }
-               },
-         });      
-         // agora iniciamos a requisição ajax
-         $.post({        
-               url: '/sample/orcamento/OrcamentoEditar/qtd/editar',
-               async: true, // link de exemplo
-               data: {
-                   id: ''+recipientidPivo, 
-                   qtd: ''+qtd, 
-                   id_produto: ''+recipientidProduto, 
-                     },      
-               success: function( data ) {
-               console.log(data);
-               
-               
-               } 
-         });
-      });
+    //formulario edição de quantidade de produto
+  
+
+
+    $("#form-edit-quantidade").on("submit", function(e){
+       e.preventDefault();
+       //$('#exampleModal').modal('hide');
+       var quantidade = $('#recipient-qtd').val();
+       
+       //setup para o cscrf do laravel
+       /*$.ajaxSetup({
+             beforeSend: function(xhr, type) {
+                if (!type.crossDomain) {
+                   xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                }
+             },
+       });      */
+       // agora iniciamos a requisição ajax
+       $.post({        
+             url: '/sample/orcamento/OrcamentoEditar/qtd/editar',
+             async: true, // link de exemplo
+             data: {
+                 id: recipientidPivo, 
+                 qtd: quantidade, 
+                 id_produto: recipientidProduto, 
+                   },      
+             success: function( data ) {
+             console.log(data);
+             
+             
+             } 
+       });
+       return false;
     });
+
+  });
+
+
+   
 
    /*formulario edição de quantidade de produto
    $("#form-edit-quantidade").on("submit", function(e){
