@@ -71,7 +71,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form method="POST" action="{{url('/sample/orcamento/OrcamentoEditar/qtd/editar')}}" id="form-edit-quantidade" >
+                <form  id="form-edit-quantidade" >
                   
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Quantdade:</label>
@@ -80,15 +80,17 @@
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
                     <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
-                    <button type="submit" id="btn-enviar" class="btn btn-primary">Enviar</button>
+                    
                   </div>
-                  </div>
-              </div>
+                  
+              
               <div class="modal-footer">
+                <button type="submit" id="btn-enviar" class="btn btn-primary">Enviar</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                
+                </form>
               </div>
-            </form>
+              </div>
+              </div>
             </div>
           </div>
         </div>
@@ -293,6 +295,9 @@ $(document).ready(function(){
           } 
       });    
   });
+
+
+  
 
 });
 

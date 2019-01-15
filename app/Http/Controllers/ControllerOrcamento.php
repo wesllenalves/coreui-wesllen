@@ -183,9 +183,9 @@ class ControllerOrcamento extends Controller
        
        //dd($update);
        if($update){
-        return redirect('/sample/orcamento');
+        return $update;//redirect('/sample/orcamento');
        }else{
-        return redirect('/sample/orcamento');
+        return $update;//redirect('/sample/orcamento');
        }
     }
 }

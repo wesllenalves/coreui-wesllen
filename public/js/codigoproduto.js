@@ -135,10 +135,49 @@ $("document").ready(function(){
       modal.find('.modal-body input[id=recipient-qtd]').val(recipientqtd)
       modal.find('.modal-body input[id=recipient-idProduto]').val(recipientidProduto)
       modal.find('.modal-body input[id=recipient-idPivo]').val(recipientidPivo)
-      console.log(recipientidPivo)
-    })
+      //console.log(recipientidPivo)
 
+      //formulario edição de quantidade de produto
+      $("#form-edit-quantidade").on("submit", function(e){
+         e.preventDefault();
+         $('#exampleModal').modal('hide');
+         var qtd = $('#recipient-qtd').val();
+         //setup para o cscrf do laravel
+         $.ajaxSetup({
+               beforeSend: function(xhr, type) {
+                  if (!type.crossDomain) {
+                     xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                  }
+               },
+         });      
+         // agora iniciamos a requisição ajax
+         $.post({        
+               url: '/sample/orcamento/OrcamentoEditar/qtd/editar',
+               async: true, // link de exemplo
+               data: {
+                   id: ''+recipientidPivo, 
+                   qtd: ''+qtd, 
+                   id_produto: ''+recipientidProduto, 
+                     },      
+               success: function( data ) {
+               console.log(data);
+               
+               
+               } 
+         });
+      });
+    });
 
+   /*formulario edição de quantidade de produto
+   $("#form-edit-quantidade").on("submit", function(e){
+      e.preventDefault();
+      $('#exampleModal').modal('hide');
+      var idProduto = $('#recipient-idProduto').val();
+      var idPivo = $('#recipient-idPivo').val();
+      //var id = $('#recipient-idProduto').val();
+      
+      console.log(idPivo);
+   });*/
    
    /*$('.modal-footer').on('click', '.edit', function() {
      $.ajax({
