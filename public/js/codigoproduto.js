@@ -143,7 +143,7 @@ $("document").ready(function(){
        var quantidade = $('#recipient-qtd').val();
        var sucesso = 'sucesso de envio';
        
-       console.log(recipientidvenda);
+       //console.log(recipientidvenda);
        // agora iniciamos a requisição ajax
        $.post({        
              url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidvenda,
@@ -155,13 +155,13 @@ $("document").ready(function(){
                    },      
              success: function( data ) {
                
-               $("#form-tabela").html(sucesso);
-               $('#exampleModal').modal('hide');
-             
+               $("#form-tabela").html(data);
+               
+             console.log(data);
              
              } 
        });
-       return false;
+       $('#exampleModal').modal('hide');
     });
 
   });
