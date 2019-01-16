@@ -200,14 +200,10 @@
                 </div>
                 </div>
 
-                <div class="form-group row">
-                <div class="col-sm-2">
-                  <label for="valorMedio">Valor unitario</label>
-                  <input type="number" class="form-control" name="valorUnd" id="valorMedio" value="" readonly>
-                </div>
+                <div class="form-group row">                
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="number" class="form-control" name="valor" id="valor" value="" readonly>
+                  <input type="number" class="form-control" name="valor" id="TotalPedido" @if (isset($venda->valorTotal) && $venda->valorTotal > 0) value="{{$venda->valorTotal}}" @else value=""  @endif  readonly>
                 </div>
                 
                 <div class="col-sm-3">
@@ -284,7 +280,7 @@ $(document).ready(function(){
       });      
       // agora iniciamos a requisição ajax
       $.post({        
-         // url: '/sample/orcamento/OrcamentoEditar/deletarProduto/'+ id,
+          url: '/sample/orcamento/OrcamentoEditar/deletarProduto/'+ id,
 
           async: true, // link de exemplo
           data: { produto: ''+checkeds },      
@@ -295,8 +291,6 @@ $(document).ready(function(){
           } 
       }); 
 
-      
-      
   });
 
 

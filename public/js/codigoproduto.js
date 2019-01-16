@@ -106,12 +106,11 @@ $("document").ready(function(){
        })
        /* Atualiza o valor do pedido na tabela */
        $("#vlTotalPedido").text(vlTotalPedido.toFixed(2));
+       $("#TotalPedido").val(vlTotalPedido.toFixed(2));
     }
 
     $('#nmProduto').change(function () {
         var valor = $(this).find(':selected').attr('data-param');
-        console.log(valor);
-
    $('#vlProduto').val(valor);
     });
    
@@ -141,7 +140,6 @@ $("document").ready(function(){
        e.preventDefault();
        //$('#exampleModal').modal('hide');
        var quantidade = $('#recipient-qtd').val();
-       var sucesso = 'sucesso de envio';
        
        //console.log(recipientidvenda);
        // agora iniciamos a requisição ajax
@@ -154,11 +152,7 @@ $("document").ready(function(){
                  id_produto: recipientidProduto, 
                    },      
              success: function( data ) {
-               
                $("#form-tabela").html(data);
-               
-             console.log(data);
-             
              } 
        });
        $('#exampleModal').modal('hide');
