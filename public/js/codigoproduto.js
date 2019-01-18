@@ -9,6 +9,12 @@ $("document").ready(function(){
     
     /* Adiciona a máscara ao input do valor do produto ( plugin mask utilizado ) */
     $('#vlProduto').mask("00000.00",{reverse: true});
+    
+    /* Adiciona a máscara ao input do Gastos do produto ( plugin mask utilizado )  */
+    $('#gastos').mask("00000.00",{reverse: true});
+
+    /* Adiciona a máscara ao input do Taxa de entrega do produto ( plugin mask utilizado )  */
+    $("#taxaEntrega").mask("00000.00",{reverse: true});
 
     /* Adiciona a máscara ao input de quantidade do produto ( plugin mask utilizado ) */
     $('#qtProduto').mask("00000",{reverse: true});
@@ -25,12 +31,14 @@ $("document").ready(function(){
 
           /* Declarando a variável tb */
           var tb;
-
+        
           /* preenchendo informações na variável tb para inserção no tbody da tabela */
           tb = "<tr><td><input class='form-control col-10' type='text' value='" + $("#nmProduto option:selected").text() + "'  readonly><input class='form-control col-10' type='hidden' value='" + $("#nmProduto").val() + "' name='idProduto[]' readonly></td>" +
                "<td style='width:20px;'><input class='form-control col-3' type='text' value='" + $("#qtProduto").val() + "' name='qtdProduto[]' readonly></td>" +
+               "<td ><input class='form-control col-4' type='text' value='" + $("#gastos").val() + "' name='gastos[]' readonly></td>" +
+               "<td ><input class='form-control col-4' type='text' value='" + $("#taxaEntrega").val() + "' name='taxaEntrega[]' readonly></td>" +
                "<td class=\"pr-5\"><input class='form-control col-4' type='text' value='" + ($("#vlProduto").val() * 1).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
-               "<td class=\"pr-5\">" + ( $("#vlProduto").val() * $("#qtProduto").val() ).toFixed(2) + "</td>" +
+               "<td class=\"pr-5\">" + ( ($("#vlProduto").val() * $("#qtProduto").val()) + parseFloat($("#gastos").val()) + parseFloat($("#taxaEntrega").val()) ).toFixed(2) + "</td>" +
                "<td><button class=\"btn btn-light btn-sm delete text-danger\">✖</button></td></tr>";
           
           /* Adiciona a variável tb acima que contém os dados do produto no tbody da tabela.
@@ -49,6 +57,8 @@ $("document").ready(function(){
           $("#nmProduto").val('').trigger("chosen:updated");
           $("#vlProduto").val('');
           $("#qtProduto").val('');
+          $("#gastos").val('');
+          $("#taxaEntrega").val('');
          
           /* Define o foco para a seleção de produtos */
           $("#nmProduto").chosen().trigger('chosen:activate');
@@ -79,6 +89,12 @@ $("document").ready(function(){
           formValid = false;
        if($("#qtProduto").val() === "")
           formValid = false;
+       if($("#gastos").val() === "")
+          $("#gastos").val(0);
+       if($("#gastos").val() === "")
+          $("#gastos").val(0);
+       if($("#taxaEntrega").val() === "")
+       $("#taxaEntrega").val(0);
 
        if(!formValid)
        {
@@ -101,9 +117,10 @@ $("document").ready(function(){
        var vlTotalPedido = 0;
 
        /* Varre todos os valores dos produtos da tabela */
-       $(".table-produtos tbody tr td:nth-child(4)").each(function() {
+       $(".table-produtos tbody tr td:nth-child(6)").each(function() {
           vlTotalPedido += parseFloat($(this).text());
        })
+       console.log(vlTotalPedido);
        /* Atualiza o valor do pedido na tabela */
        $("#vlTotalPedido").text(vlTotalPedido.toFixed(2));
        $("#TotalPedido").val(vlTotalPedido.toFixed(2));
