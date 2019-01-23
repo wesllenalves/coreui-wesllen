@@ -36,14 +36,14 @@ $("document").ready(function(){
           var tb;
         
           /* preenchendo informações na variável tb para inserção no tbody da tabela */
-          tb = "<tr><td style='width:50px;'><input class='form-control col-8' type='text' value='" + $("#nmProduto option:selected").text() + "'readonly>" + 
-               "<input class='form-control col-4' type='hidden' value='" + $("#nmProduto").val() + "' name='idProduto[]' readonly></td>" +
-               "<td style='width:100px;'><input style='width:100px;' class='form-control col-4' type='text' value='" + $("#qtProduto").val() + "' name='qtdProduto[]' readonly></td>" +
-               "<td ><input style='width:125px;' class='form-control col-8' type='text' value='" + $("#gastos").val() + "' name='gastos[]' readonly></td>" +
-               "<td ><input style='width:125px;' class='form-control col-8' type='text' value='" + $("#taxaEntrega").val() + "' name='taxaEntrega[]' readonly></td>" +
-               "<td ><input style='width:125px;' class='form-control col-8' type='text' value='" + $("#taxaAdd").val() + "' name='taxaAdd[]' readonly></td>" +
-               "<td ><input style='width:125px;' class='form-control col-6' type='text' value='" + ($("#vlProduto").val() * 1).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
-               "<td class=\"pr-6\"><input style='width:125px;' class='form-control col-8' type='text' value='" + ( ($("#vlProduto").val() * $("#qtProduto").val()) + parseFloat($("#gastos").val()) + parseFloat($("#taxaEntrega").val()) + parseFloat($("#taxaAdd").val())  ).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
+          tb = "<tr><td ><input class='form-control' type='text' value='" + $("#nmProduto option:selected").text() + "'readonly>" + 
+               "<input class='form-control' type='hidden' value='" + $("#nmProduto").val() + "' name='idProduto[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + $("#qtProduto").val() + "' name='qtdProduto[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + $("#gastos").val() + "' name='gastos[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + $("#taxaEntrega").val() + "' name='taxaEntrega[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + $("#taxaAdd").val() + "' name='taxaAdd[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + ($("#vlProduto").val() * 1).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + ( ($("#vlProduto").val() * $("#qtProduto").val()) + parseFloat($("#gastos").val()) + parseFloat($("#taxaEntrega").val()) + parseFloat($("#taxaAdd").val())  ).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
                "<td><button class=\"btn btn-light btn-sm delete text-danger\">✖</button></td></tr>";
           
           /* Adiciona a variável tb acima que contém os dados do produto no tbody da tabela.

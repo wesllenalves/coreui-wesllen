@@ -120,22 +120,26 @@
                           @endforeach
                           
                          </select>
-
+                         
                          <label class="sr-only" for="inlineFormInput">Quantidade</label>
-                         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0 ml-sm-2" id="qtProduto" placeholder="Quant" style="width:70px">
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="qtProduto" placeholder="Quant" >
+                        
                          <label class="sr-only" for="inlineFormInput">Gastos</label>
-                         <input type="text" class="form-control mb-3 mr-sm-3 mb-sm-0 ml-sm-3" id="gastos" placeholder="Gastos" style="width:70px">
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="gastos" placeholder="Gastos">
                          <label class="sr-only" for="inlineFormInput">Taxa de Entrega</label>
-                         <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0 ml-sm-4" id="taxaEntrega" placeholder="Taxa de Entrega" style="width:130px">
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="taxaEntrega" placeholder="Taxa de Entrega" >
                          <label class="sr-only" for="inlineFormInput">Taxa Adicionais</label>
-                         <input type="text" class="form-control mb-3 mr-sm-3 mb-sm-0 ml-sm-3" id="taxaAdd" placeholder="Taxa Adicionais" style="width:130px">
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="taxaAdd" placeholder="Taxa Adicionais" >
+                         
                          <label class="sr-only" for="inlineFormInput">Valor</label>                       
-                         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="vlProduto" placeholder="Valor (R$)" style="width:98px" readonly>
-                         <button type="button" class="btn btn-primary" id="btnAdicionarProduto">+</button>
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="vlProduto" placeholder="Valor (R$)"  readonly>
+                         <button style="margin-left:5px;" type="button" class="btn btn-primary" id="btnAdicionarProduto">+</button>
                          <p class="text-danger ml-3 pt-2 invisible" id="msgValidaForm">Favor preencher <strong>todos os campos</strong> do produto!</p>
                          
-                     
-                     <table class="table table-sm table-striped  table-responsive table-produtos">
+                        </div>
+                         
+                     <div class="table">
+                     <table class="table table-sm table-striped table-produtos">
                        <thead>
                          <tr>
                            <th style="max-width: 100px;">Produto</th>
@@ -143,8 +147,8 @@
                            <th>Gastos</th>
                            <th>Taxa de Entrega</th>
                            <th>Taxa Adicionais</th>
-                           <th class="pr-5">Valor (R$)</th>
-                           <th class="pr-5 vlTotalProduto">Total</th>
+                           <th >Valor (R$)</th>
+                           <th class="vlTotalProduto">Total</th>
                            <th>Ação</th>
                          </tr>
                        </thead>
@@ -152,13 +156,13 @@
                        </tbody >
                        <tfoot class="invisible table-sm">
                          <tr>                           
-                           <th style="width:50px;"></th>
-                           <th style="width:50px;"></th>
+                           <th ></th>
+                           <th ></th>
                            <th></th>
                            <th></th>
                            <th></th>
                            <th class="text-right">SubTotal ❯</th>
-                           <th class="text-right pr-5" id="vlTotalPedido"></th>
+                           <th class="text-right" id="vlTotalPedido"></th>
                            <th></th>
                            
                          </tr>
@@ -166,8 +170,8 @@
                        </tfoot>
                        
                      </table>
-                     
-                    </div>
+                     </div>
+                    
 
 
                     <div class="col-sm-5">
