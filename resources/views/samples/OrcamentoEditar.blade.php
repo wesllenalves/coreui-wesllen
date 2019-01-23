@@ -108,7 +108,7 @@
                 <div class="form-group row">
                     <div class="form-inline"> 
                       
-                        <label class="col-sm-2 col-form-label">Insira os produtos</label>                
+                        <label class="col-sm-2 col-form-label" style="padding: 0; width:50px;">Insira os produtos</label>                
                          <select class="form-control" id="nmProduto" style="max-width: 300px;" >
                            
                            <option value="">Selecione o Produto</option>
@@ -127,19 +127,22 @@
                          <input type="text" class="form-control mb-3 mr-sm-3 mb-sm-0 ml-sm-3" id="gastos" placeholder="Gastos" style="width:70px">
                          <label class="sr-only" for="inlineFormInput">Taxa de Entrega</label>
                          <input type="text" class="form-control mb-4 mr-sm-4 mb-sm-0 ml-sm-4" id="taxaEntrega" placeholder="Taxa de Entrega" style="width:130px">
+                         <label class="sr-only" for="inlineFormInput">Taxa Adicionais</label>
+                         <input type="text" class="form-control mb-3 mr-sm-3 mb-sm-0 ml-sm-3" id="taxaAdd" placeholder="Taxa Adicionais" style="width:130px">
                          <label class="sr-only" for="inlineFormInput">Valor</label>                       
                          <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="vlProduto" placeholder="Valor (R$)" style="width:98px" readonly>
                          <button type="button" class="btn btn-primary" id="btnAdicionarProduto">+</button>
                          <p class="text-danger ml-3 pt-2 invisible" id="msgValidaForm">Favor preencher <strong>todos os campos</strong> do produto!</p>
                          
                      
-                     <table class="table table-sm table-striped mt-3 table-produtos">
+                     <table class="table table-sm table-striped  table-responsive table-produtos">
                        <thead>
                          <tr>
-                           <th style="max-width: 600px;">Produto</th>
+                           <th style="max-width: 100px;">Produto</th>
                            <th>Quantidade</th>
                            <th>Gastos</th>
                            <th>Taxa de Entrega</th>
+                           <th>Taxa Adicionais</th>
                            <th class="pr-5">Valor (R$)</th>
                            <th class="pr-5 vlTotalProduto">Total</th>
                            <th>Ação</th>
@@ -147,9 +150,10 @@
                        </thead>
                        <tbody id="produto-inserir">
                        </tbody >
-                       <tfoot class="invisible">
-                         <tr>
-                           <th></th>
+                       <tfoot class="invisible table-sm">
+                         <tr>                           
+                           <th style="width:50px;"></th>
+                           <th style="width:50px;"></th>
                            <th></th>
                            <th></th>
                            <th></th>
