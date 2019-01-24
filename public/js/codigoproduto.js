@@ -42,8 +42,8 @@ $("document").ready(function(){
                "<td ><input  class='form-control' type='text' value='" + $("#gastos").val() + "' name='gastos[]' readonly></td>" +
                "<td ><input  class='form-control' type='text' value='" + $("#taxaEntrega").val() + "' name='taxaEntrega[]' readonly></td>" +
                "<td ><input  class='form-control' type='text' value='" + $("#taxaAdd").val() + "' name='taxaAdd[]' readonly></td>" +
-               "<td ><input  class='form-control' type='text' value='" + ($("#vlProduto").val() * 1).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
-               "<td ><input  class='form-control' type='text' value='" + ( ($("#vlProduto").val() * $("#qtProduto").val()) + parseFloat($("#gastos").val()) + parseFloat($("#taxaEntrega").val()) + parseFloat($("#taxaAdd").val())  ).toFixed(2) + "' name='valorProduto[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + ($("#vlProduto").val() * 1).toFixed(2) + "' name='vlProduto[]'  readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + ( ($("#vlProduto").val() * $("#qtProduto").val()) + parseFloat($("#gastos").val()) + parseFloat($("#taxaEntrega").val()) + parseFloat($("#taxaAdd").val())  ).toFixed(2) + "'  readonly></td>" +
                "<td><button class=\"btn btn-light btn-sm delete text-danger\">✖</button></td></tr>";
           
           /* Adiciona a variável tb acima que contém os dados do produto no tbody da tabela.

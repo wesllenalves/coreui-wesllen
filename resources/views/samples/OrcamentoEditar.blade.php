@@ -103,8 +103,8 @@
               <div class="card-body">
 
               @foreach ($vendas as $venda)
-                <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
-                {{ csrf_field() }}
+              </form>
+                
                 <div class="form-group row">
                     <div class="form-inline"> 
                       
@@ -132,12 +132,14 @@
                          <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="taxaAdd" name="taxaAdd[]" placeholder="Taxa Adicionais" >
                          
                          <label class="sr-only" for="inlineFormInput">Valor</label>                       
-                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="vlProduto" placeholder="Valor (R$)"  readonly>
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="vlProduto" name='vlProduto[]'  placeholder="Valor (R$)"  readonly>
                          <button style="margin-left:5px;" type="button" class="btn btn-primary" id="btnAdicionarProduto">+</button>
                          <p class="text-danger ml-3 pt-2 invisible" id="msgValidaForm">Favor preencher <strong>todos os campos</strong> do produto!</p>
                          
                         </div>
-                         
+                        </form>
+                        <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
+                     {{ csrf_field() }}     
                      <div class="table">
                      <table class="table table-sm table-striped table-produtos">
                        <thead>
@@ -172,9 +174,10 @@
                      </table>
                      </div>
                     
+                    
 
-
-                    <div class="col-sm-5">
+                     
+                     <div class="col-sm-5">
                         <label for="name">Nome do Cliente</label>
                         <select class="form-control" name="FkUsers">                          
                           @foreach ($users as $user)  
@@ -206,7 +209,7 @@
                 <div class="form-group row">                
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="number" class="form-control" name="valorTotal" id="TotalPedido" @if (isset($venda->valorTotal) && $venda->valorTotal > 0) value="{{$venda->valorTotal}}" @else value=""  @endif  readonly>
+                  <input type="number" class="form-control"  id="TotalPedido" name="valorTotal" value=""   readonly>
                 </div>
                 
                 <div class="col-sm-3">

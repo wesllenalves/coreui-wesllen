@@ -55,11 +55,11 @@ class ControllerOrcamento extends Controller
 
     public function editarSalvar(Request $request, $id)
     {   
-        dd($request->all());
+        //dd($request->all());
         //traz todos os aray dos inputes e armazena em variaveis
         $produtos                     = $request->idProduto;
-        $quantidade                   = $request->qtdProduto;
-        $valores                      = $request->valorProduto;
+        $quantidade                   = $request->qtd;
+        $valores                      = $request->vlProduto;
         //procurar saber se esse produto ja foi cadastrado anteriomente
         $verificacao                  = Produtos_vendas::where('id_venda',  $id)
         ->whereIn('id_produto', $produtos)
@@ -73,22 +73,18 @@ class ControllerOrcamento extends Controller
        
         $dataForm = [
             "FkUsers" => $request->FkUsers,
-            "qtd" => $request->qtd,
             "dataEntrega" => $request->dataEntrega,
-            "desconto" => $request->desconto,
-            "gasto" => $request->gasto,
-            "taxaEntrega" => $request->taxaEntrega,
-            "taxaAdd" => $request->taxaAdd,
-            "valorUnd" => $request->valorUnd,
             "valorTotal" => $request->valorTotal,
             "statusVenda" => $request->statusVenda,
             "entrada" => $request->entrada,
             "medidas" => $request->medidas,
             "descricao" => $request->descricao,
         ];
-        
 
-        $venda                        = Venda::find($id);
+        $venda = Venda::find($id);
+        $venda->update($dataForm);
+
+        
         
         $attributes                   = [];
         foreach($produtos as  $index => $produ)
@@ -106,8 +102,8 @@ class ControllerOrcamento extends Controller
             
            
         //$produto = $venda->produtos()->sync([$id => ['id_produto' => 1, 'qtd' => 2, 'valor' => 50 ], ['id_produto' => 2, 'qtd' => 2, 'valor' => 50 ]]);
-        $venda->update($dataForm);
-
+        
+        
         if($venda){
             
             return redirect('/sample/orcamento');
