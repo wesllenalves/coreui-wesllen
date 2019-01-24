@@ -55,6 +55,7 @@ class ControllerOrcamento extends Controller
 
     public function editarSalvar(Request $request, $id)
     {   
+        dd($request->all());
         //traz todos os aray dos inputes e armazena em variaveis
         $produtos                     = $request->idProduto;
         $quantidade                   = $request->qtdProduto;
@@ -231,6 +232,6 @@ class ControllerOrcamento extends Controller
         return $resultado;//redirect('/sample/orcamento');
        }else{
         return $resultado;//redirect('/sample/orcamento');
-       }
+       };
     }
 }

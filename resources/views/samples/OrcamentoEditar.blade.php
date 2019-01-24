@@ -122,14 +122,14 @@
                          </select>
                          
                          <label class="sr-only" for="inlineFormInput">Quantidade</label>
-                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="qtProduto" placeholder="Quant" >
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" name='qtd[]' id="qtProduto" placeholder="Quant" >
                         
                          <label class="sr-only" for="inlineFormInput">Gastos</label>
-                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="gastos" placeholder="Gastos">
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="gastos" name="gastos[]" placeholder="Gastos">
                          <label class="sr-only" for="inlineFormInput">Taxa de Entrega</label>
-                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="taxaEntrega" placeholder="Taxa de Entrega" >
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="taxaEntrega" name="taxaEntrega[]" placeholder="Taxa de Entrega" >
                          <label class="sr-only" for="inlineFormInput">Taxa Adicionais</label>
-                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="taxaAdd" placeholder="Taxa Adicionais" >
+                         <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="taxaAdd" name="taxaAdd[]" placeholder="Taxa Adicionais" >
                          
                          <label class="sr-only" for="inlineFormInput">Valor</label>                       
                          <input style="margin-left:5px; border-radius: 20px;" type="text" class="form-control col-2" id="vlProduto" placeholder="Valor (R$)"  readonly>
@@ -185,10 +185,7 @@
                           @endforeach
                         </select>
                     </div>
-                    <div class="col-2">
-                        <label for="qtd">Quantidade</label>
-                        <input type="number" class="form-control input-teste" name="qtd" id="qtd" value="{{$venda->qtd}}" required>
-                    </div>
+                    
                     
                 </div>
                 
@@ -201,25 +198,15 @@
                 <div class="col-sm-2">
                   <label for="desconto">Desconto</label>
                   <input type="text" class="form-control input-teste" name="desconto" id="desconto" value="{{$venda->desconto}}" required>
-                </div>
-                <div class="col-sm-2">
-                  <label for="gasto">Gastos</label>
-                  <input type="text" class="form-control input-teste" name="gasto" id="gasto" value="{{$venda->gasto}}" required>
-                </div>
-                <div class="col-sm-2">
-                  <label for="taxaEntrega">Taxa de Entrega</label>
-                  <input type="text" class="form-control input-teste" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" required>
-                </div>
-                <div class="col-sm-2">
-                  <label for="taxaAdd">Taxas Adicionais</label>
-                  <input type="text" class="form-control input-teste" name="taxaAdd" id="taxaAdd" value="{{$venda->taxaAdd}}" required>
-                </div>
+                </div>               
+                
+                
                 </div>
 
                 <div class="form-group row">                
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="number" class="form-control" name="valor" id="TotalPedido" @if (isset($venda->valorTotal) && $venda->valorTotal > 0) value="{{$venda->valorTotal}}" @else value=""  @endif  readonly>
+                  <input type="number" class="form-control" name="valorTotal" id="TotalPedido" @if (isset($venda->valorTotal) && $venda->valorTotal > 0) value="{{$venda->valorTotal}}" @else value=""  @endif  readonly>
                 </div>
                 
                 <div class="col-sm-3">

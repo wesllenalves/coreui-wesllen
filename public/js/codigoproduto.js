@@ -38,7 +38,7 @@ $("document").ready(function(){
           /* preenchendo informações na variável tb para inserção no tbody da tabela */
           tb = "<tr><td ><input class='form-control' type='text' value='" + $("#nmProduto option:selected").text() + "'readonly>" + 
                "<input class='form-control' type='hidden' value='" + $("#nmProduto").val() + "' name='idProduto[]' readonly></td>" +
-               "<td ><input  class='form-control' type='text' value='" + $("#qtProduto").val() + "' name='qtdProduto[]' readonly></td>" +
+               "<td ><input  class='form-control' type='text' value='" + $("#qtProduto").val() + "' name='qtd[]' readonly></td>" +
                "<td ><input  class='form-control' type='text' value='" + $("#gastos").val() + "' name='gastos[]' readonly></td>" +
                "<td ><input  class='form-control' type='text' value='" + $("#taxaEntrega").val() + "' name='taxaEntrega[]' readonly></td>" +
                "<td ><input  class='form-control' type='text' value='" + $("#taxaAdd").val() + "' name='taxaAdd[]' readonly></td>" +
