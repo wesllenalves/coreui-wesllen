@@ -15,14 +15,12 @@
               <div class="card-body">
                 <div class="recarrega">
                   @foreach ($vendas as $venda)
-                  <form id="form-tabela">                
-                  
+
+                  <form id="form-tabela">
                     <table class="table" >
-                        
                         <input id="id" type="hidden" value="{{$venda->idVenda}}" name="id">
                       <thead>
-                         
-                        <p>Seleciones os itens para deletar</p>
+                        <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Produto</th>
@@ -33,8 +31,6 @@
                       @foreach ($venda->produtos as $value)
                       <div class="tabela-produtos">
                       <tbody id="produtos">
-                          
-                          
                         <tr>                  
                             <td>{{$value->idProduto}}</td>
                             <td>{{$value->nome}}</td>
@@ -53,10 +49,10 @@
                       @endforeach 
                   </table>
                   <div class="text-right">
-                      <input type="submit" class="btn btn-danger" value="Deletar">
-
+                      <input type="submit" id="deletar" class="btn btn-danger" value="Deletar">
                     </div>
                   </form>
+
                 </div>
               </div>
         </div>
@@ -138,10 +134,10 @@
                          
                         </div>
                         </form>
-                        <form  method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
+                        <form  class="col-md-12" method="POST" action="{{url("/sample/orcamento/OrcamentoEditar/{$venda->idVenda}")}}">
                      {{ csrf_field() }}     
-                     <div class="table">
-                     <table class="table table-sm table-striped table-produtos">
+                     <div class="col-md-12">
+                     <table class="table table-sm table-striped table-produtos table-responsive">
                        <thead>
                          <tr>
                            <th style="max-width: 100px;">Produto</th>
@@ -262,19 +258,22 @@
   
 $(document).ready(function(){
     // o evento Ajax ocorrerá quando o usuário clicar no link
-  $("#form").on("submit", function(e){
-      e.preventDefault();
+  $("#form-tabela").on("submit", function(e){
+    
+    e.preventDefault();
       var id = $("#id").val();
       var tabela = $(this);
 
       var checkeds = new Array();
+      
       $("input[name='checks[]']:checked").each(function ()
       {
         // valores inteiros usa-se parseInt
         //checkeds.push(parseInt($(this).val()));
         // string
-        checkeds.push( $(this).val());
+        checkeds.push( parseInt($(this).val()) );
       });
+      
       
       //setup para o cscrf do laravel
       $.ajaxSetup({
@@ -283,7 +282,8 @@ $(document).ready(function(){
                   xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
               }
           },
-      });      
+      });  
+       
       // agora iniciamos a requisição ajax
       $.post({        
           url: '/sample/orcamento/OrcamentoEditar/deletarProduto/'+ id,
@@ -291,7 +291,9 @@ $(document).ready(function(){
           async: true, // link de exemplo
           data: { produto: ''+checkeds },      
           success: function( data ) {
-            $("#form").html(data);
+            console.log(checkeds);
+            console.log(data);
+            $("#form-tabela").html(data);
           
           
           } 

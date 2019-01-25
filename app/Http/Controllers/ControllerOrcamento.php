@@ -29,7 +29,7 @@ class ControllerOrcamento extends Controller
 
     public function visualizar($id)
     {
-        $vendas                       = $this->venda->with('usuario', 'produto')->where('idVenda', '=', $id)->get();
+        $vendas = $this->venda->with('usuario', 'produtos')->where('idVenda', '=', $id)->get();
         
         return view('samples.OrcamentoVisualizar', ['vendas' => $vendas]);
     }
@@ -114,11 +114,13 @@ class ControllerOrcamento extends Controller
     
     public function deletarProduto(Request $request, $id)
     {
-        $venda                        = Venda::find($id);
+        $venda = Venda::find($id);
+        $valores = $request->produto;
+        
+        $venda->produtos()->detach([$valores]);
 
-        $venda->produtos()->detach($request->produto);
-        $response                     = array("success" => true);
-        $vendas                       = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+        //$response = array("success" => true);
+        $vendas   = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
 
         
        
@@ -126,44 +128,49 @@ class ControllerOrcamento extends Controller
 
        foreach ($vendas as  $venda) {
 
-        $resultado                    = 
-        
-        "<form id                      'form'>
-                  
-        <table class                   'table' >
-            <input id                  'url' type='hidden' value='{$venda->idVenda}' name='url'>
-          <thead>
-            <p>Seleciones os itens para deletar</p>
-            <tr>
-              <th scope                'col'>#</th>
-              <th scope                'col'>Produto</th>
-              <th scope                'col'>Deletar</th>
-            </tr>
-          </thead>
-          <tbody id                    'produtos'>";
+        $resultado= "<form id='form-tabela'>
+                    <table class='table' >
+                        <input id='id' type='hidden' value='{$venda->idVenda}' name='id'>
+                      <thead>
+                        <p>Seleciones os itens para deletar</p>
+                        <tr>
+                          <th scope='col'>#</th>
+                          <th scope='col'>Produto</th>
+                          <th scope='col'>Editar Quantidade</th>
+                          <th scope='col'>Deletar</th>
+                        </tr>
+                      </thead>";
           
           
             foreach ($venda->produtos as $value){
                 
-                    $resultado .= "<tr>
-                    <td>{$value->idProduto}</td>
-                    <td>{$value->nome}</td>
-                    <td><input type'checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
-                </tr>  ";     
+                    $resultado .= "<div class='tabela-produtos'>
+                      <tbody id='produtos'>
+                        <tr>                  
+                            <td>{$value->idProduto}</td>
+                            <td>{$value->nome}</td>
+                            <td>
+                              <!--Editando modal-->
+                              <input type='number' class='form col-2' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled>
+                              <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                            </td>
+                            <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                          </tr>             
+                      </tbody>
+                      </div>";     
               
                 }
             }
           
           
           
-            $resultado .= "
-          </tbody>  
-      </table>
-      <div class                       'text-right'>
-          <input type                  'submit' class='btn btn-danger' value='Deletar'>
+            $resultado .= "</table>
+                  <div class='text-right'>
+                      <input type='submit' id='deletar' class='btn btn-danger' value='Deletar'>
+                    </div>
+                  </form>";
 
-        </div>
-      </form>";
+
     
         return $resultado;
     }
@@ -171,12 +178,23 @@ class ControllerOrcamento extends Controller
     public function QtdProduto(Request $request, $id)
     {
        // dd($request->all());
-        $dataForm = [
-        "qtd" => $request->qtd,
+        $dataFormqtd = [
+            "qtd" => $request->qtd,
         ];
-       $pivo =  Produtos_vendas::find($request->id);
+         $pivo =  Produtos_vendas::find($request->id);
+
+         $venda = Venda::find($id);
        
-       $update = $pivo->update($dataForm);
+        $valorBanco = $pivo->valor;
+
+        $valorTotal = $valorBanco *  $request->qtd;
+
+        $dataFormtotal = [
+            "valorTotal" => $valorTotal,
+        ];
+
+        $total = $venda->update($dataFormtotal);
+       $update = $pivo->update($dataFormqtd);
 
        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
        foreach ($vendas as  $venda) {
@@ -186,7 +204,7 @@ class ControllerOrcamento extends Controller
        <table class='table' >
          <thead>
             
-           <p>Seleciones os itens para deletar</p>
+           <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
            <tr>
              <th scope='col'>#</th>
              <th scope='col'>Produto</th>

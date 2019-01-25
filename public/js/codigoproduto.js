@@ -149,7 +149,7 @@ $("document").ready(function(){
     var recipientqtd = button.data('qtd') // Extract info from data-* attributes
     var recipientidProduto = button.data('idproduto') // Extract info from data-* attributes
     var recipientidPivo = button.data('idpivo') // Extract info from data-* attributes
-    var recipientidvenda = button.data('idvenda') // Extract info from data-* attributes
+    var recipientidVenda = button.data('idvenda') // Extract info from data-* attributes
     var titulo = "Editando quantidade"
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -169,14 +169,15 @@ $("document").ready(function(){
        //console.log(recipientidvenda);
        // agora iniciamos a requisição ajax
        $.post({        
-             url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidvenda,
+             url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidVenda,
              async: true, // link de exemplo
              data: {
                  id: recipientidPivo, 
                  qtd: quantidade, 
-                 id_produto: recipientidProduto, 
+                 id_produto: recipientidProduto,                 
                    },      
              success: function( data ) {
+                console.log(data);
                $("#form-tabela").html(data);
              } 
        });

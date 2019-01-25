@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-sm-5">
                         <label for="nome">Nome do Produto</label>
-                        <input type="text" class="form-control" name="nome" id="nome" value="{{$venda->produto->nome}}" disabled>
+                        <input type="text" class="form-control" name="nome" id="nome" value="@foreach ($venda->produtos as $produto) {{$produto->nome}} @endforeach" disabled>
                     </div>
                     <div class="col-sm-2">
                         <label for="qtd">Quantidade</label>
@@ -36,42 +36,42 @@
                 </div>
                 <div class="col-sm-2">
                   <label for="valorUnd">Valor unitario</label>
-                  <input type="text" class="form-control" name="valorUnd" id="valorUnd" value="{{$venda->produto->valorMedio}}" disabled>
+                  <input type="text" class="form-control" name="valorUnd" id="valorUnd" value="" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="text" class="form-control" name="valorTotal" id="valorTotal" value="{{$venda->valorTotal}}" disabled>
+                  <input type="text" class="form-control" name="valorTotal" id="valorTotal" value="" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="desconto">Desconto</label>
-                  <input type="text" class="form-control" name="desconto" id="desconto" value="{{$venda->desconto}}" disabled>
+                  <input type="text" class="form-control" name="desconto" id="desconto" value="" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="gasto">Gastos</label>
-                  <input type="text" class="form-control" name="gasto" id="gasto" value="{{$venda->gasto}}" disabled>
+                  <input type="text" class="form-control" name="gasto" id="gasto" value="" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="taxaEntrega">Taxa de Entrega</label>
-                  <input type="text" class="form-control" name="taxaEntrega" id="taxaEntrega" value="{{$venda->taxaEntrega}}" disabled>
+                  <input type="text" class="form-control" name="taxaEntrega" id="taxaEntrega" value="" disabled>
                 </div>
                 </div>
 
                 <div class="form-group row">
                 <div class="col-sm-2">
                   <label for="taxaAdd">Taxas Adicionais</label>
-                  <input type="text" class="form-control" name="taxaAdd" id="taxaAdd" value="{{$venda->taxaAdd}}" disabled>
+                  <input type="text" class="form-control" name="taxaAdd" id="taxaAdd" value="" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="statusVenda">Status da Venda</label>
-                  <input type="text" class="form-control" name="statusVenda" id="statusVenda" value="{{$venda->statusVenda}}" disabled>
+                  <input type="text" class="form-control" name="statusVenda" id="statusVenda" value="" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="entrada">Dinheiro de Entrada</label>
-                  <input type="text" class="form-control" name="entrada" id="entrada" value="{{$venda->entrada}}" disabled>
+                  <input type="text" class="form-control" name="entrada" id="entrada" value="" disabled>
                 </div>
                 <div class="col-sm-3">
                   <label for="medidas">Medidas</label>
-                  <input type="text" class="form-control" name="medidas" id="medidas" value="{{$venda->medidas}}" disabled>
+                  <input type="text" class="form-control" name="medidas" id="medidas" value="" disabled>
                 </div>
                 </div>
                 
