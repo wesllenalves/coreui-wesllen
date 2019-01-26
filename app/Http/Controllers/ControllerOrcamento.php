@@ -113,7 +113,8 @@ class ControllerOrcamento extends Controller
     } 
     
     public function deletarProduto(Request $request, $id)
-    {
+    {   
+
         $venda = Venda::find($id);
         $valores = $request->produto;
         
@@ -181,7 +182,36 @@ class ControllerOrcamento extends Controller
         $dataFormqtd = [
             "qtd" => $request->qtd,
         ];
-         $pivo =  Produtos_vendas::find($request->id);
+
+        $quantidade = Produtos_vendas::where('id_venda', '=', $request->id_venda)->count();
+
+        if($quantidade > 1){
+        $tabTotal = 0;
+        $valorOutraTab =  Produtos_vendas::where([
+            ['id_venda', '=', $request->id_venda],
+            ['id', '!=', $request->id],
+            ])->get();
+
+        foreach($valorOutraTab as $tab){
+            $tabTotal += $tab->qtd * $tab->valor;
+            
+        }    
+
+        $pivo =  Produtos_vendas::find($request->id);
+        $valorBanco = $pivo->valor;
+        $valorTotal = $valorBanco *  $request->qtd;
+
+        $resultado = $valorTotal + $tabTotal;
+         return $resultado;
+        
+        }else{
+            return "não existe mais de um";
+        }
+        //return $tabTotal;
+
+        /* $pivo =  Produtos_vendas::find($request->id);
+
+
 
          $venda = Venda::find($id);
        
@@ -244,8 +274,8 @@ class ControllerOrcamento extends Controller
 
        if($update){
         return $resultado;//redirect('/sample/orcamento');
-       }else{
-        return $resultado;//redirect('/sample/orcamento');
-       };
+       }else{*/
+        //return $resultado;//redirect('/sample/orcamento');
+      // };
     }
 }

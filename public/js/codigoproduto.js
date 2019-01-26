@@ -158,6 +158,7 @@ $("document").ready(function(){
     modal.find('.modal-body input[id=recipient-qtd]').val(recipientqtd)
     modal.find('.modal-body input[id=recipient-idProduto]').val(recipientidProduto)
     modal.find('.modal-body input[id=recipient-idPivo]').val(recipientidPivo)
+    modal.find('.modal-body input[id=recipient-idVenda]').val(recipientidVenda)
     
     //formulario edição de quantidade de produto
   
@@ -174,7 +175,8 @@ $("document").ready(function(){
              data: {
                  id: recipientidPivo, 
                  qtd: quantidade, 
-                 id_produto: recipientidProduto,                 
+                 id_produto: recipientidProduto, 
+                 id_venda: recipientidVenda,                
                    },      
              success: function( data ) {
                 console.log(data);

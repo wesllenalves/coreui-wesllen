@@ -75,6 +75,7 @@
                    
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
+                    <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
                     <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
                     
                   </div>
