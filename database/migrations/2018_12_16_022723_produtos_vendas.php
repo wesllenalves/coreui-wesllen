@@ -21,6 +21,10 @@ class ProdutosVendas extends Migration
             $table->foreign('id_produto')->references('idProduto')->on('produtos')->onDelete('cascade');
             $table->string('qtd',255)->nullable();
             $table->string('valor', 255)->nullable();
+            $table->decimal('desconto', 18,2)->nullable()->default('00.00');                
+            $table->decimal('gasto', 18,2)->nullable()->default('00.00');                
+            $table->decimal('taxaEntrega', 18,2)->nullable()->default('00.00');                
+            $table->decimal('taxaAdd', 18,2)->nullable()->default('00.00');
             $table->timestamps();
             
         });

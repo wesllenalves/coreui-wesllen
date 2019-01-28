@@ -19,21 +19,16 @@ class CreateVendasTable extends Migration
             $table->integer('FkUsers')->unsigned();            
             $table->foreign('FkUsers')
                 ->references('id')->on('users')
-                ->onDelete('cascade');            
-
-                $table->string('qtd', 11)->nullable();
-                $table->date('dataEntrega', 18,2)->nullable();
-                $table->decimal('valorUnd', 18,2)->nullable();                
-                $table->decimal('desconto', 18,2)->nullable()->default('00.00');                
-                $table->decimal('gasto', 18,2)->nullable()->default('00.00');                
-                $table->decimal('taxaEntrega', 18,2)->nullable()->default('00.00');                
-                $table->decimal('taxaAdd', 18,2)->nullable()->default('00.00');
-                $table->decimal('valorTotal', 18,2)->nullable()->default(00.00);
-                $table->string('statusVenda', 45)->default('Negociando')->nullable();
-                $table->string('entrada', 45)->nullable()->default(00.00);
-                $table->string('descricao', 45)->nullable();
-                $table->string('medidas', 45)->nullable();
-                $table->timestamps();
+                ->onDelete('cascade');
+            $table->string('qtd', 11)->nullable();
+            $table->date('dataEntrega', 18,2)->nullable();
+            $table->decimal('valorUnd', 18,2)->nullable();
+            $table->decimal('valorTotal', 18,2)->nullable()->default(00.00);
+            $table->string('statusVenda', 45)->default('Negociando')->nullable();
+            $table->string('entrada', 45)->nullable()->default(00.00);
+            $table->string('descricao', 45)->nullable();
+            $table->string('medidas', 45)->nullable();
+            $table->timestamps();
             
         });
     }

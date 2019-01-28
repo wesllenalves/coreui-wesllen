@@ -25,6 +25,6 @@ class Produto extends Model
 
     public function Vendas()
     {
-        return $this->belongsToMany('App\Venda', 'produtos_vendas','id_venda', 'id_produto')->withPivot(['qtd','valor','id']);
+        return $this->belongsToMany('App\Venda', 'produtos_vendas','id_venda', 'id_produto')->withPivot(['qtd','valor','id', 'desconto', 'gasto', 'taxaEntrega', 'taxaAdd']);
     }
 }

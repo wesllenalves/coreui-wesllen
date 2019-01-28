@@ -14,6 +14,6 @@ class Produtos_vendas extends Model
       public  $timestamps   = true;
   
       protected $fillable = [
-          'id_venda', 'id_produto', 'qtd', 'valor',
+          'id_venda', 'id_produto', 'qtd', 'valor', 'desconto', 'gasto', 'taxaEntrega', 'taxaAdd',
       ];
 }

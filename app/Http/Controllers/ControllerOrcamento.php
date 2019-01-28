@@ -194,88 +194,139 @@ class ControllerOrcamento extends Controller
 
         foreach($valorOutraTab as $tab){
             $tabTotal += $tab->qtd * $tab->valor;
-            
         }    
 
         $pivo =  Produtos_vendas::find($request->id);
         $valorBanco = $pivo->valor;
         $valorTotal = $valorBanco *  $request->qtd;
 
-        $resultado = $valorTotal + $tabTotal;
-         return $resultado;
+        $resultadovalor = $valorTotal + $tabTotal;
+
+        $venda = Venda::find($id);
         
-        }else{
-            return "não existe mais de um";
-        }
-        //return $tabTotal;
-
-        /* $pivo =  Produtos_vendas::find($request->id);
-
-
-
-         $venda = Venda::find($id);
-       
-        $valorBanco = $pivo->valor;
-
-        $valorTotal = $valorBanco *  $request->qtd;
-
         $dataFormtotal = [
-            "valorTotal" => $valorTotal,
+            "valorTotal" => $resultadovalor,
         ];
 
         $total = $venda->update($dataFormtotal);
-       $update = $pivo->update($dataFormqtd);
+        $update = $pivo->update($dataFormqtd);
 
-       $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
-       foreach ($vendas as  $venda) {
-       
-       $resultado = "<form id='form-tabela'>                
-                  
-       <table class='table' >
-         <thead>
+        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+        foreach ($vendas as  $venda) {
+    
+        $resultado = "<form id='form-tabela'>                
+                
+        <table class='table' >
+            <thead>
+            <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
+            <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Produto</th>
+                <th scope='col'>Editar Quantidade</th>
+                <th scope='col'>Deletar</th>
+            </tr>
+            </thead>";
+
+            foreach ($venda->produtos as $value){
             
-           <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
-           <tr>
-             <th scope='col'>#</th>
-             <th scope='col'>Produto</th>
-             <th scope='col'>Editar Quantidade</th>
-             <th scope='col'>Deletar</th>
-           </tr>
-         </thead>";
+                $resultado .= "<div class='tabela-produtos'>
+            <tbody id='produtos'>
+            <tr>                  
+                <td>{$value->idProduto}</td>
+                <td>{$value->nome}</td>
+                <td>
+                    <!--Editando modal-->
+                    <input type='number' class='form col-2' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled>
+                    <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                </td>
+                <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+            </tr>";     
+                
+            }
+            }                   
+            
+            $resultado .= "</tbody>
+            </div>
+        </table>
+            <div class='text-right'>
+                <input type='submit' class='btn btn-danger' value='Deletar'>
+            </div>
+        </form>";
 
-         foreach ($venda->produtos as $value){
-         
-            $resultado .= "<div class='tabela-produtos'>
-         <tbody id='produtos'>
-             
-             
-           <tr>                  
-               <td>{$value->idProduto}</td>
-               <td>{$value->nome}</td>
-               <td>
-                 <!--Editando modal-->
-                 <input type='number' class='form col-2' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled>
-                 <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
-               </td>
-               <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
-             </tr>";     
-             
-         }
-        }                   
-        
-        $resultado .= "</tbody>
-         </div>
-     </table>
-     <div class='text-right'>
-         <input type='submit' class='btn btn-danger' value='Deletar'>
-
-       </div>
-     </form>";
-
-       if($update){
+    if($update){
         return $resultado;//redirect('/sample/orcamento');
-       }else{*/
-        //return $resultado;//redirect('/sample/orcamento');
-      // };
+    }else{
+        return $resultado;//redirect('/sample/orcamento');
+    }
+
+        }else{
+
+                $pivo =  Produtos_vendas::find($request->id);
+                
+                $venda = Venda::find($id);
+            
+                $valorUniBanco = $pivo->valor;
+                $decontoBanco = $pivo->desconto;                
+                $gastoBanco = $pivo->gasto;
+                $taxaEntregaBanco = $pivo->taxaEntrega;
+                $taxaAddBanco = $pivo->taxaAdd;
+
+                $valorTotal = (($valorUniBanco *  $request->qtd) + $taxaEntregaBanco);
+
+                $dataFormtotal = [
+                    "valorTotal" => $valorTotal,
+                ];
+
+                $total = $venda->update($dataFormtotal);
+                $update = $pivo->update($dataFormqtd);
+
+                $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+                foreach ($vendas as  $venda) {
+            
+                $resultado = "<form id='form-tabela'>                
+                        
+                <table class='table' >
+                    <thead>
+                    <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
+                    <tr>
+                        <th scope='col'>#</th>
+                        <th scope='col'>Produto</th>
+                        <th scope='col'>Editar Quantidade</th>
+                        <th scope='col'>Deletar</th>
+                    </tr>
+                    </thead>";
+
+                    foreach ($venda->produtos as $value){
+                    
+                        $resultado .= "<div class='tabela-produtos'>
+                    <tbody id='produtos'>
+                    <tr>                  
+                        <td>{$value->idProduto}</td>
+                        <td>{$value->nome}</td>
+                        <td>
+                            <!--Editando modal-->
+                            <input type='number' class='form col-2' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled>
+                            <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                        </td>
+                        <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                    </tr>";     
+                        
+                    }
+                    }                   
+                    
+                    $resultado .= "</tbody>
+                    </div>
+                </table>
+                    <div class='text-right'>
+                        <input type='submit' class='btn btn-danger' value='Deletar'>
+                    </div>
+                </form>";
+               
+            if($update){
+                return $resultado;//redirect('/sample/orcamento');
+            }else{
+                return $resultado;//redirect('/sample/orcamento');
+            }
+        }
     }
 }
