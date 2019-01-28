@@ -198,9 +198,13 @@ class ControllerOrcamento extends Controller
 
         $pivo =  Produtos_vendas::find($request->id);
         $valorBanco = $pivo->valor;
+        $decontoBanco = $pivo->desconto;                
+        $gastoBanco = $pivo->gasto;
+        $taxaEntregaBanco = $pivo->taxaEntrega;
+        $taxaAddBanco = $pivo->taxaAdd;
         $valorTotal = $valorBanco *  $request->qtd;
 
-        $resultadovalor = $valorTotal + $tabTotal;
+        $resultadovalor = ($valorTotal + $tabTotal + $gastoBanco + $taxaEntregaBanco + $taxaAddBanco - $decontoBanco );
 
         $venda = Venda::find($id);
         
@@ -271,7 +275,7 @@ class ControllerOrcamento extends Controller
                 $taxaEntregaBanco = $pivo->taxaEntrega;
                 $taxaAddBanco = $pivo->taxaAdd;
 
-                $valorTotal = (($valorUniBanco *  $request->qtd) + $taxaEntregaBanco);
+                $valorTotal = (($valorUniBanco *  $request->qtd) + $taxaEntregaBanco +  $gastoBanco + $taxaAddBanco - $decontoBanco);
 
                 $dataFormtotal = [
                     "valorTotal" => $valorTotal,
