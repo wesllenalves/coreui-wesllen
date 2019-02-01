@@ -4,7 +4,7 @@
 <div class="animated fadeIn">
 
 <div class="row">
-    <div class="col-sm-12">
+   
         @include('core.alerts')
 
         <div class="card">
@@ -20,11 +20,14 @@
                     <table class="table" >
                         <input id="id" type="hidden" value="{{$venda->idVenda}}" name="id">
                       <thead>
-                        <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
+                        <p>Selecione somente um item por vez para deletar ou editar</p>
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Produto</th>
-                          <th scope="col">Editar Quantidade</th>
+                          <th scope="col">Quantidade</th>
+                          <th scope="col">Gastos</th>
+                          <th scope="col">Taxa de Entrega</th>
+                          <th scope="col">Taxa Adicionais</th>
                           <th scope="col">Deletar</th>
                         </tr>
                       </thead>
@@ -35,9 +38,24 @@
                             <td>{{$value->idProduto}}</td>
                             <td>{{$value->nome}}</td>
                             <td>
-                              <!--Editando modal-->
-                              <input type="number" class="form col-2" name="qtd" value="{{$value->pivot->qtd}}" id="qtd" disabled>
+                              <!--Editando modal Quantidade-->
+                              <input type="number" class="form col-3" name="qtd" value="{{$value->pivot->qtd}}" id="qtd" disabled style="width: 100%;padding: 0;">
                               <button type="button" value="editar modal" id="bnt-editar-qtd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModal" data-qtd="{{$value->pivot->qtd}}" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+                            </td>
+                            <td>
+                              <!--Editando modal Gastos-->
+                              <input type="number" class="form col-4" name="gasto" value="{{$value->pivot->gasto}}" id="gasto" disabled style="width: 100%;padding: 0;">
+                              <button type="button" value="editar modal" id="bnt-editar-gasto" class="btn btn-default btn-sm" data-toggle="modal" data-target="#gastoModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+                            </td>
+                            <td>
+                              <!--Editando modal Taxa de Entrega-->
+                              <input type="number" class="form col-4" name="taxaEntrega" value="{{$value->pivot->taxaEntrega}}" id="taxaEntrega" disabled style="width: 100%;padding: 0;">
+                              <button type="button" value="editar modal" id="bnt-editar-taxaEntrega" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaEntregaModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+                            </td>
+                            <td>
+                              <!--Editando modal Taxa Adicionais-->
+                              <input type="number" class="form col-4" name="taxaAdd" value="{{$value->pivot->taxaAdd}}" id="taxaAdd" disabled style="width: 100%;padding: 0;">
+                              <button type="button" value="editar modal" id="bnt-editar-taxaAdd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaAddModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td><input type="checkbox" name="checks[]" value="{{$value->idProduto}}" id="pro"></td>
                           </tr>     
@@ -70,8 +88,7 @@
                 <form  id="form-edit-quantidade" >
                   
                   <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Quantdade:</label>
-                    <label for="recipient-name" class="col-form-label">Quantdade:</label>
+                    <label for="recipient-name" class="col-form-label">Quantidade:</label>
                    
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
@@ -90,7 +107,112 @@
               </div>
             </div>
           </div>
-        </div>
+
+        {{-- Modal editar Gasto --}}
+        <div class="modal fade" id="gastoModal" tabindex="-1" role="dialog" aria-labelledby="gastoModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form  id="form-edit-quantidade" >
+                  
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Gastos:</label>
+                   
+                    <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
+                    <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
+                    <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
+                    <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
+                    
+                  </div>
+                  
+              
+              <div class="modal-footer">
+                <button type="submit" id="btn-enviar" class="btn btn-primary">Enviar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </form>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+        {{-- Modal editar Taxa Entrega --}}
+        <div class="modal fade" id="taxaEntregaModal" tabindex="-1" role="dialog" aria-labelledby="taxaEntregaModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form  id="form-edit-quantidade" >
+                  
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Taxa de Entrega:</label>
+                   
+                    <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
+                    <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
+                    <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
+                    <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
+                    
+                  </div>
+                  
+              
+              <div class="modal-footer">
+                <button type="submit" id="btn-enviar" class="btn btn-primary">Enviar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </form>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+        {{-- Modal editar Taxa Adicionais --}}
+        <div class="modal fade" id="taxaAddModal" tabindex="-1" role="dialog" aria-labelledby="taxaAddModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form  id="form-edit-quantidade" >
+                  
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Taxa Adicional:</label>
+                   
+                    <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
+                    <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
+                    <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
+                    <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
+                    
+                  </div>
+                  
+              
+              <div class="modal-footer">
+                <button type="submit" id="btn-enviar" class="btn btn-primary">Enviar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </form>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        
         
         <div class="card">  
             <div class="card-header">
