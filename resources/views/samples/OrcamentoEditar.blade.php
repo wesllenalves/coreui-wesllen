@@ -127,7 +127,7 @@
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
                     <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
-                    <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
+                    <input type="number" class="form-control" id="recipient-gasto" name="gasto" value="">
                     
                   </div>
                   
@@ -161,7 +161,7 @@
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
                     <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
-                    <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
+                    <input type="number" class="form-control" id="recipient-taxaEntrega" name="qtd" value="">
                     
                   </div>
                   
@@ -195,7 +195,7 @@
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
                     <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
-                    <input type="number" class="form-control" id="recipient-qtd" name="qtd" value="">
+                    <input type="number" class="form-control" id="recipient-taxaAdd" name="qtd" value="">
                     
                   </div>
                   
