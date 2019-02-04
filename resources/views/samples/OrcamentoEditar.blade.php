@@ -40,21 +40,21 @@
                             <td>
                               <!--Editando modal Quantidade-->
                               <input type="number" class="form col-3" name="qtd" value="{{$value->pivot->qtd}}" id="qtd" disabled style="width: 100%;padding: 0;">
-                              <button type="button" value="editar modal" id="bnt-editar-qtd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#exampleModal" data-qtd="{{$value->pivot->qtd}}" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+                              <button type="button" value="editar modal" id="bnt-editar-qtd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#qtdModal" data-qtd="{{$value->pivot->qtd}}" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td>
                               <!--Editando modal Gastos-->
-                              <input type="number" class="form col-4" name="gasto" value="{{$value->pivot->gasto}}" id="gasto" disabled style="width: 100%;padding: 0;">
-                              <button type="button" value="editar modal" id="bnt-editar-gasto" class="btn btn-default btn-sm" data-toggle="modal" data-target="#gastoModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+                              <input type="text" class="form col-4" name="gasto" value="{{$value->pivot->gasto}}" id="input-gasto" disabled style="width: 100%;padding: 0;">
+                              <button type="button" value="editar modal" id="bnt-editar-gasto" class="btn btn-default btn-sm" data-toggle="modal" data-target="#gastoModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}" data-gasto="{{$value->pivot->gasto}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td>
                               <!--Editando modal Taxa de Entrega-->
-                              <input type="number" class="form col-4" name="taxaEntrega" value="{{$value->pivot->taxaEntrega}}" id="taxaEntrega" disabled style="width: 100%;padding: 0;">
+                              <input type="number" class="form col-4" name="taxaEntrega" value="{{$value->pivot->taxaEntrega}}" id="input-taxaEntrega" disabled style="width: 100%;padding: 0;">
                               <button type="button" value="editar modal" id="bnt-editar-taxaEntrega" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaEntregaModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td>
                               <!--Editando modal Taxa Adicionais-->
-                              <input type="number" class="form col-4" name="taxaAdd" value="{{$value->pivot->taxaAdd}}" id="taxaAdd" disabled style="width: 100%;padding: 0;">
+                              <input type="number" class="form col-4" name="taxaAdd" value="{{$value->pivot->taxaAdd}}" id="input-taxaAdd" disabled style="width: 100%;padding: 0;">
                               <button type="button" value="editar modal" id="bnt-editar-taxaAdd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaAddModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td><input type="checkbox" name="checks[]" value="{{$value->idProduto}}" id="pro"></td>
@@ -75,7 +75,7 @@
               </div>
         </div>
         {{-- Modal editar quantidade --}}
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="qtdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">

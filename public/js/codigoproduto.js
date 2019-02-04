@@ -9,6 +9,10 @@ $("document").ready(function(){
     
     /* Adiciona a máscara ao input do valor do produto ( plugin mask utilizado ) */
     $('#vlProduto').mask("00000.00",{reverse: true});
+
+    $('#input-gasto').mask("00000.00",{reverse: true});
+    $('#input-taxaEntrega').mask("00000.00",{reverse: true});
+    $('#input-taxaAdd').mask("00000.00",{reverse: true});
     
     /* Adiciona a máscara ao input do Gastos do produto ( plugin mask utilizado )  */
     $('#gastos').mask("00000.00",{reverse: true});
@@ -144,7 +148,7 @@ $("document").ready(function(){
    
    // function Edit POST
    //modal editar quantidade
-   $('#exampleModal').on('show.bs.modal', function (event) {
+   $('#qtdModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipientqtd = button.data('qtd') // Extract info from data-* attributes
     var recipientidProduto = button.data('idproduto') // Extract info from data-* attributes
@@ -188,6 +192,53 @@ $("document").ready(function(){
 
   });
 
+
+  //modal editar Gasto
+  $('#gastoModal').on('show.bs.modal', function (event) {
+   var button = $(event.relatedTarget) // Button that triggered the modal
+   var recipientqtd = button.data('qtd') // Extract info from data-* attributes
+   var recipientidProduto = button.data('idproduto') // Extract info from data-* attributes
+   var recipientidPivo = button.data('idpivo') // Extract info from data-* attributes
+   var recipientidVenda = button.data('idvenda') // Extract info from data-* attributes
+   var recipientgasto = button.data('gasto') // Extract info from data-* attributes
+   var titulo = "Editando Gastos"
+   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+   var modal = $(this)
+   modal.find('.modal-title').text(titulo)
+   modal.find('.modal-body input[id=recipient-qtd]').val(recipientqtd)
+   modal.find('.modal-body input[id=recipient-idProduto]').val(recipientidProduto)
+   modal.find('.modal-body input[id=recipient-idPivo]').val(recipientidPivo)
+   modal.find('.modal-body input[id=recipient-idVenda]').val(recipientidVenda)
+   modal.find('.modal-body input[id=recipient-gasto]').val(recipientgasto)
+   
+   //formulario edição de quantidade de produto
+ 
+   $("#form-edit-quantidade").on("submit", function(e){
+      e.preventDefault();
+      //$('#exampleModal').modal('hide');
+      var quantidade = $('#recipient-qtd').val();
+      
+      //console.log(recipientidvenda);
+      // agora iniciamos a requisição ajax
+      $.post({        
+            url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidVenda,
+            async: true, // link de exemplo
+            data: {
+                id: recipientidPivo, 
+                qtd: quantidade, 
+                id_produto: recipientidProduto, 
+                id_venda: recipientidVenda,                
+                  },      
+            success: function( data ) {
+               console.log(data);
+              $("#form-tabela").html(data);
+            } 
+      });
+      $('#exampleModal').modal('hide');
+   });
+
+ });
 
    
 
