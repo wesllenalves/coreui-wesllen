@@ -153,7 +153,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form  id="form-edit-quantidade" >
+                <form  id="form-edit-taxaEntrega" >
                   
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Taxa de Entrega:</label>
@@ -187,7 +187,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form  id="form-edit-quantidade" >
+                <form  id="form-edit-taxaAdd" >
                   
                   <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Taxa Adicional:</label>

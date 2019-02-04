@@ -383,6 +383,191 @@ class ControllerOrcamento extends Controller
                 }else{
                     return $resultado;//redirect('/sample/orcamento');
                 }
+    }
+    public function TaxaEntregaProduto(Request $request, $id)
+    {   
+        $dataFormgasto = [
+            "taxaEntrega" => $request->taxaEntrega,
+        ];
+
+        $pivo =  Produtos_vendas::find($request->id);
+        $valorBanco = $pivo->valor;
+        $qtdBanco = $pivo->qtd;
+        $decontoBanco = $pivo->desconto;                
+        $gasto = $pivo->gasto;
+        $taxaEntregaBanco = $request->taxaEntrega;
+        $taxaAddBanco = $pivo->taxaAdd;
+
+        $valorTotal = (($valorBanco  *  $qtdBanco) + $taxaEntregaBanco +  $gasto + $taxaAddBanco - $decontoBanco);
         
+        $venda = Venda::find($id);
+            
+            $dataFormtotal = [
+                "valorTotal" => $valorTotal,
+        ];
+            
+        $update = $pivo->update($dataFormgasto);
+        $total = $venda->update($dataFormtotal);
+            
+        
+        
+        
+        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+            foreach ($vendas as  $venda) {
+        
+            $resultado = "<form id='form-tabela'>                
+                    
+            <table class='table' >
+                <thead>
+                <p>Selecione somente um item por vez para deletar ou editar</p>
+                <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Produto</th>
+                <th scope='col'>Quantidade</th>
+                <th scope='col'>Gastos</th>
+                <th scope='col'>Taxa de Entrega</th>
+                <th scope='col'>Taxa Adicionais</th>
+                <th scope='col'>Deletar</th>
+                </tr>
+                </thead>";
+
+                foreach ($venda->produtos as $value){
+                
+                    $resultado .= "<div class='tabela-produtos'>
+                <tbody id='produtos'>
+                <tr>                  
+                    <td>{$value->idProduto}</td>
+                    <td>{$value->nome}</td>
+                    <td>
+                        <input type='number' class='form col-3' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#qtdModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                       
+                        <input type='text' class='form col-4' name='gasto' value='{$value->pivot->gasto}' id='input-gasto' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-gasto' class='btn btn-default btn-sm' data-toggle='modal' data-target='#gastoModal' data-qtd='' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-gasto='{$value->pivot->gasto}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        
+                        <input tye='number' class='form col-4' name='taxaEntrega' value='{$value->pivot->taxaEntrega}' id='input-taxaEntrega' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaEntrega' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaEntregaModal'  data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-taxa-entrega='{$value->pivot->taxaEntrega}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        <!--Editando modal Taxa Adicionais-->
+                        <input type='number' class='form col-4' name='taxaAdd' value='{$value->pivot->taxaAdd}' id='input-taxaAdd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaAdd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaAddModal'  data-idproduto='{{$value->pivot->id_produto}}' data-idpivo='{{$value->pivot->id}}' data-idvenda='{{$value->pivot->id_venda}}' data-taxa-add='{{$value->pivot->taxaAdd}}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                </tr>";     
+                    
+                }
+                }                   
+                
+                $resultado .= "</tbody>
+                </div>
+            </table>
+                <div class='text-right'>
+                    <input type='submit' class='btn btn-danger' value='Deletar'>
+                </div>
+            </form>";
+
+                if($update){
+                    return $resultado;//redirect('/sample/orcamento');
+                }else{
+                    return $resultado;//redirect('/sample/orcamento');
+                }
+    }
+    public function TaxaAddProduto(Request $request, $id)
+    {
+        $dataFormgasto = [
+            "taxaAdd" => $request->taxaAdd,
+        ];
+
+        $pivo =  Produtos_vendas::find($request->id);
+        $valorBanco = $pivo->valor;
+        $qtdBanco = $pivo->qtd;
+        $decontoBanco = $pivo->desconto;                
+        $gasto = $pivo->gasto;
+        $taxaEntregaBanco = $pivo->taxaEntrega;
+        $taxaAddBanco = $request->taxaAdd;
+
+        $valorTotal = (($valorBanco  *  $qtdBanco) + $taxaEntregaBanco +  $gasto + $taxaAddBanco - $decontoBanco);
+        
+        $venda = Venda::find($id);
+            
+            $dataFormtotal = [
+                "valorTotal" => $valorTotal,
+        ];
+            
+        $update = $pivo->update($dataFormgasto);
+        $total = $venda->update($dataFormtotal);
+            
+        
+        
+        
+        $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+            foreach ($vendas as  $venda) {
+        
+            $resultado = "<form id='form-tabela'>                
+                    
+            <table class='table' >
+                <thead>
+                <p>Selecione somente um item por vez para deletar ou editar</p>
+                <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Produto</th>
+                <th scope='col'>Quantidade</th>
+                <th scope='col'>Gastos</th>
+                <th scope='col'>Taxa de Entrega</th>
+                <th scope='col'>Taxa Adicionais</th>
+                <th scope='col'>Deletar</th>
+                </tr>
+                </thead>";
+
+                foreach ($venda->produtos as $value){
+                
+                    $resultado .= "<div class='tabela-produtos'>
+                <tbody id='produtos'>
+                <tr>                  
+                    <td>{$value->idProduto}</td>
+                    <td>{$value->nome}</td>
+                    <td>
+                        <input type='number' class='form col-3' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#qtdModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                       
+                        <input type='text' class='form col-4' name='gasto' value='{$value->pivot->gasto}' id='input-gasto' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-gasto' class='btn btn-default btn-sm' data-toggle='modal' data-target='#gastoModal' data-qtd='' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-gasto='{$value->pivot->gasto}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        
+                        <input tye='number' class='form col-4' name='taxaEntrega' value='{$value->pivot->taxaEntrega}' id='input-taxaEntrega' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaEntrega' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaEntregaModal'  data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-taxa-entrega='{$value->pivot->taxaEntrega}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        <!--Editando modal Taxa Adicionais-->
+                        <input type='number' class='form col-4' name='taxaAdd' value='{$value->pivot->taxaAdd}' id='input-taxaAdd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaAdd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaAddModal'  data-idproduto='{{$value->pivot->id_produto}}' data-idpivo='{{$value->pivot->id}}' data-idvenda='{{$value->pivot->id_venda}}' data-taxa-add='{{$value->pivot->taxaAdd}}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                </tr>";     
+                    
+                }
+                }                   
+                
+                $resultado .= "</tbody>
+                </div>
+            </table>
+                <div class='text-right'>
+                    <input type='submit' class='btn btn-danger' value='Deletar'>
+                </div>
+            </form>";
+
+                if($update){
+                    return $resultado;//redirect('/sample/orcamento');
+                }else{
+                    return $resultado;//redirect('/sample/orcamento');
+                }
     }
 }

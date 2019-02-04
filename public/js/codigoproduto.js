@@ -263,19 +263,19 @@ $("document").ready(function(){
    
    //formulario edição de quantidade de produto
  
-   $("#form-edit-quantidade").on("submit", function(e){
+   $("#form-edit-taxaEntrega").on("submit", function(e){
       e.preventDefault();
       //$('#exampleModal').modal('hide');
-      var quantidade = $('#recipient-qtd').val();
+      var taxaEntrega = $('#recipient-taxaEntrega').val();
       
       //console.log(recipientidvenda);
       // agora iniciamos a requisição ajax
       $.post({        
-            url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidVenda,
+            url: '/sample/orcamento/OrcamentoEditar/taxaEntrega/editar/'+ recipientidVenda,
             async: true, // link de exemplo
             data: {
                 id: recipientidPivo, 
-                qtd: quantidade, 
+                taxaEntrega: taxaEntrega, 
                 id_produto: recipientidProduto, 
                 id_venda: recipientidVenda,                
                   },      
@@ -284,7 +284,7 @@ $("document").ready(function(){
               $("#form-tabela").html(data);
             } 
       });
-      $('#exampleModal').modal('hide');
+      $('#taxaEntregaModal').modal('hide');
    });
 
  });
@@ -310,19 +310,19 @@ $("document").ready(function(){
    
    //formulario edição de quantidade de produto
  
-   $("#form-edit-quantidade").on("submit", function(e){
+   $("#form-edit-taxaAdd").on("submit", function(e){
       e.preventDefault();
       //$('#exampleModal').modal('hide');
-      var quantidade = $('#recipient-qtd').val();
+      var taxaAdd = $('#recipient-taxaAdd').val();
       
       //console.log(recipientidvenda);
       // agora iniciamos a requisição ajax
       $.post({        
-            url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidVenda,
+            url: '/sample/orcamento/OrcamentoEditar/taxaAdd/editar/'+ recipientidVenda,
             async: true, // link de exemplo
             data: {
                 id: recipientidPivo, 
-                qtd: quantidade, 
+                taxaAdd: taxaAdd, 
                 id_produto: recipientidProduto, 
                 id_venda: recipientidVenda,                
                   },      
@@ -331,7 +331,7 @@ $("document").ready(function(){
               $("#form-tabela").html(data);
             } 
       });
-      $('#exampleModal').modal('hide');
+      $('#taxaAddModal').modal('hide');
    });
 
  });

@@ -15,6 +15,8 @@ class VerifyCsrfToken extends Middleware
         '/sample/relatorio/editar',
         '/sample/orcamento/OrcamentoEditar/qtd/*', // * significa que todo o resto da url entrarar na exceção
         '/sample/orcamento/OrcamentoEditar/gasto/*', // * significa que todo o resto da url entrarar na exceção
+        '/sample/orcamento/OrcamentoEditar/taxaEntrega/*', // * significa que todo o resto da url entrarar na exceção
+        '/sample/orcamento/OrcamentoEditar/taxaAdd/*', // * significa que todo o resto da url entrarar na exceção
         
     ];
 }
