@@ -50,12 +50,12 @@
                             <td>
                               <!--Editando modal Taxa de Entrega-->
                               <input type="number" class="form col-4" name="taxaEntrega" value="{{$value->pivot->taxaEntrega}}" id="input-taxaEntrega" disabled style="width: 100%;padding: 0;">
-                              <button type="button" value="editar modal" id="bnt-editar-taxaEntrega" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaEntregaModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+                              <button type="button" value="editar modal" id="bnt-editar-taxaEntrega" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaEntregaModal"  data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}" data-taxa-entrega="{{$value->pivot->taxaEntrega}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td>
                               <!--Editando modal Taxa Adicionais-->
                               <input type="number" class="form col-4" name="taxaAdd" value="{{$value->pivot->taxaAdd}}" id="input-taxaAdd" disabled style="width: 100%;padding: 0;">
-                              <button type="button" value="editar modal" id="bnt-editar-taxaAdd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaAddModal" data-qtd="" data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}"><span class="fas fa-pen-square fa-2x"></span></button>
+                              <button type="button" value="editar modal" id="bnt-editar-taxaAdd" class="btn btn-default btn-sm" data-toggle="modal" data-target="#taxaAddModal"  data-idproduto="{{$value->pivot->id_produto}}" data-idpivo="{{$value->pivot->id}}" data-idvenda="{{$value->pivot->id_venda}}" data-taxa-add="{{$value->pivot->taxaAdd}}"><span class="fas fa-pen-square fa-2x"></span></button>
                             </td>
                             <td><input type="checkbox" name="checks[]" value="{{$value->idProduto}}" id="pro"></td>
                           </tr>     
@@ -161,7 +161,7 @@
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
                     <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
-                    <input type="number" class="form-control" id="recipient-taxaEntrega" name="qtd" value="">
+                    <input type="number" class="form-control" id="recipient-taxaEntrega" name="taxaEntrega" value="">
                     
                   </div>
                   
@@ -195,7 +195,7 @@
                     <input type="hidden" class="form-control" id="recipient-idProduto" name="id_produto" value="">
                     <input type="hidden" class="form-control" id="recipient-idPivo" name="id" value="">
                     <input type="hidden" class="form-control" id="recipient-idVenda" name="id_venda" value="">
-                    <input type="number" class="form-control" id="recipient-taxaAdd" name="qtd" value="">
+                    <input type="number" class="form-control" id="recipient-taxaAdd" name="taxaAdd" value="">
                     
                   </div>
                   
