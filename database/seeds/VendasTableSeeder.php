@@ -13,9 +13,7 @@ class VendasTableSeeder extends Seeder
     {   
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => NULL,            
             'statusVenda' => 'Negociando',
             'entrada' => NULL,
@@ -25,9 +23,7 @@ class VendasTableSeeder extends Seeder
 
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',            
             'statusVenda' => 'Negociando',
             'entrada' => '00.00',
@@ -36,9 +32,7 @@ class VendasTableSeeder extends Seeder
         ]);
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',            
             'statusVenda' => 'Orcamento',
             'entrada' => '00.00',
@@ -47,9 +41,7 @@ class VendasTableSeeder extends Seeder
         ]);
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',            
             'statusVenda' => 'Em andamento',
             'entrada' => '00.00',
@@ -61,9 +53,7 @@ class VendasTableSeeder extends Seeder
         
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',           
             'statusVenda' => 'Cancelado',
             'entrada' => '00.00',
@@ -73,9 +63,7 @@ class VendasTableSeeder extends Seeder
 
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',            
             'statusVenda' => 'Cancelado e estornado',
             'entrada' => '00.00',
@@ -85,9 +73,7 @@ class VendasTableSeeder extends Seeder
 
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',
             'statusVenda' => 'Em aberto',
             'entrada' => '00.00',
@@ -96,9 +82,7 @@ class VendasTableSeeder extends Seeder
         ]);
         DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',
             'statusVenda' => 'Fechado',
             'entrada' => '00.00',
@@ -106,9 +90,7 @@ class VendasTableSeeder extends Seeder
             'medidas' => '0000x0000',
         ]);DB::table('vendas')->insert([
             'FkUsers' => 1,
-            'qtd' => '2',
             'dataEntrega'  => '2018-11-22',
-            'valorUnd'  => '50.00',
             'valorTotal'  => '120.00',
             'statusVenda' => 'Fechado',
             'entrada' => '00.00',

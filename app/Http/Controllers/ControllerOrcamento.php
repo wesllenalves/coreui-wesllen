@@ -133,12 +133,15 @@ class ControllerOrcamento extends Controller
                     <table class='table' >
                         <input id='id' type='hidden' value='{$venda->idVenda}' name='id'>
                       <thead>
-                        <p>Seleciones os itens para deletar</p>
+                      <p>Selecione somente um item por vez para deletar ou editar</p>
                         <tr>
-                          <th scope='col'>#</th>
-                          <th scope='col'>Produto</th>
-                          <th scope='col'>Editar Quantidade</th>
-                          <th scope='col'>Deletar</th>
+                        <th scope='col'>#</th>
+                        <th scope='col'>Produto</th>
+                        <th scope='col'>Quantidade</th>
+                        <th scope='col'>Gastos</th>
+                        <th scope='col'>Taxa de Entrega</th>
+                        <th scope='col'>Taxa Adicionais</th>
+                        <th scope='col'>Deletar</th>
                         </tr>
                       </thead>";
           
@@ -146,17 +149,31 @@ class ControllerOrcamento extends Controller
             foreach ($venda->produtos as $value){
                 
                     $resultado .= "<div class='tabela-produtos'>
-                      <tbody id='produtos'>
-                        <tr>                  
-                            <td>{$value->idProduto}</td>
-                            <td>{$value->nome}</td>
-                            <td>
-                              <!--Editando modal-->
-                              <input type='number' class='form col-2' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled>
-                              <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
-                            </td>
-                            <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
-                          </tr>             
+                    <tbody id='produtos'>
+                    <tr>                  
+                        <td>{$value->idProduto}</td>
+                        <td>{$value->nome}</td>
+                        <td>
+                            <input type='number' class='form col-3' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled style='width: 100%;padding: 0;'>
+                            <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#qtdModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                        </td>
+                        <td>
+                           
+                            <input type='text' class='form col-4' name='gasto' value='{$value->pivot->gasto}' id='input-gasto' disabled style='width: 100%;padding: 0;'>
+                            <button type='button' value='editar modal' id='bnt-editar-gasto' class='btn btn-default btn-sm' data-toggle='modal' data-target='#gastoModal' data-qtd='' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-gasto='{$value->pivot->gasto}'><span class='fas fa-pen-square fa-2x'></span></button>
+                        </td>
+                        <td>
+                            
+                            <input tye='number' class='form col-4' name='taxaEntrega' value='{$value->pivot->taxaEntrega}' id='input-taxaEntrega' disabled style='width: 100%;padding: 0;'>
+                            <button type='button' value='editar modal' id='bnt-editar-taxaEntrega' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaEntregaModal'  data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-taxa-entrega='{$value->pivot->taxaEntrega}'><span class='fas fa-pen-square fa-2x'></span></button>
+                        </td>
+                        <td>
+                            <!--Editando modal Taxa Adicionais-->
+                            <input type='number' class='form col-4' name='taxaAdd' value='{$value->pivot->taxaAdd}' id='input-taxaAdd' disabled style='width: 100%;padding: 0;'>
+                            <button type='button' value='editar modal' id='bnt-editar-taxaAdd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaAddModal'  data-idproduto='{{$value->pivot->id_produto}}' data-idpivo='{{$value->pivot->id}}' data-idvenda='{{$value->pivot->id_venda}}' data-taxa-add='{{$value->pivot->taxaAdd}}'><span class='fas fa-pen-square fa-2x'></span></button>
+                        </td>
+                        <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                    </tr>             
                       </tbody>
                       </div>";     
               
@@ -183,154 +200,189 @@ class ControllerOrcamento extends Controller
             "qtd" => $request->qtd,
         ];
 
-        $quantidade = Produtos_vendas::where('id_venda', '=', $request->id_venda)->count();
 
-        if($quantidade > 1){
-        $tabTotal = 0;
-        $valorOutraTab =  Produtos_vendas::where([
-            ['id_venda', '=', $request->id_venda],
-            ['id', '!=', $request->id],
-            ])->get();
+            $pivo =  Produtos_vendas::find($request->id);
+            $valorBanco = $pivo->valor;
+            $decontoBanco = $pivo->desconto;                
+            $gastoBanco = $pivo->gasto;
+            $taxaEntregaBanco = $pivo->taxaEntrega;
+            $taxaAddBanco = $pivo->taxaAdd;
+            $valorTotal = $valorBanco *  $request->qtd;
 
-        foreach($valorOutraTab as $tab){
-            $tabTotal += $tab->qtd * $tab->valor;
-        }    
+            $resultadovalor = ($valorTotal + $gastoBanco + $taxaEntregaBanco + $taxaAddBanco - $decontoBanco );
+
+            $venda = Venda::find($id);
+            
+            $dataFormtotal = [
+                "valorTotal" => $resultadovalor,
+            ];
+
+            $total = $venda->update($dataFormtotal);
+            $update = $pivo->update($dataFormqtd);
+
+            
+
+            $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
+            foreach ($vendas as  $venda) {
+        
+            $resultado = "<form id='form-tabela'>                
+                    
+            <table class='table' >
+                <thead>
+                <p>Selecione somente um item por vez para deletar ou editar</p>
+                <tr>
+                <th scope='col'>#</th>
+                <th scope='col'>Produto</th>
+                <th scope='col'>Quantidade</th>
+                <th scope='col'>Gastos</th>
+                <th scope='col'>Taxa de Entrega</th>
+                <th scope='col'>Taxa Adicionais</th>
+                <th scope='col'>Deletar</th>
+                </tr>
+                </thead>";
+
+                foreach ($venda->produtos as $value){
+                
+                    $resultado .= "<div class='tabela-produtos'>
+                <tbody id='produtos'>
+                <tr>                  
+                    <td>{$value->idProduto}</td>
+                    <td>{$value->nome}</td>
+                    <td>
+                        <input type='number' class='form col-3' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#qtdModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                       
+                        <input type='text' class='form col-4' name='gasto' value='{$value->pivot->gasto}' id='input-gasto' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-gasto' class='btn btn-default btn-sm' data-toggle='modal' data-target='#gastoModal' data-qtd='' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-gasto='{$value->pivot->gasto}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        
+                        <input tye='number' class='form col-4' name='taxaEntrega' value='{$value->pivot->taxaEntrega}' id='input-taxaEntrega' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaEntrega' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaEntregaModal'  data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-taxa-entrega='{$value->pivot->taxaEntrega}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        <!--Editando modal Taxa Adicionais-->
+                        <input type='number' class='form col-4' name='taxaAdd' value='{$value->pivot->taxaAdd}' id='input-taxaAdd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaAdd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaAddModal'  data-idproduto='{{$value->pivot->id_produto}}' data-idpivo='{{$value->pivot->id}}' data-idvenda='{{$value->pivot->id_venda}}' data-taxa-add='{{$value->pivot->taxaAdd}}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                </tr>";     
+                    
+                }
+                }                   
+                
+                $resultado .= "</tbody>
+                </div>
+            </table>
+                <div class='text-right'>
+                    <input type='submit' class='btn btn-danger' value='Deletar'>
+                </div>
+            </form>";
+
+                if($update){
+                    return $resultado;//redirect('/sample/orcamento');
+                }else{
+                    return $resultado;//redirect('/sample/orcamento');
+                }
+
+        
+    }
+
+
+    public function GastoProduto(Request $request, $id)
+    {
+        $dataFormgasto = [
+            "gasto" => $request->gasto,
+        ];
 
         $pivo =  Produtos_vendas::find($request->id);
         $valorBanco = $pivo->valor;
+        $qtdBanco = $pivo->qtd;
         $decontoBanco = $pivo->desconto;                
-        $gastoBanco = $pivo->gasto;
+        $gasto = $request->gasto;
         $taxaEntregaBanco = $pivo->taxaEntrega;
         $taxaAddBanco = $pivo->taxaAdd;
-        $valorTotal = $valorBanco *  $request->qtd;
 
-        $resultadovalor = ($valorTotal + $tabTotal + $gastoBanco + $taxaEntregaBanco + $taxaAddBanco - $decontoBanco );
-
-        $venda = Venda::find($id);
+        $valorTotal = (($valorBanco  *  $qtdBanco) + $taxaEntregaBanco +  $gasto + $taxaAddBanco - $decontoBanco);
         
-        $dataFormtotal = [
-            "valorTotal" => $resultadovalor,
+        $venda = Venda::find($id);
+            
+            $dataFormtotal = [
+                "valorTotal" => $valorTotal,
         ];
-
+            
+        $update = $pivo->update($dataFormgasto);
         $total = $venda->update($dataFormtotal);
-        $update = $pivo->update($dataFormqtd);
-
+            
+        
+        
+        
         $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
-        foreach ($vendas as  $venda) {
-    
-        $resultado = "<form id='form-tabela'>                
-                
-        <table class='table' >
-            <thead>
-            <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
-            <tr>
+            foreach ($vendas as  $venda) {
+        
+            $resultado = "<form id='form-tabela'>                
+                    
+            <table class='table' >
+                <thead>
+                <p>Selecione somente um item por vez para deletar ou editar</p>
+                <tr>
                 <th scope='col'>#</th>
                 <th scope='col'>Produto</th>
-                <th scope='col'>Editar Quantidade</th>
+                <th scope='col'>Quantidade</th>
+                <th scope='col'>Gastos</th>
+                <th scope='col'>Taxa de Entrega</th>
+                <th scope='col'>Taxa Adicionais</th>
                 <th scope='col'>Deletar</th>
-            </tr>
-            </thead>";
+                </tr>
+                </thead>";
 
-            foreach ($venda->produtos as $value){
-            
-                $resultado .= "<div class='tabela-produtos'>
-            <tbody id='produtos'>
-            <tr>                  
-                <td>{$value->idProduto}</td>
-                <td>{$value->nome}</td>
-                <td>
-                    <!--Editando modal-->
-                    <input type='number' class='form col-2' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled>
-                    <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
-                </td>
-                <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
-            </tr>";     
+                foreach ($venda->produtos as $value){
                 
-            }
-            }                   
-            
-            $resultado .= "</tbody>
-            </div>
-        </table>
-            <div class='text-right'>
-                <input type='submit' class='btn btn-danger' value='Deletar'>
-            </div>
-        </form>";
-
-    if($update){
-        return $resultado;//redirect('/sample/orcamento');
-    }else{
-        return $resultado;//redirect('/sample/orcamento');
-    }
-
-        }else{
-
-                $pivo =  Produtos_vendas::find($request->id);
+                    $resultado .= "<div class='tabela-produtos'>
+                <tbody id='produtos'>
+                <tr>                  
+                    <td>{$value->idProduto}</td>
+                    <td>{$value->nome}</td>
+                    <td>
+                        <input type='number' class='form col-3' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#qtdModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                       
+                        <input type='text' class='form col-4' name='gasto' value='{$value->pivot->gasto}' id='input-gasto' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-gasto' class='btn btn-default btn-sm' data-toggle='modal' data-target='#gastoModal' data-qtd='' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-gasto='{$value->pivot->gasto}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        
+                        <input tye='number' class='form col-4' name='taxaEntrega' value='{$value->pivot->taxaEntrega}' id='input-taxaEntrega' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaEntrega' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaEntregaModal'  data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}' data-taxa-entrega='{$value->pivot->taxaEntrega}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td>
+                        <!--Editando modal Taxa Adicionais-->
+                        <input type='number' class='form col-4' name='taxaAdd' value='{$value->pivot->taxaAdd}' id='input-taxaAdd' disabled style='width: 100%;padding: 0;'>
+                        <button type='button' value='editar modal' id='bnt-editar-taxaAdd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#taxaAddModal'  data-idproduto='{{$value->pivot->id_produto}}' data-idpivo='{{$value->pivot->id}}' data-idvenda='{{$value->pivot->id_venda}}' data-taxa-add='{{$value->pivot->taxaAdd}}'><span class='fas fa-pen-square fa-2x'></span></button>
+                    </td>
+                    <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
+                </tr>";     
+                    
+                }
+                }                   
                 
-                $venda = Venda::find($id);
-            
-                $valorUniBanco = $pivo->valor;
-                $decontoBanco = $pivo->desconto;                
-                $gastoBanco = $pivo->gasto;
-                $taxaEntregaBanco = $pivo->taxaEntrega;
-                $taxaAddBanco = $pivo->taxaAdd;
+                $resultado .= "</tbody>
+                </div>
+            </table>
+                <div class='text-right'>
+                    <input type='submit' class='btn btn-danger' value='Deletar'>
+                </div>
+            </form>";
 
-                $valorTotal = (($valorUniBanco *  $request->qtd) + $taxaEntregaBanco +  $gastoBanco + $taxaAddBanco - $decontoBanco);
-
-                $dataFormtotal = [
-                    "valorTotal" => $valorTotal,
-                ];
-
-                $total = $venda->update($dataFormtotal);
-                $update = $pivo->update($dataFormqtd);
-
-                $vendas = Venda::with('usuario',  'produtos')->where('idVenda', '=', $id)->get();
-                foreach ($vendas as  $venda) {
-            
-                $resultado = "<form id='form-tabela'>                
-                        
-                <table class='table' >
-                    <thead>
-                    <p>Selecione somente um item por vez para deletar ou editar a quantidade</p>
-                    <tr>
-                        <th scope='col'>#</th>
-                        <th scope='col'>Produto</th>
-                        <th scope='col'>Editar Quantidade</th>
-                        <th scope='col'>Deletar</th>
-                    </tr>
-                    </thead>";
-
-                    foreach ($venda->produtos as $value){
-                    
-                        $resultado .= "<div class='tabela-produtos'>
-                    <tbody id='produtos'>
-                    <tr>                  
-                        <td>{$value->idProduto}</td>
-                        <td>{$value->nome}</td>
-                        <td>
-                            <!--Editando modal-->
-                            <input type='number' class='form col-2' name='qtd' value='{$value->pivot->qtd}' id='qtd' disabled>
-                            <button type='button' value='editar modal' id='bnt-editar-qtd' class='btn btn-default btn-sm' data-toggle='modal' data-target='#exampleModal' data-qtd='{$value->pivot->qtd}' data-idproduto='{$value->pivot->id_produto}' data-idpivo='{$value->pivot->id}' data-idvenda='{$value->pivot->id_venda}'><span class='fas fa-pen-square fa-2x'></span></button>
-                        </td>
-                        <td><input type='checkbox' name='checks[]' value='{$value->idProduto}' id='pro'></td>
-                    </tr>";     
-                        
-                    }
-                    }                   
-                    
-                    $resultado .= "</tbody>
-                    </div>
-                </table>
-                    <div class='text-right'>
-                        <input type='submit' class='btn btn-danger' value='Deletar'>
-                    </div>
-                </form>";
-               
-            if($update){
-                return $resultado;//redirect('/sample/orcamento');
-            }else{
-                return $resultado;//redirect('/sample/orcamento');
-            }
-        }
+                if($update){
+                    return $resultado;//redirect('/sample/orcamento');
+                }else{
+                    return $resultado;//redirect('/sample/orcamento');
+                }
+        
     }
 }

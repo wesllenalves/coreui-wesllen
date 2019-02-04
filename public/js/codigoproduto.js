@@ -187,7 +187,7 @@ $("document").ready(function(){
                $("#form-tabela").html(data);
              } 
        });
-       $('#exampleModal').modal('hide');
+       $('#qtdModal').modal('hide');
     });
 
   });
@@ -214,19 +214,20 @@ $("document").ready(function(){
    
    //formulario edição de quantidade de produto
  
-   $("#form-edit-quantidade").on("submit", function(e){
+   $("#form-edit-gasto").on("submit", function(e){
       e.preventDefault();
       //$('#exampleModal').modal('hide');
-      var quantidade = $('#recipient-qtd').val();
+      var gasto = $('#recipient-gasto').val();
       
+
       //console.log(recipientidvenda);
       // agora iniciamos a requisição ajax
       $.post({        
-            url: '/sample/orcamento/OrcamentoEditar/qtd/editar/'+ recipientidVenda,
+            url: '/sample/orcamento/OrcamentoEditar/gasto/editar/'+ recipientidVenda,
             async: true, // link de exemplo
             data: {
                 id: recipientidPivo, 
-                qtd: quantidade, 
+                gasto: gasto, 
                 id_produto: recipientidProduto, 
                 id_venda: recipientidVenda,                
                   },      
@@ -235,7 +236,7 @@ $("document").ready(function(){
               $("#form-tabela").html(data);
             } 
       });
-      $('#exampleModal').modal('hide');
+      $('#gastoModal').modal('hide');
    });
 
  });

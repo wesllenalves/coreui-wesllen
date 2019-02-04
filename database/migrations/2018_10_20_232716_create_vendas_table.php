@@ -19,10 +19,8 @@ class CreateVendasTable extends Migration
             $table->integer('FkUsers')->unsigned();            
             $table->foreign('FkUsers')
                 ->references('id')->on('users')
-                ->onDelete('cascade');
-            $table->string('qtd', 11)->nullable();
+                ->onDelete('cascade');            
             $table->date('dataEntrega', 18,2)->nullable();
-            $table->decimal('valorUnd', 18,2)->nullable();
             $table->decimal('valorTotal', 18,2)->nullable()->default(00.00);
             $table->string('statusVenda', 45)->default('Negociando')->nullable();
             $table->string('entrada', 45)->nullable()->default(00.00);
