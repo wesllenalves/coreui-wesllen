@@ -52,17 +52,33 @@
             @foreach ($vendas as $venda)  
               <?php
               $receita = $receita + $venda->valorTotal;
-              $despesa = $despesa + $venda->produto->gastoMedio;
+             // $despesa = $despesa + $venda->produto->gastoMedio;
               ?>
               <tr>
-              <?php $array=[$venda];?>
+              <?php //$array=[$venda];?>
                 <td>{{$venda->idVenda}}</td>
                 <td>{{$venda->usuario->name}}</td>
-                <td>{{$venda->produto->nome}}</td>               
+                <td>
+                    @if(isset ($venda->produtos) && $venda->produtos->count() > 0)
+                    @foreach ($venda->produtos as $produto) 
+                    
+                      <button type="button" class="btn btn-danger btn-sm" aria-disabled="true" disabled>{{$produto->nome}}</button>
+                    
+                    @endforeach
+                    @else
+                    {{"Vazio"}}
+                    @endif
+                </td>               
                 
                 <td>{{$venda->dataEntrega}}</td>
                 <td>{{$venda->statusVenda}}</td>
-                <td>{{$venda->produto->gastoMedio}}</td>
+                <td>
+                    
+                      {{$venda}}
+                    
+                   
+                    
+                </td>
                 <td>{{$venda->valorTotal}}</td>
                 
                 <td style="width:25%;">

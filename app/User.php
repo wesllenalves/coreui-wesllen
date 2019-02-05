@@ -38,7 +38,7 @@ class User extends Authenticatable
     //Relacionamento.
     public function venda()
     {
-        return $this->hasMany('App\Venda');
+        //return $this->hasMany('App\Venda');
         //     $this->belongsTo(relação, chave estrangeira local, primary key da relação);
         return $this->belongsTo('App\Venda', 'FkUsers', 'id');
     }

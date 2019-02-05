@@ -56,36 +56,49 @@ class ControllerOrcamento extends Controller
     public function editarSalvar(Request $request, $id)
     {   
         //dd($request->all());
+        //dd($request->FkUsers);
         //traz todos os aray dos inputes e armazena em variaveis
         $produtos                     = $request->idProduto;
         $quantidade                   = $request->qtd;
         $valores                      = $request->vlProduto;
         //procurar saber se esse produto ja foi cadastrado anteriomente
-        $verificacao                  = Produtos_vendas::where('id_venda',  $id)
-        ->whereIn('id_produto', $produtos)
+        $verificacao   = Produtos_vendas::where('id_venda',  $id)
+        ->where('id_produto', $produtos)
         ->exists();   
-
+        
         //verifica se a variavel traz valor boolean true se existir retorna uma mensagem
         if( $verificacao == TRUE){
             return redirect('/sample/orcamento/editar/'.$id)->with(['error' => 'Já existe dados iguais cadastrados.Para não obter dados duplicados apague todos os produtos é insira com todos os produtos pretendidos']);
             
-        }        
-       
-        $dataForm = [
-            "FkUsers" => $request->FkUsers,
-            "dataEntrega" => $request->dataEntrega,
-            "valorTotal" => $request->valorTotal,
-            "statusVenda" => $request->statusVenda,
-            "entrada" => $request->entrada,
-            "medidas" => $request->medidas,
-            "descricao" => $request->descricao,
-        ];
+        }  
+        if($request->valorTotal > 0){
+            $dataForm = [
+                "dataEntrega" => $request->dataEntrega,
+                "valorTotal" => $request->valorTotal,
+                "statusVenda" => $request->statusVenda,
+                "entrada" => $request->entrada,
+                "medidas" => $request->medidas,
+                "descricao" => $request->descricao,
+            ];
+        }else{
+            $dataForm = [
+                "dataEntrega" => $request->dataEntrega,
+                "statusVenda" => $request->statusVenda,
+                "entrada" => $request->entrada,
+                "descricao" => $request->descricao,
+                "medidas" => $request->medidas,
+                
+            ];
+        }
 
+        $teste = "UPDATE 'vendas' SET 'FkUsers' = '2' WHERE 'vendas'.'idVenda' = 1";
+
+        $updatenome = DB::update("update vendas set FkUsers = '{$request->FkUsers}' where idVenda = '{$id}'");
         $venda = Venda::find($id);
         $venda->update($dataForm);
-
         
         
+        if($produtos != null){
         $attributes                   = [];
         foreach($produtos as  $index => $produ)
         {
@@ -98,7 +111,9 @@ class ControllerOrcamento extends Controller
             //grava s produtos na tabela pivo
             $produto                  = $venda->produtos()->attach([$id => $attributes]);
                       
-        }     
+        } 
+           
+        }
             
            
         //$produto = $venda->produtos()->sync([$id => ['id_produto' => 1, 'qtd' => 2, 'valor' => 50 ], ['id_produto' => 2, 'qtd' => 2, 'valor' => 50 ]]);

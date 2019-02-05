@@ -17,7 +17,12 @@ class ControllerFinanceiro extends Controller
     }
     public function index()
     {
-        $vendas               = Venda::with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->paginate($this->totalPage);
+        $vendas = Venda::with('usuario', 'produtos')->where(function ($query) {
+            $query->where('statusVenda', '=', 'Fechado');
+        })->paginate($this->totalPage);
+        
+        //dd($vendas);
+        /*$vendas  = Venda::with('usuario', 'produtos')->where('statusVenda', '=', 'Fechado')->get();//paginate($this->totalPage);*/
 
         return view('samples.FinanceiroIndex', ['vendas' => $vendas]);
     }

@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="text" class="form-control" name="valorTotal" id="valorTotal" value="" disabled>
+                  <input type="text" class="form-control" name="valorTotal" id="valorTotal" value="{{$venda->valorTotal}}" disabled>
                 </div>
                 <div class="col-sm-2">
                   <label for="desconto">Desconto</label>

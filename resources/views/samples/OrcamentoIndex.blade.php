@@ -20,6 +20,7 @@
                 <th>Status</th>                
                 <th>Descricao</th>
                 <th>Medidas</th>
+                <th>Total</th>
                 <th></th>
               </tr>
             </thead>
@@ -52,6 +53,7 @@
                 <td>{{$venda->statusVenda}}</td>
                 <td>{{$venda->descricao}}</td>
                 <td>{{$venda->medidas}}</td>
+                <td>{{$venda->valorTotal}}</td>
                 <td style="width:25%;">
 
                     <a href="/sample/orcamento/visualizar/{{$venda->idVenda}}"><button type="button" class="btn-sm btn-success">Mais Detalhes</button></a>

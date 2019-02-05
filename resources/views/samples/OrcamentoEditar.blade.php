@@ -328,7 +328,7 @@
                 <div class="form-group row">                
                 <div class="col-sm-2">
                   <label for="valorTotal">Valor Total</label>
-                  <input type="number" class="form-control"  id="TotalPedido" name="valorTotal" value=""   readonly>
+                  <input type="number" class="form-control"  id="TotalPedido" name="valorTotal" value="00.00"   readonly>
                 </div>
                 
                 <div class="col-sm-3">
