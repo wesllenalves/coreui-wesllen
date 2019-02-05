@@ -18,12 +18,26 @@ class ControllerVendas extends Controller
 
     public function index()
     {   
-        $vendas           = Venda::with('usuario', 'produto')
-        ->where(function ($query) {
+        $vendas = Venda::with('usuario', 'produtos')->where(function ($query) {
             $query->where('statusVenda', '<>', 'Orcamento')
-            ->Where('statusVenda', '<>', 'Negociando');
+            ->orWhere('statusVenda', '<>', 'Negociando');
         })->paginate($this->totalPage); 
-    
+
+        /*$vendas = Venda::with('usuario', 'produtos')->where(function ($query) {
+            $query->where('statusVenda', '<>', 'Orcamento')
+            ->orWhere('statusVenda', '<>', 'Negociando');
+        })->get();
+
+        foreach ($vendas as $venda){
+            foreach ($venda->produtos as $produto){
+                echo($produto->nome); 
+            }
+            
+        } 
+        die();*/
+
+        //dd($vendas);
+
         return view('samples.VendasIndex', ['vendas' => $vendas]);
     }
     

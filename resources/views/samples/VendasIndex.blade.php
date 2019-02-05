@@ -54,7 +54,16 @@
                 
                 
                 <td>{{$venda->usuario->name}}</td>
-                <td>{{$venda->produto->nome}}</td>
+                
+                <td>
+                  @if(isset ($venda->produtos))
+                  @foreach ($venda->produtos as $produto) 
+                    <button type="button" class="btn btn-danger btn-sm" aria-disabled="true" disabled>{{$produto->nome}}</button>
+                  
+                  @endforeach
+                  @endif
+                </td>
+               
                 <td>{{$venda->valorTotal}}</td>
                 <td>{{$venda->statusVenda}}</td>
                 <td>{{$venda->dataEntrega}}</td>
@@ -67,6 +76,7 @@
                     
                 </td>                
               </tr>
+              
               
               @endforeach
             </tbody>
