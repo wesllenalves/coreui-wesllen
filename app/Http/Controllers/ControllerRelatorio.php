@@ -10,9 +10,17 @@ use Mpdf\Mpdf;
 class ControllerRelatorio extends Controller
 {
     public function relatorioPDF(Request $request, Venda $venda)
-    {
+    { 
+      $gasto = 0;
         $dataForm = $request->except('_token');
-        $vendas = $venda->searsh($dataForm)->with('usuario', 'produto')->where('statusVenda', '=', 'Fechado')->get();
+        $vendas = $venda->searsh($dataForm)->with('usuario', 'produtos')->where('statusVenda', '=', 'Fechado')->get();
+        foreach($vendas as $venda){
+          foreach($venda->produtos as $produto){
+            
+            $gasto = $gasto + $produto->pivot->gasto;
+          }
+        }
+
         
 
         $mpdf = new Mpdf();
@@ -48,13 +56,23 @@ class ControllerRelatorio extends Controller
           
           foreach($vendas as $venda){
           $receita = $receita + $venda->valorTotal;
-          $despesa = $despesa + $venda->produto->gastoMedio;
+          $despesa = $despesa + $gasto;
           $pagina .= '<tr>
             <td class="tg-0lax">'.$venda->idVenda.'</td>
             <td class="tg-0lax">'.$venda->usuario->name.'</td>
-            <td class="tg-lqy6">'.$venda->produto->nome.'</td>
+            <td class="tg-lqy6">'; 
+            if(isset ($venda->produtos) && $venda->produtos->count() > 0){
+            foreach ($venda->produtos as $produto) {
+            
+              $pagina .= '<button type="button" class="btn btn-danger btn-sm" aria-disabled="true" disabled>'.$produto->nome.' '.'</button>';
+            
+            }
+          }else{
+            $pagina .= "Vazio";
+          }
+          $pagina .= '</td>
             <td class="tg-lqy6">'.$venda->dataEntrega->format('d/m/Y').'</td>
-            <td class="tg-lqy6">R$:'.$venda->produto->gastoMedio.'</td>
+            <td class="tg-lqy6">R$:'.$gasto.'</td>
             <td class="tg-lqy6">R$:'.$venda->valorTotal.'</td>
           </tr>'; }
           

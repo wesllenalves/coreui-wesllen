@@ -54,8 +54,7 @@
               $receita = $receita + $venda->valorTotal;
              // $despesa = $despesa + $venda->produto->gastoMedio;
               ?>
-              <tr>
-              <?php //$array=[$venda];?>
+              <tr>              
                 <td>{{$venda->idVenda}}</td>
                 <td>{{$venda->usuario->name}}</td>
                 <td>
@@ -73,11 +72,7 @@
                 <td>{{$venda->dataEntrega}}</td>
                 <td>{{$venda->statusVenda}}</td>
                 <td>
-                    
-                      {{$venda}}
-                    
-                   
-                    
+                  
                 </td>
                 <td>{{$venda->valorTotal}}</td>
                 
